@@ -15,26 +15,52 @@ public class UsuarioControl {
         return instance;
     }
 
+    /**
+     * 
+     * @param usuario
+     * @return 
+     */
     public int create(Usuario usuario) {
         return UsuarioDAO.getInstance().create(usuario);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Usuario> read() {
         return UsuarioDAO.getInstance().read();
     }
 
+    /**
+     * 
+     * @param usuario 
+     */
     public void update(Usuario usuario) {
-        Y
+        UsuarioDAO.getInstance().update(usuario);
     }
 
+    /**
+     * 
+     * @param usuario 
+     */
     public void delete(Usuario usuario) {
-        throw new UnsupportedOperationException();
+        UsuarioDAO.getInstance().delete(usuario);
     }
 
+    /**
+     * Este método desativa o usuário.
+     * @param usuario 
+     */
     public void disable(Usuario usuario) {
-        throw new UnsupportedOperationException();
+        usuario.setEstado("D");
+        update(usuario);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<String> estados() {
         ArrayList<String> lista = new ArrayList<>();
         lista.add("A");
