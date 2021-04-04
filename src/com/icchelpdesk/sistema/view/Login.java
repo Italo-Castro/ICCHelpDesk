@@ -1,6 +1,9 @@
 package com.icchelpdesk.sistema.view;
 
+import com.icchelpdesk.usuario.control.UsuarioControl;
+import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -23,8 +26,23 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void entrar() {
-        this.setVisible(false);
-        Principal.getInstance().setVisible(true);
+        Usuario login = new Usuario();
+        login.setUsuario(jtfUsuario.getText());
+        login.setSenha(jpfSenha.getText());
+
+        login = UsuarioControl.getInstance().realizarLogin(login);
+
+        if (login != null) {
+            if (login.getEstado().equals("A")) {
+                JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
+                this.setVisible(false);
+                Principal.getInstance().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário Desativado.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Dados não conferem");
+        }
     }
 
     @SuppressWarnings("unchecked")

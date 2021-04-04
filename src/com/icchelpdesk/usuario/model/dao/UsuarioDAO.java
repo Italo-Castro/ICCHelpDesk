@@ -34,8 +34,7 @@ public class UsuarioDAO {
         );
     }
 
-    public ArrayList<Usuario> read() {
-        String query = "SELECT * FROM `usuarios`;";
+    public ArrayList<Usuario> read(String query) {
         ArrayList<Usuario> lista = new ArrayList();
         try {
             ResultSet rs = MySQLDAO.getResultSet(query);

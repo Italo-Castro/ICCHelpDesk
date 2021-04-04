@@ -2,6 +2,7 @@ package com.icchelpdesk.usuario.control;
 
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import com.icchelpdesk.usuario.model.dao.UsuarioDAO;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class UsuarioControl {
@@ -16,33 +17,34 @@ public class UsuarioControl {
     }
 
     /**
-     * 
+     *
      * @param usuario
-     * @return 
+     * @return
      */
     public int create(Usuario usuario) {
         return UsuarioDAO.getInstance().create(usuario);
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Usuario> read() {
-        return UsuarioDAO.getInstance().read();
+        String query = "SELECT * FROM `usuarios`;";
+        return UsuarioDAO.getInstance().read(query);
     }
 
     /**
-     * 
-     * @param usuario 
+     *
+     * @param usuario
      */
     public void update(Usuario usuario) {
         UsuarioDAO.getInstance().update(usuario);
     }
 
     /**
-     * 
-     * @param usuario 
+     *
+     * @param usuario
      */
     public void delete(Usuario usuario) {
         UsuarioDAO.getInstance().delete(usuario);
@@ -50,7 +52,8 @@ public class UsuarioControl {
 
     /**
      * Este método desativa o usuário.
-     * @param usuario 
+     *
+     * @param usuario
      */
     public void disable(Usuario usuario) {
         usuario.setEstado("D");
@@ -58,14 +61,25 @@ public class UsuarioControl {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public ArrayList<String> estados() {
         ArrayList<String> lista = new ArrayList<>();
         lista.add("A");
         lista.add("D");
         return lista;
+    }
+
+    public Usuario realizarLogin(Usuario usuario) {
+        String query = "SELECT * FROM `usuarios` where usuario = '" + usuario.getUsuario() + "' and senha = '" + usuario.getSenha() + "';";
+        ArrayList<Usuario> lista = UsuarioDAO.getInstance().read(query);
+        
+        for (Usuario u : lista){
+            return u;
+        }
+        
+        return null;
     }
 
 }
