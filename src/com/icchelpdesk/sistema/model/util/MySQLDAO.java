@@ -27,7 +27,7 @@ public class MySQLDAO {
             connection = DriverManager.getConnection(DBURL, USER, PASSWORD);
             return connection;
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(MySQLDAO.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Não conectado ao banco de dados","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }

@@ -2,7 +2,6 @@ package com.icchelpdesk.usuario.control;
 
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import com.icchelpdesk.usuario.model.dao.UsuarioDAO;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class UsuarioControl {

@@ -26,6 +26,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void entrar() {
+        
         Usuario login = new Usuario();
         login.setUsuario(jtfUsuario.getText());
         login.setSenha(jpfSenha.getText());
@@ -34,9 +35,11 @@ public class Login extends javax.swing.JFrame {
 
         if (login != null) {
             if (login.getEstado().equals("A")) {
+                
                 JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                 this.setVisible(false);
                 Principal.getInstance().setVisible(true);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário Desativado.");
             }
@@ -116,9 +119,9 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbEntrar))
                     .addGroup(layout.createSequentialGroup()
