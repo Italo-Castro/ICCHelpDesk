@@ -18,11 +18,11 @@ public class Cliente {
     private int nfe,nfce,mdfe,cte;
     private String informacoes;
     private int menut,menuped,menuefd,menucx,mercurio,edsys;
-
+    private String Status;
     public Cliente() {
     }
 
-    public Cliente(int id, String cnpj, String nomeEmpresarial, String nomeFantasia, String tel_1, String tel_2, int enderecoId, String responsavel, int nfe, int nfce, int mdfe, int cte, String informacoes, int menut, int menuped, int menuefd, int menucx, int mercurio, int edsys) {
+    public Cliente(int id, String cnpj, String nomeEmpresarial, String nomeFantasia, String tel_1, String tel_2, int enderecoId, String responsavel, int nfe, int nfce, int mdfe, int cte, String informacoes, int menut, int menuped, int menuefd, int menucx, int mercurio, int edsys, String status) {
         this.id = id;
         this.cnpj = cnpj;
         this.nomeEmpresarial = nomeEmpresarial;
@@ -42,6 +42,7 @@ public class Cliente {
         this.menucx = menucx;
         this.mercurio = mercurio;
         this.edsys = edsys;
+        this.Status= status;
     }
 
     public int getId() {
@@ -66,6 +67,14 @@ public class Cliente {
 
     public void setNomeEmpresarial(String nomeEmpresarial) {
         this.nomeEmpresarial = nomeEmpresarial;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
 
     public String getNomeFantasia() {
