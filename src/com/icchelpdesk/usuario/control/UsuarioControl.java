@@ -71,7 +71,7 @@ public class UsuarioControl {
     }
 
     public Usuario realizarLogin(Usuario usuario) {
-        String query = "SELECT * FROM `usuarios` where usuario = '" + usuario.getUsuario() + "' and senha = '" + usuario.getSenha() + "';";
+        String query = "SELECT * FROM `usuarios` where codigo = '" + usuario.getCodigo() + "' and senha = '" + usuario.getSenha() + "';";
         ArrayList<Usuario> lista = UsuarioDAO.getInstance().read(query);
         
         for (Usuario u : lista){

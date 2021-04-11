@@ -15,7 +15,7 @@ public class MySQLDAO {
     public static String DBURL = "";
     private static Connection connection;
 
-    private static final String WAMP_USER = "root", WAMP_PASSWORD = "vertrigo";
+    private static final String WAMP_USER = "root", WAMP_PASSWORD = "";
 
     private static void setDBURL() {
         DBURL = "jdbc:mysql://localhost:3306/icchelpdesk?allowPublicKeyRetrieval=true&useSSL=false";
@@ -70,6 +70,7 @@ public class MySQLDAO {
             if (rs != null && rs.next()) {
                 update = rs.getLong(1);
             }
+            JOptionPane.showMessageDialog(null,"Processo realizado com sucesso");
             psmt.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao Executar Query.\n\n"

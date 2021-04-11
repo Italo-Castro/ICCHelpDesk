@@ -24,14 +24,14 @@ public class ClienteDAO {
     }
     
     public int create (Cliente cliente){
-        String query = "INSERT INTO CLIENTES values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String query = "INSERT INTO CLIENTES values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         return MySQLDAO.executeQuery(query,
                 null,
+                cliente.getCnpj(),
                 cliente.getNomeEmpresarial(),
                 cliente.getNomeFantasia(),
                 cliente.getTel_1(),
                 cliente.getTel_2(),
-                cliente.getEnderecoId(),
                 cliente.getResponsavel(),
                 cliente.getNfe(),
                 cliente.getNfce(),
@@ -44,8 +44,15 @@ public class ClienteDAO {
                 cliente.getMercurio(),
                 cliente.getMenuped(),
                 cliente.getEdsys(),
-                cliente.getStatus()
-                );    
+                cliente.getStatus(),
+                cliente.getCep(),
+                cliente.getCidade(),
+                cliente.getBairro(),
+                cliente.getLogradouro(),
+                cliente.getNumero(),
+                cliente.getEstado()        
+                );
+        
         }
    public ArrayList<Cliente> read(String query){
     ArrayList<Cliente> listaCliente = new ArrayList();
@@ -62,7 +69,6 @@ public class ClienteDAO {
         cliente.setNomeFantasia(rs.getString("nomeFantasia"));
         cliente.setTel_1(rs.getString("telefone_1"));
         cliente.setTel_2(rs.getString("telefone_2"));
-        cliente.setEnderecoId(rs.getInt("enderecoId"));
         cliente.setResponsavel(rs.getString("responsavel"));
         cliente.setNfe(rs.getInt("nf_e"));
         cliente.setNfce(rs.getInt("nfc_e"));
@@ -73,10 +79,15 @@ public class ClienteDAO {
         cliente.setMenuefd(rs.getInt("menuEfd"));
         cliente.setMenucx(rs.getInt("menuCX"));
         cliente.setMercurio(rs.getInt("mercurio"));
-        cliente.setMenuped(rs.getInt("menut"));
-        cliente.setEdsys(rs.getInt("menut"));
+        cliente.setMenuped(rs.getInt("menuped"));
+        cliente.setEdsys(rs.getInt("edsys"));
         cliente.setStatus(rs.getString("status"));
-       
+        cliente.setCep(rs.getString("cep"));
+        cliente.setCidade(rs.getString("cidade"));
+        cliente.setBairro(rs.getString("bairro"));
+        cliente.setLogradouro(rs.getString("logradouro"));
+        cliente.setNumero(rs.getInt("numero"));
+        cliente.setEstado(rs.getString("estado"));
         //adiciono todos os dados lidos ao meu objeto cliente
         
         listaCliente.add(cliente); //adiciono meu objeto cliente, a minha lista
@@ -92,33 +103,39 @@ public class ClienteDAO {
    
    public void update(Cliente cliente){
        
-       String query = "UPDATE Cientes set"
-               + "CNPJ = ?, \n"
-               + "nomeEmpresarial = ?, \n"
-               + "nomeFantasia = ?, \n"
-               + "telefone_1 = ?, \n"
-               + "telefone_2 = ?, \n"
-               + "enderecoId = ?, \n"
-               + "responsavel = ?, \n"
-               + "nf_e = ?, \n"
-               + "nfc_e = ?, \n"
-               + "ct_e = ?, \n"
-               + "mdf_e = ?, \n"
-               + "informacoes = ?, \n"
-               + "menut = ?, \n"
-               + "menuEfd = ?, \n"
-               + "MenuCX = ?, \n"
-               + "mercurio = ?, \n"
-               + "menuped = ?, \n"
-               + "edSys = ?, \n"
-               + "id = ?, \n";
+       String query = "update clientes"
+               + " \n"
+               + "set cnpj = ?, "
+               + "nomeEmpresarial = ?,"
+               + "nomeFantasia = ?,"
+               + "telefone_1 = ?,"
+               + "telefone_2 = ?"
+               + "responsavel = ?"
+               + "nf_e = ?,"
+               + "nfc_e = ?,"
+               + "ct_e = ?,"
+               + "mdf_e = ?,"
+               + "informacoes = ?,"
+               + "menut = ?,"
+               + "menuEfd = ?,"
+               + "MenuCX = ?,"
+               + "mercurio = ?,"
+               + "menuped = ?,"
+               + "edSys = ?,"
+               + "status = ?,"
+               + "cep = ?, "
+               + "cidade = ?,"
+               + "bairro = ?,"
+               + "logradouro = ?,"
+               + "numero = ?,"
+               + "estado = ?"
+               + "where id = ?";
        MySQLDAO.executeQuery(query,
                cliente.getCnpj(),
                cliente.getNomeEmpresarial(),
                cliente.getNomeFantasia(),
                cliente.getTel_1(),
                cliente.getTel_2(),
-               cliente.getEnderecoId(),
                cliente.getResponsavel(),
                cliente.getNfe(),
                cliente.getNfce(),
@@ -131,6 +148,13 @@ public class ClienteDAO {
                cliente.getMercurio(),
                cliente.getMenuped(),
                cliente.getEdsys(),
+               cliente.getStatus(),
+               cliente.getCep(),
+               cliente.getCidade(),
+               cliente.getBairro(),
+               cliente.getLogradouro(),
+               cliente.getNumero(),
+               cliente.getEstado(),
                cliente.getId()
                );
      }

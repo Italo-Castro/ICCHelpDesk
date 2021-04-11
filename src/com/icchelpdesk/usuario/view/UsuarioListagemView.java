@@ -40,7 +40,7 @@ public class UsuarioListagemView extends javax.swing.JInternalFrame {
             dtm.addRow(new Object[]{
                 usuario.getId(),
                 usuario.getNome(),
-                usuario.getUsuario(),
+                usuario.getCodigo(),
                 usuario.getPermissao(),
                 usuario.getEstado(),
                 usuario.getCreated_at(),

@@ -13,23 +13,31 @@ public class Cliente {
     private String nomeFantasia;
     private String tel_1;
     private String tel_2;
-    private int enderecoId;
     private String responsavel;
     private int nfe,nfce,mdfe,cte;
     private String informacoes;
     private int menut,menuped,menuefd,menucx,mercurio,edsys;
     private String Status;
+    private String cep;
+    private String cidade;
+    private String bairro;
+    private String logradouro;
+    private int numero;
+    private String estado;
+    
+    
+    
+    
     public Cliente() {
     }
 
-    public Cliente(int id, String cnpj, String nomeEmpresarial, String nomeFantasia, String tel_1, String tel_2, int enderecoId, String responsavel, int nfe, int nfce, int mdfe, int cte, String informacoes, int menut, int menuped, int menuefd, int menucx, int mercurio, int edsys, String status) {
+    public Cliente(int id, String cnpj, String nomeEmpresarial, String nomeFantasia, String tel_1, String tel_2, int enderecoId, String responsavel, int nfe, int nfce, int mdfe, int cte, String informacoes, int menut, int menuped, int menuefd, int menucx, int mercurio, int edsys, String status, String cep, String cidade, String bairro, String logradouro, int numero, String estado) {
         this.id = id;
         this.cnpj = cnpj;
         this.nomeEmpresarial = nomeEmpresarial;
         this.nomeFantasia = nomeFantasia;
         this.tel_1 = tel_1;
         this.tel_2 = tel_2;
-        this.enderecoId = enderecoId;
         this.responsavel = responsavel;
         this.nfe = nfe;
         this.nfce = nfce;
@@ -43,6 +51,13 @@ public class Cliente {
         this.mercurio = mercurio;
         this.edsys = edsys;
         this.Status= status;
+        this.cep=cep;
+        this.cidade=cidade;
+        this.bairro=bairro;
+        this.logradouro=logradouro;
+        this.numero=numero;
+        this.estado=estado;
+        
     }
 
     public int getId() {
@@ -101,13 +116,7 @@ public class Cliente {
         this.tel_2 = tel_2;
     }
 
-    public int getEnderecoId() {
-        return enderecoId;
-    }
-
-    public void setEnderecoId(int enderecoId) {
-        this.enderecoId = enderecoId;
-    }
+   
 
     public String getResponsavel() {
         return responsavel;
@@ -203,6 +212,54 @@ public class Cliente {
 
     public void setEdsys(int edsys) {
         this.edsys = edsys;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     

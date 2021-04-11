@@ -24,12 +24,12 @@ public class UsuarioDAO {
         return MySQLDAO.executeQuery(
                 query,
                 null,
-                usuario.getPermissao(),
                 usuario.getNome(),
-                usuario.getUsuario(),
+                usuario.getCodigo(),
                 usuario.getSenha(),
                 usuario.getEstado(),
                 usuario.getCreated_at(),
+                usuario.getPermissao(),
                 null
         );
     }
@@ -45,12 +45,12 @@ public class UsuarioDAO {
                 usuario.setId(rs.getInt("id"));
                 usuario.setPermissao(rs.getInt("permissao"));
                 usuario.setNome(rs.getString("nome"));
-                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setCodigo(rs.getString("codigo"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setEstado(rs.getString("estado"));
                 usuario.setCreated_at(rs.getTimestamp("created_at"));
                 usuario.setUpdated_at(rs.getTimestamp("updated_at"));
-                // adicionando usuário na lista
+                // adicionando usuário na lista que sera o retorna desta função 
                 lista.add(usuario);
             }
         } catch (SQLException ex) {
@@ -63,7 +63,7 @@ public class UsuarioDAO {
         String query = "UPDATE `usuarios` set "
                 + "`permissao` = ?,\n"
                 + "`nome` = ?,\n"
-                + "`usuario` = ?,\n"
+                + "`codigo` = ?,\n"
                 + "`senha` = ?,\n"
                 + "`estado` = ?,\n"
                 + "`updated_at` = now()\n"
@@ -71,7 +71,7 @@ public class UsuarioDAO {
         MySQLDAO.executeQuery(query,
                 usuario.getPermissao(),
                 usuario.getNome(),
-                usuario.getUsuario(),
+                usuario.getCodigo(),
                 usuario.getSenha(),
                 usuario.getEstado(),
                 usuario.getId()

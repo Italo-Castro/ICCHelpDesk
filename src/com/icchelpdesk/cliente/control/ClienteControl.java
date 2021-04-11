@@ -1,4 +1,4 @@
-package com.icchelpdesk.possiveisClientes.control;
+package com.icchelpdesk.cliente.control;
 
 import com.icchelpdesk.cliente.model.bean.Cliente;
 import com.icchelpdesk.cliente.model.dao.ClienteDAO;

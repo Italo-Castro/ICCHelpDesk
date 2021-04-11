@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
+    public String usuario;
     private static Login instance = null;
 
     public static Login getInstance() {
@@ -15,12 +15,12 @@ public class Login extends javax.swing.JFrame {
         }
         return instance;
     }
-
+    
     public Login() {
         initComponents();
         construtor();
     }
-
+   
     private void construtor() {
         setLocationRelativeTo(null);
     }
@@ -28,15 +28,16 @@ public class Login extends javax.swing.JFrame {
     private void entrar() {
         
         Usuario login = new Usuario();
-        login.setUsuario(jtfUsuario.getText());
+        login.setCodigo(jtfUsuario.getText());
         login.setSenha(jpfSenha.getText());
 
         login = UsuarioControl.getInstance().realizarLogin(login);
 
         if (login != null) {
-            if (login.getEstado().equals("A")) {
+            if (login.getEstado().equals("ATIVO")) {
                 
                 JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
+                this.usuario = login.getNome();
                 this.setVisible(false);
                 Principal.getInstance().setVisible(true);
                 
@@ -47,7 +48,9 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Dados não conferem");
         }
     }
-
+     public String getUsuario(){
+        return this.usuario;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

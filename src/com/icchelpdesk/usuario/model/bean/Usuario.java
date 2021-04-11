@@ -7,7 +7,7 @@ public class Usuario {
     private int id;
     private int permissao;
     private String nome;
-    private String usuario;
+    private String codigo;
     private String senha;
     private String estado;
     private Timestamp created_at;
@@ -27,11 +27,11 @@ public class Usuario {
      * @param created_at
      * @param updated_at 
      */
-    public Usuario(int id, int permissao, String nome, String usuario, String senha, String estado, Timestamp created_at, Timestamp updated_at) {
+    public Usuario(int id, int permissao, String nome, String codigo, String senha, String estado, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.permissao = permissao;
         this.nome = nome;
-        this.usuario = usuario;
+        this.codigo = codigo;
         this.senha = senha;
         this.estado = estado;
         this.created_at = created_at;
@@ -62,12 +62,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getSenha() {

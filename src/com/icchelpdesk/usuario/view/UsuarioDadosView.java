@@ -62,7 +62,7 @@ public class UsuarioDadosView extends javax.swing.JInternalFrame {
         this.usuario = usuario;
         jsPermissao.setText(usuario.getPermissao() + "");
         jtfNome.setText(usuario.getNome());
-        jtfUsuario.setText(usuario.getUsuario());
+        jtfUsuario.setText(usuario.getCodigo());
         jpfSenha.setText(usuario.getSenha());
         jcbEstado.setSelectedItem(usuario.getEstado());
     }
@@ -75,7 +75,7 @@ public class UsuarioDadosView extends javax.swing.JInternalFrame {
         }
         usuarioCriar.setPermissao(Integer.parseInt(jsPermissao.getText()));
         usuarioCriar.setNome(jtfNome.getText());
-        usuarioCriar.setUsuario(jtfUsuario.getText());
+        usuarioCriar.setCodigo(jtfUsuario.getText());
         usuarioCriar.setSenha(jpfSenha.getText());
         usuarioCriar.setEstado(jcbEstado.getSelectedItem().toString());
 
