@@ -487,7 +487,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
-       System.out.print("clicado");
+
        Cliente cliente = new Cliente ();
        
        if(jTextCnpj.getText().equals("")){
@@ -511,39 +511,9 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
            jTextCidade.setBorder(new LineBorder(Color.RED));
            JOptionPane.showMessageDialog(null,"Campo CIDADE vazio");
        }
-       if(jCheckMenut.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckMenuped.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckMenuCx.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckMenuEfd.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckMercurio.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckEdsys.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckNfe.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckNfce.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckCte.isSelected()){
-           cliente.setMenut(1);
-       }
-       if(jCheckMdfe.isSelected()){
-           cliente.setMenut(1);
-       }
+    
        
        else {
-       
        cliente.setCnpj(jTextCnpj.getText());
        cliente.setNomeEmpresarial(jTextEmpresarial.getText());
        cliente.setNomeFantasia(jTextFantasia.getText());
@@ -557,6 +527,38 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
        cliente.setNumero(Integer.parseInt(jTextNumero.getText()));
        cliente.setEstado(jComboEstado.getSelectedItem().toString());
        cliente.setInformacoes(jTextArea.getText());
+       
+        if(jCheckMenut.isSelected()){
+           cliente.setMenut(1);
+       }
+         if(jCheckMenuped.isSelected()){
+           cliente.setMenuped(1);
+       }
+        if(jCheckMenuCx.isSelected()){
+           cliente.setMenucx(1);
+       }
+        if(jCheckMenuEfd.isSelected()){
+           cliente.setMenuefd(1);
+       }
+        if(jCheckMercurio.isSelected()){
+           cliente.setMercurio(1);
+       }
+        if(jCheckEdsys.isSelected()){
+           cliente.setEdsys(1);
+       }
+        if(jCheckNfe.isSelected()){
+           cliente.setNfe(1);
+       }
+        if(jCheckNfce.isSelected()){
+           cliente.setNfce(1);
+       }
+        if(jCheckCte.isSelected()){
+           cliente.setCte(1);
+       }
+        if(jCheckMdfe.isSelected()){
+           cliente.setMdfe(1);
+       }
+       
        insertCliente(cliente);
        }
     }//GEN-LAST:event_jButtonRegisterActionPerformed
