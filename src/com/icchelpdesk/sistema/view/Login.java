@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         login = UsuarioControl.getInstance().realizarLogin(login);
 
         if (login != null) {
-            if (login.getEstado().equals("ATIVO")) {
+            if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
                 
                 JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                 this.usuario = login.getNome();

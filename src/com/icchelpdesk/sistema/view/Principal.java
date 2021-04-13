@@ -25,8 +25,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         construtor();
         this.setTitle("Ola ! "+Login.getInstance().getUsuario());
-      jLabelUsuario.setText("Ola ! "+Login.getInstance().getUsuario());
-        
+        jLabelUsuario.setText("Ola ! "+Login.getInstance().getUsuario());        
     }
 
     private void construtor() {

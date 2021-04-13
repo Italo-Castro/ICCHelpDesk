@@ -13,7 +13,8 @@ public class atendimento {
     public String assunto;
     private String status;
     private String usuario;
-
+    
+    
     public atendimento() {
         
     }

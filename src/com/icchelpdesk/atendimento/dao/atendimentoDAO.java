@@ -30,7 +30,7 @@ public class atendimentoDAO {
     
     public int create(atendimento atendimento){
         
-        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?)";
+        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query,
                 null,
                 atendimento.getNomeCliente(),
@@ -40,7 +40,8 @@ public class atendimentoDAO {
                 atendimento.getSolucao(),
                 atendimento.getAssunto(),
                 atendimento.getStatus(),
-                atendimento.getUsuario()
+                atendimento.getUsuario(),
+                atendimento.getNomeContato()
                 );       
     }
     public ArrayList<atendimento>  read(String query){
@@ -61,6 +62,7 @@ public class atendimentoDAO {
                 atendimento.setAssunto(rs.getString("assunto"));
                 atendimento.setStatus(rs.getString("status"));
                 atendimento.setUsuario(rs.getString("usuario"));
+                atendimento.setNomeContato(rs.getString("nomeContato"));
                 listaAtendimento.add(atendimento);
             }
         }catch(SQLException e){
@@ -70,23 +72,25 @@ public class atendimentoDAO {
     }
     public void update(atendimento atendimento){
         String query = "update atendimento set"
-                + "assunto = ?,\n"
                 + "nomeCliente = ?,\n"
+                + "relato = ?,\n"
                 + "observacao = ?,\n"
                 + "observacao2 = ?,\n"
-                + "relato = ?,\n"
                 + "solucao = ? ,\n"
+                + "assunto = ?,\n"
                 + "status = ?, \n"
-                + "usuario = ? \n"
+                + "usuario = ?, \n"
+                + "nomeContato = ? \n"
                 + "where id = ?";
                 MySQLDAO.executeQuery(query,
-                       atendimento.getAssunto(),
                        atendimento.getNomeCliente(),
+                       atendimento.getRelato(),
                        atendimento.getObservacao(),
                        atendimento.getObservacao2(),
-                       atendimento.getRelato(),
                        atendimento.getSolucao(),
+                       atendimento.getAssunto(), 
                        atendimento.getUsuario(),
+                       atendimento.getNomeContato(),
                        atendimento.getId()
                         );
                  
@@ -95,6 +99,61 @@ public class atendimentoDAO {
         String query = "DELETE FROM `atendimento` where id = ?";
         MySQLDAO.executeQuery(query, atendimento.getId());
     }
+    public ArrayList<atendimento> buscarAtendimentosPausados(String query){
+          ArrayList<atendimento> listaAtendimentoPausados = new ArrayList();
+        
+        try {
+            ResultSet rs = MySQLDAO.getResultSet(query);
+            
+            while(rs.next()){
+                atendimento atendimento = new atendimento();
+                
+                atendimento.setId(rs.getInt("id"));
+                atendimento.setNomeCliente(rs.getString("nomeCliente"));
+                atendimento.setRelato(rs.getString("relato"));
+                atendimento.setObservacao(rs.getString("observacao"));
+                atendimento.setObservacao2(rs.getString("observacao2"));
+                atendimento.setSolucao(rs.getString("solucao"));
+                atendimento.setAssunto(rs.getString("assunto"));
+                atendimento.setStatus(rs.getString("status"));
+                atendimento.setUsuario(rs.getString("usuario"));
+                atendimento.setNomeContato("nomeContato");
+                
+                listaAtendimentoPausados.add(atendimento);
+            }
+        }catch(SQLException e){
+            Logger.getLogger(possiveisClientesDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return listaAtendimentoPausados;
+    } 
+    public ArrayList<atendimento> buscarAtendimentosPausadosId(String query){
+          ArrayList<atendimento> listaAtendimentoPausados = new ArrayList();
+        
+        try {
+            ResultSet rs = MySQLDAO.getResultSet(query);
+            
+            while(rs.next()){
+                atendimento atendimento = new atendimento();
+                
+                atendimento.setId(rs.getInt("id"));
+                atendimento.setNomeCliente(rs.getString("nomeCliente"));
+                atendimento.setRelato(rs.getString("relato"));
+                atendimento.setObservacao(rs.getString("observacao"));
+                atendimento.setObservacao2(rs.getString("observacao2"));
+                atendimento.setSolucao(rs.getString("solucao"));
+                atendimento.setAssunto(rs.getString("assunto"));
+                atendimento.setStatus(rs.getString("status"));
+                atendimento.setUsuario(rs.getString("usuario"));
+                atendimento.setNomeContato(rs.getString("nomeContato"));
+                
+                listaAtendimentoPausados.add(atendimento);
+            }
+        }catch(SQLException e){
+            Logger.getLogger(possiveisClientesDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return listaAtendimentoPausados;
+    } 
+    
 
 }
 

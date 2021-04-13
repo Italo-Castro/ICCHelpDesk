@@ -78,6 +78,7 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         jMenuBar1.add(jMenu2);
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setResizable(true);
 
