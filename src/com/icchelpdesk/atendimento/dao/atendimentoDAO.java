@@ -71,17 +71,17 @@ public class atendimentoDAO {
         return listaAtendimento;
     }
     public void update(atendimento atendimento){
-        String query = "update atendimento set"
-                + "nomeCliente = ?,\n"
-                + "relato = ?,\n"
-                + "observacao = ?,\n"
-                + "observacao2 = ?,\n"
-                + "solucao = ? ,\n"
-                + "assunto = ?,\n"
-                + "status = ?, \n"
-                + "usuario = ?, \n"
-                + "nomeContato = ? \n"
-                + "where id = ?";
+        String query = "UPDATE `atendimento` set "
+                + "`nomeCliente` = ?,\n"
+                + "`relato` = ?,\n"
+                + "`observacao` = ?,\n"
+                + "`observacao2` = ?,\n"
+                + "`solucao` = ?,\n"
+                + "`assunto` = ?,\n"
+                + "`status` = ?,\n"
+                + "`usuario` = ?,\n"
+                + "`nomeContato` = ?\n"
+                + "WHERE `id` = ?";
                 MySQLDAO.executeQuery(query,
                        atendimento.getNomeCliente(),
                        atendimento.getRelato(),
@@ -89,6 +89,7 @@ public class atendimentoDAO {
                        atendimento.getObservacao2(),
                        atendimento.getSolucao(),
                        atendimento.getAssunto(), 
+                       atendimento.getStatus(),
                        atendimento.getUsuario(),
                        atendimento.getNomeContato(),
                        atendimento.getId()

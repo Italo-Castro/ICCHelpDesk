@@ -55,6 +55,7 @@ public class MySQLDAO {
     }
 
     public static int executeQuery(String query, Object... parametros) {
+       
         getConnection_Local();
         long update = 0;
         PreparedStatement psmt;
@@ -69,7 +70,9 @@ public class MySQLDAO {
             ResultSet rs = psmt.getGeneratedKeys();
             if (rs != null && rs.next()) {
                 update = rs.getLong(1);
+                 
             }
+            
             JOptionPane.showMessageDialog(null,"Processo realizado com sucesso");
             psmt.close();
         } catch (SQLException ex) {

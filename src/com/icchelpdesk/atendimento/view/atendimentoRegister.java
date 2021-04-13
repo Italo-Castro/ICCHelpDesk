@@ -6,11 +6,8 @@ import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.bean.Cliente;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +15,6 @@ import javax.swing.JOptionPane;
  * @author Italo
  */
 public class atendimentoRegister extends javax.swing.JInternalFrame {
-    
      private static atendimentoRegister instance = null;
 
     public static atendimentoRegister getInstance() {
@@ -32,13 +28,12 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     
     public atendimentoRegister() {
             initComponents();
-             PegarHora();
-             
+            PegarHora();
+            
             jButtonGravar.setVisible(false);
-            jButtonFinalizarAtendimento.setVisible(false);
             jButtonPausar.setVisible(false);
-             ArrayList<Cliente> listaClientes = new ArrayList();
-             listaClientes = ClienteControl.getInstance().read();
+            ArrayList<Cliente> listaClientes = new ArrayList();
+            listaClientes = ClienteControl.getInstance().read();
              
                 for (Cliente clientes : listaClientes){
                jComboCliente.addItem(clientes.getNomeEmpresarial());
@@ -76,6 +71,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 		}
      }
      public void retomarAtendimento(){
+                 jButtonGravar.setVisible(true);
                 String atendimentoPausado = jComboBoxAtendimentosPausados.getSelectedItem().toString();
                 String vect[] = atendimentoPausado.split(" - ");
                 
@@ -95,8 +91,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                   jTextRelato.setText(listaAtendimentosPausados.get(i).getRelato());
                   jComboAssunto.setSelectedItem(listaAtendimentosPausados.get(i).getAssunto());
                   jComboCliente.setSelectedItem(listaAtendimentosPausados.get(i).getNomeCliente());
+                  jLabelId.setText(""+listaAtendimentosPausados.get(i).getId());
                 }
-                    jButtonFinalizarAtendimento.setVisible(true);
+                  
                     }
      }
      public void updateAtendimentoPausado(){
@@ -105,9 +102,75 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
           String nome = jComboBoxAtendimentosPausados.getSelectedItem().toString();
           String vect[] = nome.split(" - ");
           int id = Integer.parseInt(vect[1]);
-         JOptionPane.showMessageDialog(null,"ID "+id);
          listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausadosId(id);
          atendimento atendimento = new atendimento();
+        
+        atendimento.setId(id);
+        
+         
+     }
+     public void novoAtendimento(){
+            
+         
+         atendimento atendimento = new atendimento();
+        
+        atendimento.setAssunto("");
+        atendimento.setNomeCliente("");
+        atendimento.setNomeContato("");
+        atendimento.setObservacao("");
+        atendimento.setObservacao2("");
+        atendimento.setRelato("");
+        atendimento.setSolucao("");
+        atendimento.setStatus("INICIADO");
+        atendimento.setUsuario(Login.getInstance().getUsuario());
+        
+        int x = atendimentoControl.getInstance().create(atendimento);
+      
+        
+        jTextNomeContato.setText("");
+        jTextSolucao.setText("");
+        jTextObs.setText("");
+        jTextObs2.setText("");
+        jComboCliente.setSelectedIndex(0);
+        jComboAssunto.setSelectedIndex(0);
+        jTextRelato.setText("");
+
+        jButtonGravar.setVisible(true);
+        jButtonPausar.setVisible(true);
+
+        jLabelId.setText(""+x);
+     }
+     public void pausarAtendimento(){
+        atendimento atendimento = new atendimento();
+        
+        atendimento.setAssunto(jComboAssunto.getSelectedItem().toString());
+        atendimento.setNomeCliente(jComboCliente.getSelectedItem().toString());
+        atendimento.setNomeContato(jTextNomeContato.getText());
+        atendimento.setObservacao(jTextObs.getText());
+        atendimento.setObservacao2(jTextObs2.getText());
+        atendimento.setRelato(jTextRelato.getText());
+        atendimento.setSolucao(jTextSolucao.getText());
+        atendimento.setUsuario(Login.getInstance().getUsuario());
+        atendimento.setStatus("PAUSADO");
+        atendimento.setId(Integer.parseInt(jLabelId.getText()));
+        atendimentoControl.getInstance().update(atendimento);
+        
+         
+        
+        jTextNomeContato.setText("");
+        jTextSolucao.setText("");
+        jTextObs.setText("");
+        jTextObs2.setText("");
+        jComboCliente.setSelectedIndex(0);
+        jComboAssunto.setSelectedIndex(0);
+        jTextRelato.setText("");
+
+        jButtonGravar.setVisible(false);
+        jButtonPausar.setVisible(false);
+        
+     }
+     public void gravarAtendimento(){
+          atendimento atendimento = new atendimento();
         
         atendimento.setAssunto(jComboAssunto.getSelectedItem().toString());
         atendimento.setNomeCliente(jComboCliente.getSelectedItem().toString());
@@ -118,14 +181,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setSolucao(jTextSolucao.getText());
         atendimento.setStatus("CONCLUIDO");
         atendimento.setUsuario(Login.getInstance().getUsuario());
-         atendimentoControl.getInstance().update(atendimento);
-         
+        atendimento.setId(Integer.parseInt(jLabelId.getText()));
+        atendimentoControl.getInstance().update(atendimento);
      }
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -137,9 +195,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jButtonPausar = new javax.swing.JButton();
         jButtonNovoAtendimento = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButtonFinalizarAtendimento = new javax.swing.JButton();
         jComboBoxAtendimentosPausados = new javax.swing.JComboBox<>();
         jButtonRetornarAtendimento = new javax.swing.JButton();
+        jLabelAtendimentosPausados = new javax.swing.JLabel();
         jLabelGracinha = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextNomeContato = new javax.swing.JTextField();
@@ -161,13 +219,14 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jTextObs = new javax.swing.JTextArea();
         jLabelIdAtendimento = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
 
         jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16x16.png"))); // NOI18N
-        jButtonGravar.setText("GRAVAR Atendimento");
+        jButtonGravar.setText("Gravar");
         jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGravarActionPerformed(evt);
@@ -177,7 +236,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jButton2.setText("SAIR");
 
         jButtonPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16X16Pause.png"))); // NOI18N
-        jButtonPausar.setText("Pausar Atendimento");
+        jButtonPausar.setText("Pausar ");
         jButtonPausar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPausarActionPerformed(evt);
@@ -185,7 +244,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         });
 
         jButtonNovoAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16x16NewAtendimento.png"))); // NOI18N
-        jButtonNovoAtendimento.setText("Novo Atendimento");
+        jButtonNovoAtendimento.setText("Novo ");
         jButtonNovoAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNovoAtendimentoActionPerformed(evt);
@@ -194,23 +253,22 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jButton5.setText("Ver Atendimentos Pausados");
 
-        jButtonFinalizarAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16x16Exit.png"))); // NOI18N
-        jButtonFinalizarAtendimento.setText("Finalizar Atendimento");
-        jButtonFinalizarAtendimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFinalizarAtendimentoActionPerformed(evt);
+        jComboBoxAtendimentosPausados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxAtendimentosPausadosKeyPressed(evt);
             }
         });
 
-        jComboBoxAtendimentosPausados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jButtonRetornarAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16x16RetomarAtendimento.png"))); // NOI18N
-        jButtonRetornarAtendimento.setText("Retomar Atendimento");
+        jButtonRetornarAtendimento.setText("Retomar");
         jButtonRetornarAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRetornarAtendimentoActionPerformed(evt);
             }
         });
+
+        jLabelAtendimentosPausados.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelAtendimentosPausados.setText("Atendimentos Pausados");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -223,14 +281,14 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                     .addComponent(jButtonPausar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonNovoAtendimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonFinalizarAtendimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxAtendimentosPausados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(jButtonRetornarAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jButtonRetornarAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabelAtendimentosPausados)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,12 +300,12 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonGravar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonFinalizarAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonRetornarAtendimento)
-                .addGap(8, 8, 8)
+                .addGap(24, 24, 24)
+                .addComponent(jLabelAtendimentosPausados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxAtendimentosPausados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2))
@@ -260,12 +318,6 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jLabel2.setText("Cliente");
 
         jLabel3.setText("Relato");
-
-        jComboCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboClienteActionPerformed(evt);
-            }
-        });
 
         jTextRelato.setColumns(20);
         jTextRelato.setRows(5);
@@ -303,49 +355,57 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextNomeContato)
-                            .addComponent(jComboAssunto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3))
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(376, 376, 376)
-                                .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(6, 6, 6))
+                        .addComponent(jLabel5)
+                        .addGap(376, 376, 376)
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                         .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel3))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                                 .addGap(386, 386, 386)
                                 .addComponent(jLabelIdAtendimento)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(302, 302, 302)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel6)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
+                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextNomeContato, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLabelGracinhaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 18, Short.MAX_VALUE))))
+            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
+                .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jLabelGracinhaLayout.setVerticalGroup(
             jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                 .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addComponent(jLabelIdAtendimento)
+                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelIdAtendimento)
+                            .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addComponent(jLabel1))
                     .addGroup(jLabelGracinhaLayout.createSequentialGroup()
@@ -356,17 +416,15 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -398,57 +456,28 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboClienteActionPerformed
-
-    }//GEN-LAST:event_jComboClienteActionPerformed
-
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        atendimento atendimento = new atendimento();
-        
-        atendimento.setAssunto(jComboAssunto.getSelectedItem().toString());
-        atendimento.setNomeCliente(jComboCliente.getSelectedItem().toString());
-        atendimento.setNomeContato(jTextNomeContato.getText());
-        atendimento.setObservacao(jTextObs.getText());
-        atendimento.setObservacao2(jTextObs2.getText());
-        atendimento.setRelato(jTextRelato.getText());
-        atendimento.setSolucao(jTextSolucao.getText());
-        atendimento.setStatus("CONCLUIDO");
-        atendimento.setUsuario(Login.getInstance().getUsuario());
-        atendimentoControl.getInstance().create(atendimento);
+         int x = JOptionPane.showConfirmDialog(null, "Deseja realmente finalizar o atendimento "+jLabelId.getText());
+         if( x == JOptionPane.YES_OPTION){
+              gravarAtendimento();
+         }
+         else {
+             JOptionPane.showMessageDialog(null," PROCESSADO CANCELADO PELO USUARIO "+Login.getInstance().getUsuario());
+         }
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPausarActionPerformed
-       atendimento atendimento = new atendimento();
-        
-        atendimento.setAssunto(jComboAssunto.getSelectedItem().toString());
-        atendimento.setNomeCliente(jComboCliente.getSelectedItem().toString());
-        atendimento.setNomeContato(jTextNomeContato.getText());
-        atendimento.setObservacao(jTextObs.getText());
-        atendimento.setObservacao2(jTextObs2.getText());
-        atendimento.setRelato(jTextRelato.getText());
-        atendimento.setSolucao(jTextSolucao.getText());
-        atendimento.setUsuario(Login.getInstance().getUsuario());
-        atendimento.setStatus("PAUSADO");
-        atendimentoControl.getInstance().create(atendimento);
+        pausarAtendimento();
+        adicionarAtendimentoPausadoJCombo();
     }//GEN-LAST:event_jButtonPausarActionPerformed
 
     private void jButtonNovoAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoAtendimentoActionPerformed
-       jTextNomeContato.setText("");
-       jTextSolucao.setText("");
-       jTextObs.setText("");
-       jTextObs2.setText("");
-       jComboCliente.setSelectedIndex(0);
-       jComboAssunto.setSelectedIndex(0);
-       jTextRelato.setText("");
-        
-       jButtonFinalizarAtendimento.setVisible(false);
-       jButtonGravar.setVisible(true);
-       jButtonPausar.setVisible(true);
+       novoAtendimento();
     }//GEN-LAST:event_jButtonNovoAtendimentoActionPerformed
 
     private void jButtonRetomarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetomarAtendimentoActionPerformed
    
-        
+    
     }//GEN-LAST:event_jButtonRetomarAtendimentoActionPerformed
 
     private void jTextNomeContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeContatoActionPerformed
@@ -462,21 +491,15 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxAtendimentosPausadosKeyPressed
 
     private void jButtonRetornarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarAtendimentoActionPerformed
-          
-        retomarAtendimento();
-        jButtonGravar.setVisible(false);
+        
+        retomarAtendimento(); 
         
     }//GEN-LAST:event_jButtonRetornarAtendimentoActionPerformed
-
-    private void jButtonFinalizarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarAtendimentoActionPerformed
-        updateAtendimentoPausado();
-    }//GEN-LAST:event_jButtonFinalizarAtendimentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButtonFinalizarAtendimento;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovoAtendimento;
     private javax.swing.JButton jButtonPausar;
@@ -492,7 +515,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelAtendimentosPausados;
     private javax.swing.JPanel jLabelGracinha;
+    private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelIdAtendimento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
