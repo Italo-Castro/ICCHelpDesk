@@ -72,6 +72,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      }
      public void retomarAtendimento(){
                  jButtonGravar.setVisible(true);
+                 jButtonPausar.setVisible(true);
                 String atendimentoPausado = jComboBoxAtendimentosPausados.getSelectedItem().toString();
                 String vect[] = atendimentoPausado.split(" - ");
                 
@@ -170,7 +171,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         
      }
      public void gravarAtendimento(){
-          atendimento atendimento = new atendimento();
+        atendimento atendimento = new atendimento();
         
         atendimento.setAssunto(jComboAssunto.getSelectedItem().toString());
         atendimento.setNomeCliente(jComboCliente.getSelectedItem().toString());
@@ -183,6 +184,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setUsuario(Login.getInstance().getUsuario());
         atendimento.setId(Integer.parseInt(jLabelId.getText()));
         atendimentoControl.getInstance().update(atendimento);
+        
+        
      }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -345,7 +348,10 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jTextObs.setRows(5);
         jScrollPane4.setViewportView(jTextObs);
 
-        jLabelIdAtendimento.setText("Atendimento ID");
+        jLabelIdAtendimento.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabelIdAtendimento.setText("Protocolo");
+
+        jLabelId.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jLabelGracinhaLayout = new javax.swing.GroupLayout(jLabelGracinha);
         jLabelGracinha.setLayout(jLabelGracinhaLayout);
@@ -372,9 +378,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                                 .addComponent(jLabelIdAtendimento)))
                         .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(6, 6, 6)
                                 .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(302, 302, 302)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
@@ -382,18 +388,19 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel6)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextNomeContato, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextNomeContato, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLabelGracinhaLayout.createSequentialGroup()
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLabelGracinhaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 18, Short.MAX_VALUE))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 12, Short.MAX_VALUE))))
             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                 .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -403,7 +410,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                 .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelIdAtendimento)
                             .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
@@ -435,7 +442,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -460,6 +467,15 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
          int x = JOptionPane.showConfirmDialog(null, "Deseja realmente finalizar o atendimento "+jLabelId.getText());
          if( x == JOptionPane.YES_OPTION){
               gravarAtendimento();
+               
+            jTextNomeContato.setText("");
+            jTextSolucao.setText("");
+            jTextObs.setText("");
+            jTextObs2.setText("");
+            jComboCliente.setSelectedIndex(0);
+            jComboAssunto.setSelectedIndex(0);
+            jTextRelato.setText("");
+
          }
          else {
              JOptionPane.showMessageDialog(null," PROCESSADO CANCELADO PELO USUARIO "+Login.getInstance().getUsuario());
