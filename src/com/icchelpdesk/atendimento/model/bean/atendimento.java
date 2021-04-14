@@ -1,5 +1,7 @@
 package com.icchelpdesk.atendimento.model.bean;
 
+import java.sql.Timestamp;
+
 
 public class atendimento {
     
@@ -13,13 +15,14 @@ public class atendimento {
     public String assunto;
     private String status;
     private String usuario;
+    private Timestamp data;
     
     
     public atendimento() {
         
     }
 
-    public atendimento(int id,String nomeCliente, String relato, String observacao, String observacao2, String solucao, String assunto,String status,String nomeContato,String usuario) {
+    public atendimento(int id,String nomeCliente, String relato, String observacao, String observacao2, String solucao, String assunto,String status,String nomeContato,String usuario,Timestamp data) {
         this.nomeCliente = nomeCliente;
         this.relato = relato;
         this.observacao = observacao;
@@ -30,7 +33,17 @@ public class atendimento {
         this.status=status;
         this.nomeContato=nomeContato;
         this.usuario=usuario;
+        this.data=data;
     }
+
+    public Timestamp getData() {
+        return data;
+    }
+
+    public void setData(Timestamp data) {
+        this.data = data;
+    }
+    
 
     public String getUsuario() {
         return usuario;

@@ -6,6 +6,7 @@ import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.bean.Cliente;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -183,6 +184,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setStatus("CONCLUIDO");
         atendimento.setUsuario(Login.getInstance().getUsuario());
         atendimento.setId(Integer.parseInt(jLabelId.getText()));
+        atendimento.setData(new Timestamp(System.currentTimeMillis()));
         atendimentoControl.getInstance().update(atendimento);
         
         
@@ -391,11 +393,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                         .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTextNomeContato, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLabelGracinhaLayout.createSequentialGroup()
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboCliente, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

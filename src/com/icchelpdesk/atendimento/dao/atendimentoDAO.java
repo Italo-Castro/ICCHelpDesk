@@ -27,7 +27,7 @@ public class atendimentoDAO {
     
     public int create(atendimento atendimento){
         
-        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query,
                 null,
                 atendimento.getNomeCliente(),
@@ -38,6 +38,7 @@ public class atendimentoDAO {
                 atendimento.getAssunto(),
                 atendimento.getStatus(),
                 atendimento.getUsuario(),
+                atendimento.getData(),
                 atendimento.getNomeContato()
                 );       
     }
@@ -60,6 +61,7 @@ public class atendimentoDAO {
                 atendimento.setStatus(rs.getString("status"));
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato(rs.getString("nomeContato"));
+                atendimento.setData(rs.getTimestamp("data"));
                 listaAtendimento.add(atendimento);
             }
         }catch(SQLException e){
@@ -77,7 +79,8 @@ public class atendimentoDAO {
                 + "`assunto` = ?,\n"
                 + "`status` = ?,\n"
                 + "`usuario` = ?,\n"
-                + "`nomeContato` = ?\n"
+                + "`nomeContato` = ?,\n"
+                + "`data` = ?\n"
                 + "WHERE `id` = ?";
                 MySQLDAO.executeQuery(query,
                        atendimento.getNomeCliente(),
@@ -89,6 +92,7 @@ public class atendimentoDAO {
                        atendimento.getStatus(),
                        atendimento.getUsuario(),
                        atendimento.getNomeContato(),
+                       atendimento.getData(),
                        atendimento.getId()
                         );
                  
@@ -116,6 +120,7 @@ public class atendimentoDAO {
                 atendimento.setStatus(rs.getString("status"));
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato("nomeContato");
+                atendimento.setData(rs.getTimestamp("data"));
                 
                 listaAtendimentoPausados.add(atendimento);
             }
@@ -143,7 +148,7 @@ public class atendimentoDAO {
                 atendimento.setStatus(rs.getString("status"));
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato(rs.getString("nomeContato"));
-                
+                atendimento.setData(rs.getTimestamp("data"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){
