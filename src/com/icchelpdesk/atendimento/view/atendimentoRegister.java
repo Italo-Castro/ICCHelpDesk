@@ -30,7 +30,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      public atendimentoRegister() {
             initComponents();
             PegarHora();
-            
+            jScrollPane5.getVerticalScrollBar().setUnitIncrement(10);
+
             jButtonGravar.setVisible(false);
             jButtonPausar.setVisible(false);
             ArrayList<Cliente> listaClientes = new ArrayList();
@@ -48,13 +49,13 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
               
     }
      public void adicionarAtendimentoPausadoJCombo(){
-        jComboBoxAtendimentosPausados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " "}));
+        jComboAtendimentosPausados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " "}));
         
         ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
         listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausados();
             
             for (atendimento atendimentos : listaAtendimentosPausados){
-               jComboBoxAtendimentosPausados.addItem(atendimentos.getNomeCliente()+ " - "+atendimentos.getId());
+               jComboAtendimentosPausados.addItem(atendimentos.getNomeCliente()+ " - "+atendimentos.getId());
                }
         
     }
@@ -74,7 +75,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      public void retomarAtendimento(){
                  jButtonGravar.setVisible(true);
                  jButtonPausar.setVisible(true);
-                String atendimentoPausado = jComboBoxAtendimentosPausados.getSelectedItem().toString();
+                String atendimentoPausado = jComboAtendimentosPausados.getSelectedItem().toString();
                 String vect[] = atendimentoPausado.split(" - ");
                 
                 
@@ -101,7 +102,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      public void updateAtendimentoPausado(){
          
           ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
-          String nome = jComboBoxAtendimentosPausados.getSelectedItem().toString();
+          String nome = jComboAtendimentosPausados.getSelectedItem().toString();
           String vect[] = nome.split(" - ");
           int id = Integer.parseInt(vect[1]);
          listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausadosId(id);
@@ -201,31 +202,33 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jButtonPausar = new javax.swing.JButton();
         jButtonNovoAtendimento = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jComboBoxAtendimentosPausados = new javax.swing.JComboBox<>();
+        jComboAtendimentosPausados = new javax.swing.JComboBox<>();
         jButtonRetornarAtendimento = new javax.swing.JButton();
         jLabelAtendimentosPausados = new javax.swing.JLabel();
         jLabelGracinha = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextNomeContato = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboCliente = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextRelato = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        jComboAssunto = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextObs2 = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextSolucao = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextObs = new javax.swing.JTextArea();
         jLabelIdAtendimento = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelId = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextNomeContato = new javax.swing.JTextField();
+        jComboCliente = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextRelato = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboAssunto = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextObs = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextObs2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextSolucao = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -260,9 +263,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jButton5.setText("Ver Atendimentos Pausados");
 
-        jComboBoxAtendimentosPausados.addKeyListener(new java.awt.event.KeyAdapter() {
+        jComboAtendimentosPausados.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jComboBoxAtendimentosPausadosKeyPressed(evt);
+                jComboAtendimentosPausadosKeyPressed(evt);
             }
         });
 
@@ -288,8 +291,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                     .addComponent(jButtonPausar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonNovoAtendimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxAtendimentosPausados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(jComboAtendimentosPausados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonRetornarAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -311,8 +314,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabelAtendimentosPausados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxAtendimentosPausados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
+                .addComponent(jComboAtendimentosPausados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2))
@@ -320,140 +323,143 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
+        jLabelIdAtendimento.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabelIdAtendimento.setText("Protocolo");
+
+        jLabelId.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+
+        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         jLabel1.setText("Nome contato");
 
         jLabel2.setText("Cliente");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Relato");
-
         jTextRelato.setColumns(20);
         jTextRelato.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextRelato.setRows(5);
+        jTextRelato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextRelatoKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextRelato);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setText("Relato");
 
         jLabel4.setText("Assunto");
 
         jComboAssunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "01; \"CONSULTA CLIENTE PRODUTO FORNECEDOR\"", "44; \"CONTABIL\"", "13; \"CONTAS A PAGAR\"", "14; \"CONTAS A RECEBER\"", "15; \"CUPOM FISCAL ECF MENUECF NFCE\"", "68; \"DATA DO SISTEMA\"", "60; \"DEFINITIVIDADE ST SIARE\"", "41; \"E-SOCIAL\"", "79; \"EDITAL\"", "52; \"ENTRADA DE PRODUCAO\"", "16; \"ESTOQUE\"", "17; \"ETIQUETA CLIENTE PRODUTO FORNECEDOR\"", "54; \"ETIQUETA EXPEDIÇÃO\"", "63; \"FOLHA DE PAGAMENTO\"", "65; \"FORMATACAO DE MAQUINA\"", "48; \"FORMULA PRODUTO\"", "75; \"FRANQUIA\"", "80; \"GERAÇÃO DE CARNES\"", "42; \"GRADE FISCAL\"", "59; \"IMPORTACAO PARTE FISCAL PARA CONTABIL\"", "70; \"IMPORTAR CSV\"", "18; \"IMPRESSÃO\"", "19; \"INVENTÁRIO\"", "39; \"LOCAÇÃO\"", "77; \"LOGO EMPRESA\"", "40; \"MANIFESTO DE CARGA MDFE \"", "20; \"MERCÚRIO TABLETS LOJA VIRTUAL\"", "21; \"MOVIMENTO DE USUÁRIO\"", "26; \"NOTA FISCAL BLOCO FORMULÁRIO\"", "67; \"NOTA FISCAL DE MANIFESTO\"", "22; \"NOTA FISCAL DE SERVIÇO ELETRÔNICA NFSE\"", "23; \"NOTA FISCAL DE TRANSFERÊNCIA NFE\"", "24; \"NOTA FISCAL ELETRÔNICA NFE\"", "25; \"NOTA FISCAL ENTRADA DE MERCADORIA\"", "36; \"ORÇAMENTO\"" }));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Observacao 2");
-
-        jTextObs2.setColumns(20);
-        jTextObs2.setRows(5);
-        jScrollPane2.setViewportView(jTextObs2);
-
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Observacao");
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("Solucao");
-
-        jTextSolucao.setColumns(20);
-        jTextSolucao.setRows(5);
-        jScrollPane3.setViewportView(jTextSolucao);
 
         jTextObs.setColumns(20);
         jTextObs.setRows(5);
         jScrollPane4.setViewportView(jTextObs);
 
-        jLabelIdAtendimento.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        jLabelIdAtendimento.setText("Protocolo");
+        jTextObs2.setColumns(20);
+        jTextObs2.setRows(5);
+        jScrollPane2.setViewportView(jTextObs2);
 
-        jLabelId.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jTextSolucao.setColumns(20);
+        jTextSolucao.setRows(5);
+        jScrollPane3.setViewportView(jTextSolucao);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setText("Solucao");
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setText("Observacao 2");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)))
+                .addGap(0, 128, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jScrollPane5.setViewportView(jPanel2);
 
         javax.swing.GroupLayout jLabelGracinhaLayout = new javax.swing.GroupLayout(jLabelGracinha);
         jLabelGracinha.setLayout(jLabelGracinhaLayout);
         jLabelGracinhaLayout.setHorizontalGroup(
             jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(376, 376, 376)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addGap(386, 386, 386)
-                                .addComponent(jLabelIdAtendimento)))
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel6)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextNomeContato, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLabelGracinhaLayout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jComboCliente, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 12, Short.MAX_VALUE))))
-            .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(327, 327, 327)
+                .addComponent(jLabelIdAtendimento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jLabelGracinhaLayout.setVerticalGroup(
             jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelIdAtendimento)
-                            .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel1))
-                    .addGroup(jLabelGracinhaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelIdAtendimento)
+                    .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addContainerGap())
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jLabelGracinha);
@@ -462,11 +468,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
 
         pack();
@@ -509,17 +515,25 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNomeContatoActionPerformed
 
-    private void jComboBoxAtendimentosPausadosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxAtendimentosPausadosKeyPressed
-        if(evt.getKeyCode() == 116){
+    private void jComboAtendimentosPausadosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAtendimentosPausadosKeyPressed
+        if(evt.getKeyCode() == 10){
             adicionarAtendimentoPausadoJCombo();
         }
-    }//GEN-LAST:event_jComboBoxAtendimentosPausadosKeyPressed
+    }//GEN-LAST:event_jComboAtendimentosPausadosKeyPressed
 
     private void jButtonRetornarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarAtendimentoActionPerformed
-        
+        if(jComboAtendimentosPausados.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null," Você deve selecionar um atendimento da sua lista de atendimentos em pausa","",JOptionPane.QUESTION_MESSAGE);
+        }
         retomarAtendimento(); 
         
     }//GEN-LAST:event_jButtonRetornarAtendimentoActionPerformed
+
+    private void jTextRelatoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextRelatoKeyPressed
+       if(evt.getKeyCode() == 116){
+            jComboAssunto.requestFocus();
+        }
+    }//GEN-LAST:event_jTextRelatoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -530,7 +544,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonPausar;
     private javax.swing.JButton jButtonRetornarAtendimento;
     private javax.swing.JComboBox<String> jComboAssunto;
-    private javax.swing.JComboBox<String> jComboBoxAtendimentosPausados;
+    private javax.swing.JComboBox<String> jComboAtendimentosPausados;
     private javax.swing.JComboBox<String> jComboCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -545,10 +559,12 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelIdAtendimento;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField jTextNomeContato;
     private javax.swing.JTextArea jTextObs;
