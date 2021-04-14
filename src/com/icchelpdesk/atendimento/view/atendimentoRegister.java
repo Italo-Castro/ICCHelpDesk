@@ -113,7 +113,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      }
      public void novoAtendimento(){
             
-         jTextNomeContato.requestFocus();
+        jTextNomeContato.requestFocus();
         atendimento atendimento = new atendimento();
         
         atendimento.setAssunto("");
@@ -324,9 +324,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Cliente");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Relato");
 
         jTextRelato.setColumns(20);
+        jTextRelato.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextRelato.setRows(5);
         jScrollPane1.setViewportView(jTextRelato);
 
@@ -334,14 +336,17 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jComboAssunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "01; \"CONSULTA CLIENTE PRODUTO FORNECEDOR\"", "44; \"CONTABIL\"", "13; \"CONTAS A PAGAR\"", "14; \"CONTAS A RECEBER\"", "15; \"CUPOM FISCAL ECF MENUECF NFCE\"", "68; \"DATA DO SISTEMA\"", "60; \"DEFINITIVIDADE ST SIARE\"", "41; \"E-SOCIAL\"", "79; \"EDITAL\"", "52; \"ENTRADA DE PRODUCAO\"", "16; \"ESTOQUE\"", "17; \"ETIQUETA CLIENTE PRODUTO FORNECEDOR\"", "54; \"ETIQUETA EXPEDIÇÃO\"", "63; \"FOLHA DE PAGAMENTO\"", "65; \"FORMATACAO DE MAQUINA\"", "48; \"FORMULA PRODUTO\"", "75; \"FRANQUIA\"", "80; \"GERAÇÃO DE CARNES\"", "42; \"GRADE FISCAL\"", "59; \"IMPORTACAO PARTE FISCAL PARA CONTABIL\"", "70; \"IMPORTAR CSV\"", "18; \"IMPRESSÃO\"", "19; \"INVENTÁRIO\"", "39; \"LOCAÇÃO\"", "77; \"LOGO EMPRESA\"", "40; \"MANIFESTO DE CARGA MDFE \"", "20; \"MERCÚRIO TABLETS LOJA VIRTUAL\"", "21; \"MOVIMENTO DE USUÁRIO\"", "26; \"NOTA FISCAL BLOCO FORMULÁRIO\"", "67; \"NOTA FISCAL DE MANIFESTO\"", "22; \"NOTA FISCAL DE SERVIÇO ELETRÔNICA NFSE\"", "23; \"NOTA FISCAL DE TRANSFERÊNCIA NFE\"", "24; \"NOTA FISCAL ELETRÔNICA NFE\"", "25; \"NOTA FISCAL ENTRADA DE MERCADORIA\"", "36; \"ORÇAMENTO\"" }));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Observacao 2");
 
         jTextObs2.setColumns(20);
         jTextObs2.setRows(5);
         jScrollPane2.setViewportView(jTextObs2);
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Observacao");
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Solucao");
 
         jTextSolucao.setColumns(20);
@@ -446,7 +451,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLabelGracinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );

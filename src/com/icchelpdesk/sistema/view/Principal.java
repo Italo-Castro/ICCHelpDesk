@@ -1,6 +1,7 @@
 package com.icchelpdesk.sistema.view;
 
 import com.icchelpdesk.atendimento.view.atendimentoRegister;
+import com.icchelpdesk.atendimento.view.atendimentosView;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.usuario.view.UsuarioListagemView;
@@ -44,7 +45,8 @@ public class Principal extends javax.swing.JFrame {
         jLabelUsuario = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuRegistrarAtendimento = new javax.swing.JMenuItem();
+        jMenuConsultarAtendimento = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -81,14 +83,23 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu4.setText("Atendimento");
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setText("Registrar Atendimento");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuRegistrarAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuRegistrarAtendimento.setText("Registrar Atendimento");
+        jMenuRegistrarAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuRegistrarAtendimentoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
+        jMenu4.add(jMenuRegistrarAtendimento);
+
+        jMenuConsultarAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuConsultarAtendimento.setText("Consultar Atendimento");
+        jMenuConsultarAtendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultarAtendimentoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuConsultarAtendimento);
 
         jMenuBar1.add(jMenu4);
 
@@ -161,10 +172,15 @@ public class Principal extends javax.swing.JFrame {
         possiveisClientesVIEW.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuRegistrarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRegistrarAtendimentoActionPerformed
          atendimentoRegister.getInstance().setVisible(false);
          atendimentoRegister.getInstance().setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jMenuRegistrarAtendimentoActionPerformed
+
+    private void jMenuConsultarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultarAtendimentoActionPerformed
+         atendimentosView.getInstance().setVisible(false);
+         atendimentosView.getInstance().setVisible(true);
+    }//GEN-LAST:event_jMenuConsultarAtendimentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -175,11 +191,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuConsultarAtendimento;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuRegistrarAtendimento;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
