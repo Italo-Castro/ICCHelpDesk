@@ -1,9 +1,6 @@
 package com.icchelpdesk.atendimento.dao;
 
-import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
-import com.icchelpdesk.possiveisClientes.control.possiveisClienteControl;
-import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
 import com.icchelpdesk.possiveisClientes.model.dao.possiveisClientesDAO;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import java.sql.ResultSet;

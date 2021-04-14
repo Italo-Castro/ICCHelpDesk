@@ -4,7 +4,7 @@ import com.icchelpdesk.atendimento.dao.atendimentoDAO;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.sistema.view.Login;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -41,7 +41,6 @@ public class atendimentoControl {
     }
      public ArrayList<atendimento> buscaAtendimentosPausados() {
         String query = "select *from atendimento where status = 'PAUSADO' and usuario = '"+Login.getInstance().getUsuario()+"'";
-        JOptionPane.showMessageDialog(null,"buscaAtendimentosPausados\n " );
         return atendimentoDAO.getInstance().buscarAtendimentosPausados(query);
     } 
      public ArrayList<atendimento> buscaAtendimentosPausadosId(int id) {

@@ -53,7 +53,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausados();
             
             for (atendimento atendimentos : listaAtendimentosPausados){
-               jComboBoxAtendimentosPausados.addItem(atendimentos.getNomeCliente()+ " - "+atendimentos.getId());
+               jComboBoxAtendimentosPausados.addItem(atendimentos.getNomeCliente());
                }
         
     }
@@ -79,8 +79,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 
                ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
                 listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausadosId(Integer.parseInt(vect[1]));
-               if(listaAtendimentosPausados.isEmpty()){
-                   JOptionPane.showMessageDialog(null,"Parabens "+Login.getInstance().getUsuario()+" Você não tem nenhum atendimento em aberto, confira sua lista de atendimentos transferidos");
+               if(listaAtendimentosPausados.isEmpty()){ 
+                   JOptionPane.showMessageDialog(null,"Parabens "+Login.getInstance().getUsuario()+" Você não tem nenhum atendimento em aberto, confira sua lista de atendimentos transferidos ");
                }
                else{
                    
