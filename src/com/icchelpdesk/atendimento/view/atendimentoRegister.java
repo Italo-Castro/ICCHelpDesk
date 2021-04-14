@@ -113,7 +113,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      }
      public void novoAtendimento(){
             
-         
+         jTextNomeContato.requestFocus();
         atendimento atendimento = new atendimento();
         
         atendimento.setAssunto("");
@@ -228,6 +228,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jLabelId = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setResizable(true);
 
@@ -331,7 +332,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Assunto");
 
-        jComboAssunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboAssunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "01; \"CONSULTA CLIENTE PRODUTO FORNECEDOR\"", "44; \"CONTABIL\"", "13; \"CONTAS A PAGAR\"", "14; \"CONTAS A RECEBER\"", "15; \"CUPOM FISCAL ECF MENUECF NFCE\"", "68; \"DATA DO SISTEMA\"", "60; \"DEFINITIVIDADE ST SIARE\"", "41; \"E-SOCIAL\"", "79; \"EDITAL\"", "52; \"ENTRADA DE PRODUCAO\"", "16; \"ESTOQUE\"", "17; \"ETIQUETA CLIENTE PRODUTO FORNECEDOR\"", "54; \"ETIQUETA EXPEDIÇÃO\"", "63; \"FOLHA DE PAGAMENTO\"", "65; \"FORMATACAO DE MAQUINA\"", "48; \"FORMULA PRODUTO\"", "75; \"FRANQUIA\"", "80; \"GERAÇÃO DE CARNES\"", "42; \"GRADE FISCAL\"", "59; \"IMPORTACAO PARTE FISCAL PARA CONTABIL\"", "70; \"IMPORTAR CSV\"", "18; \"IMPRESSÃO\"", "19; \"INVENTÁRIO\"", "39; \"LOCAÇÃO\"", "77; \"LOGO EMPRESA\"", "40; \"MANIFESTO DE CARGA MDFE \"", "20; \"MERCÚRIO TABLETS LOJA VIRTUAL\"", "21; \"MOVIMENTO DE USUÁRIO\"", "26; \"NOTA FISCAL BLOCO FORMULÁRIO\"", "67; \"NOTA FISCAL DE MANIFESTO\"", "22; \"NOTA FISCAL DE SERVIÇO ELETRÔNICA NFSE\"", "23; \"NOTA FISCAL DE TRANSFERÊNCIA NFE\"", "24; \"NOTA FISCAL ELETRÔNICA NFE\"", "25; \"NOTA FISCAL ENTRADA DE MERCADORIA\"", "36; \"ORÇAMENTO\"" }));
 
         jLabel5.setText("Observacao 2");
 
