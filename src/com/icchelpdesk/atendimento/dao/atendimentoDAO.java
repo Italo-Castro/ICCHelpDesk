@@ -38,8 +38,9 @@ public class atendimentoDAO {
                 atendimento.getAssunto(),
                 atendimento.getStatus(),
                 atendimento.getUsuario(),
-                atendimento.getData(),
-                atendimento.getNomeContato()
+                atendimento.getNomeContato(),
+                atendimento.getData()
+                
                 );       
     }
     public ArrayList<atendimento>  read(String query){

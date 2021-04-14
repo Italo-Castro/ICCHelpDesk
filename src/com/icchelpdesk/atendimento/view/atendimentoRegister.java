@@ -27,7 +27,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     }
     
     
-    public atendimentoRegister() {
+     public atendimentoRegister() {
             initComponents();
             PegarHora();
             
@@ -47,7 +47,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
               
               
     }
-    public void adicionarAtendimentoPausadoJCombo(){
+     public void adicionarAtendimentoPausadoJCombo(){
         jComboBoxAtendimentosPausados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " "}));
         
         ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
@@ -114,7 +114,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      public void novoAtendimento(){
             
          
-         atendimento atendimento = new atendimento();
+        atendimento atendimento = new atendimento();
         
         atendimento.setAssunto("");
         atendimento.setNomeCliente("");
@@ -124,6 +124,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setRelato("");
         atendimento.setSolucao("");
         atendimento.setStatus("INICIADO");
+        atendimento.setData(new Timestamp(System.currentTimeMillis()));
         atendimento.setUsuario(Login.getInstance().getUsuario());
         
         int x = atendimentoControl.getInstance().create(atendimento);
