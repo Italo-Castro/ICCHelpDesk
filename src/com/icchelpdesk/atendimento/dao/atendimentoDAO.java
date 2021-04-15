@@ -27,7 +27,7 @@ public class atendimentoDAO {
     
     public int create(atendimento atendimento){
         
-        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query,
                 null,
                 atendimento.getNomeCliente(),
@@ -39,6 +39,7 @@ public class atendimentoDAO {
                 atendimento.getStatus(),
                 atendimento.getUsuario(),
                 atendimento.getNomeContato(),
+                atendimento.getTransferencia(),
                 atendimento.getData()
                 
                 );       
@@ -63,6 +64,7 @@ public class atendimentoDAO {
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato(rs.getString("nomeContato"));
                 atendimento.setData(rs.getTimestamp("data"));
+                atendimento.setTransferencia(rs.getString("transferencia"));
                 listaAtendimento.add(atendimento);
             }
         }catch(SQLException e){
@@ -81,7 +83,8 @@ public class atendimentoDAO {
                 + "`status` = ?,\n"
                 + "`usuario` = ?,\n"
                 + "`nomeContato` = ?,\n"
-                + "`data` = ?\n"
+                + "`data` = ?,\n"
+                + "`transferencia` = ? \n"
                 + "WHERE `id` = ?";
                 MySQLDAO.executeQuery(query,
                        atendimento.getNomeCliente(),
@@ -121,6 +124,7 @@ public class atendimentoDAO {
                 atendimento.setStatus(rs.getString("status"));
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato("nomeContato");
+                atendimento.setTransferencia(rs.getString("transferencia"));
                 atendimento.setData(rs.getTimestamp("data"));
                 
                 listaAtendimentoPausados.add(atendimento);
@@ -150,6 +154,7 @@ public class atendimentoDAO {
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato(rs.getString("nomeContato"));
                 atendimento.setData(rs.getTimestamp("data"));
+                atendimento.setTransferencia(rs.getString("transferencia"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){

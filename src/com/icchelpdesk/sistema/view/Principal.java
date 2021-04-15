@@ -47,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuRegistrarAtendimento = new javax.swing.JMenuItem();
         jMenuConsultarAtendimento = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -100,6 +101,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuConsultarAtendimento);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setText("Transferencia de atendimento");
+        jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
 
@@ -196,6 +201,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuRegistrarAtendimento;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
