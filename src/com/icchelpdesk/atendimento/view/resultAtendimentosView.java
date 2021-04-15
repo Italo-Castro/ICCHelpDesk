@@ -1,14 +1,8 @@
 package com.icchelpdesk.atendimento.view;
 
-import com.icchelpdesk.atendimento.control.atendimentoControl;
-import com.icchelpdesk.atendimento.model.bean.atendimento;
-import com.icchelpdesk.sistema.view.Principal;
-import java.util.ArrayList;
 
-/**
- *
- * @author Italo
- */
+import com.icchelpdesk.sistema.view.Principal;
+
 public class resultAtendimentosView extends javax.swing.JInternalFrame {
 
   private static resultAtendimentosView instance = null;

@@ -2,6 +2,7 @@ package com.icchelpdesk.sistema.view;
 
 import com.icchelpdesk.atendimento.view.atendimentoRegister;
 import com.icchelpdesk.atendimento.view.atendimentosView;
+import com.icchelpdesk.atendimento.view.transferenciaAtendimentos;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.usuario.view.UsuarioListagemView;
@@ -104,6 +105,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setText("Transferencia de atendimento");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
@@ -186,6 +192,11 @@ public class Principal extends javax.swing.JFrame {
          atendimentosView.getInstance().setVisible(false);
          atendimentosView.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuConsultarAtendimentoActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+         transferenciaAtendimentos.getInstance().setVisible(false);
+         transferenciaAtendimentos.getInstance().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
