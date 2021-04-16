@@ -554,7 +554,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
     private void jButtonTransferirAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirAtendimentoActionPerformed
        
-        String atendimentoPausado = jComboAtendimentosPausados.getSelectedItem().toString();
+        if(jComboAtendimentosPausados.getSelectedIndex() == 0){
+            transferenciaAtendimentos.getInstance(0).setVisible(false);
+        transferenciaAtendimentos.getInstance(0).setVisible(true);
+        }else{
+       String atendimentoPausado = jComboAtendimentosPausados.getSelectedItem().toString();
        String vect[] = atendimentoPausado.split(" - "); //split no texto do jComboBox, pois o texto armazena, o nome do cliente - id
                   
        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
@@ -562,7 +566,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
        
         transferenciaAtendimentos.getInstance(id).setVisible(false);
         transferenciaAtendimentos.getInstance(id).setVisible(true);
-        
+        }
                 
       
        

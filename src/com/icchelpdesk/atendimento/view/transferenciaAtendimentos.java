@@ -1,6 +1,11 @@
 package com.icchelpdesk.atendimento.view;
 
+import com.icchelpdesk.atendimento.control.atendimentoControl;
+import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.usuario.control.UsuarioControl;
+import com.icchelpdesk.usuario.model.bean.Usuario;
+import java.util.ArrayList;
 
     
 
@@ -25,8 +30,18 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         this.id=id;
         initComponents();
         jTextId.setText(""+id);
+        jComboUsuarios();
     }
-
+    public void jComboUsuarios(){
+        jComboUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " "}));
+        
+        ArrayList<Usuario> listaUsuario = new ArrayList();
+        listaUsuario = UsuarioControl.getInstance().read();
+            
+            for (Usuario usuarios : listaUsuario){
+              jComboUsuarios.addItem(usuarios.getNome());
+                       }
+    }
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,7 +50,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboUsuarios = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -50,7 +65,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Informe para qual usuario deseja transferir");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Informe o protocolo");
@@ -77,7 +92,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jTextId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jComboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(jButton1)))
@@ -95,7 +110,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
@@ -111,7 +126,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
