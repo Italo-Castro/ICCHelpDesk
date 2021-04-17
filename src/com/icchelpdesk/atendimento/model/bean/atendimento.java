@@ -17,13 +17,15 @@ public class atendimento {
     private String usuario;
     private Timestamp data;
     private String transferencia;
+    private int idTransferido;
+    private String obsTransferencia;
     
     
     public atendimento() {
         
     }
 
-    public atendimento(int id,String nomeCliente, String relato, String observacao, String observacao2, String solucao, String assunto,String status,String nomeContato,String usuario,Timestamp data,String transferencia) {
+    public atendimento(int id,String nomeCliente, String relato, String observacao, String observacao2, String solucao, String assunto,String status,String nomeContato,String usuario,Timestamp data,String transferencia,int idTransferido,String obsTransferencia) {
         this.nomeCliente = nomeCliente;
         this.relato = relato;
         this.observacao = observacao;
@@ -36,8 +38,27 @@ public class atendimento {
         this.usuario=usuario;
         this.data=data;
         this.transferencia=transferencia;
+        this.idTransferido=idTransferido;
+        this.obsTransferencia=obsTransferencia;
     }
 
+    public String getObsTransferencia() {
+        return obsTransferencia;
+    }
+
+    public void setObsTransferencia(String obsTransferencia) {
+        this.obsTransferencia = obsTransferencia;
+    }
+    
+    
+    public int getIdTransferido() {
+        return idTransferido;
+    }
+
+    public void setIdTransferido(int idTransferido) {
+        this.idTransferido = idTransferido;
+    }
+    
     public String getTransferencia() {
         return transferencia;
     }

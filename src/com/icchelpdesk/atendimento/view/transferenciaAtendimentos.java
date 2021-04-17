@@ -119,8 +119,9 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        obsTransferenciaAtendimento.getInstance(id).setVisible(false);
-        obsTransferenciaAtendimento.getInstance(id).setVisible(true);
+        String usuarioReecbe = jComboUsuarios.getSelectedItem().toString();
+        obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(false);
+        obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

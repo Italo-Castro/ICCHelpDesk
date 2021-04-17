@@ -1,4 +1,4 @@
-package com.icchelpdesk.atendimento.dao;
+package com.icchelpdesk.atendimento.model.dao;
 
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.possiveisClientes.model.dao.possiveisClientesDAO;
@@ -27,7 +27,7 @@ public class atendimentoDAO {
     
     public int create(atendimento atendimento){
         
-        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query,
                 null,
                 atendimento.getNomeCliente(),
@@ -39,8 +39,11 @@ public class atendimentoDAO {
                 atendimento.getStatus(),
                 atendimento.getUsuario(),
                 atendimento.getNomeContato(),
+                atendimento.getData(),
                 atendimento.getTransferencia(),
-                atendimento.getData()
+                atendimento.getIdTransferido(),
+                atendimento.getObsTransferencia()
+               
                 
                 );       
     }
@@ -65,6 +68,8 @@ public class atendimentoDAO {
                 atendimento.setNomeContato(rs.getString("nomeContato"));
                 atendimento.setData(rs.getTimestamp("data"));
                 atendimento.setTransferencia(rs.getString("transferencia"));
+                atendimento.setIdTransferido(rs.getInt("idTransferido"));
+                atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
                 listaAtendimento.add(atendimento);
             }
         }catch(SQLException e){
@@ -84,7 +89,9 @@ public class atendimentoDAO {
                 + "`usuario` = ?,\n"
                 + "`nomeContato` = ?,\n"
                 + "`data` = ?,\n"
-                + "`transferencia` = ? \n"
+                + "`transferencia` = ?,\n"
+                + "idTransferido = ?,\n"
+                + "obsTransferencia = ? \n"
                 + "WHERE `id` = ?";
                 MySQLDAO.executeQuery(query,
                        atendimento.getNomeCliente(),
@@ -97,6 +104,9 @@ public class atendimentoDAO {
                        atendimento.getUsuario(),
                        atendimento.getNomeContato(),
                        atendimento.getData(),
+                       atendimento.getTransferencia(),
+                       atendimento.getIdTransferido(),
+                       atendimento.getObsTransferencia(),
                        atendimento.getId()
                         );
                  
@@ -125,6 +135,8 @@ public class atendimentoDAO {
                 atendimento.setUsuario(rs.getString("usuario"));
                 atendimento.setNomeContato("nomeContato");
                 atendimento.setTransferencia(rs.getString("transferencia"));
+                atendimento.setIdTransferido(rs.getInt("idTransferido"));
+                atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
                 atendimento.setData(rs.getTimestamp("data"));
                 
                 listaAtendimentoPausados.add(atendimento);
@@ -155,6 +167,38 @@ public class atendimentoDAO {
                 atendimento.setNomeContato(rs.getString("nomeContato"));
                 atendimento.setData(rs.getTimestamp("data"));
                 atendimento.setTransferencia(rs.getString("transferencia"));
+                atendimento.setIdTransferido(rs.getInt("idTransferido"));
+                atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                listaAtendimentoPausados.add(atendimento);
+            }
+        }catch(SQLException e){
+            Logger.getLogger(possiveisClientesDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return listaAtendimentoPausados;
+    } 
+        public ArrayList<atendimento> buscarAtendimentosId(String query){
+          ArrayList<atendimento> listaAtendimentoPausados = new ArrayList();
+        
+        try {
+            ResultSet rs = MySQLDAO.getResultSet(query);
+            
+            while(rs.next()){
+                atendimento atendimento = new atendimento();
+                
+                atendimento.setId(rs.getInt("id"));
+                atendimento.setNomeCliente(rs.getString("nomeCliente"));
+                atendimento.setRelato(rs.getString("relato"));
+                atendimento.setObservacao(rs.getString("observacao"));
+                atendimento.setObservacao2(rs.getString("observacao2"));
+                atendimento.setSolucao(rs.getString("solucao"));
+                atendimento.setAssunto(rs.getString("assunto"));
+                atendimento.setStatus(rs.getString("status"));
+                atendimento.setUsuario(rs.getString("usuario"));
+                atendimento.setNomeContato(rs.getString("nomeContato"));
+                atendimento.setData(rs.getTimestamp("data"));
+                atendimento.setTransferencia(rs.getString("transferencia"));
+                atendimento.setIdTransferido(rs.getInt("idTransferido"));
+                atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){
