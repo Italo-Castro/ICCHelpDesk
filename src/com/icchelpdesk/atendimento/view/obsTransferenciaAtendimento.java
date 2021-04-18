@@ -31,6 +31,8 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         this.usuarioRecebe=usuarioRecebe;
         initComponents();
     }
+    //nesta função primeiramnente faço um update no atendimento que estou transferindo, deixando ele como o status de transferido.
+    //
     public void concluirTransferencia(){
         
         ArrayList<atendimento> listaAtendimento = new ArrayList();
@@ -40,53 +42,42 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         atendimento atendimento = new atendimento();
         
         for(int i=0;i<listaAtendimento.size();i++){
+    
+            atendimento.setId(listaAtendimento.get(i).getId());        
             atendimento.setNomeCliente(listaAtendimento.get(i).getNomeCliente());
-            atendimento.setAssunto(listaAtendimento.get(i).getAssunto());
-            atendimento.setNomeContato(listaAtendimento.get(i).getNomeContato());
+            atendimento.setRelato(listaAtendimento.get(i).getRelato());
             atendimento.setObservacao(listaAtendimento.get(i).getObservacao());
             atendimento.setObservacao2(listaAtendimento.get(i).getObservacao2());
-            atendimento.setRelato(listaAtendimento.get(i).getRelato());
             atendimento.setSolucao(listaAtendimento.get(i).getSolucao());
-            atendimento.setStatus("TRANSFERIDO");
-            atendimento.setId(listaAtendimento.get(i).getId());
-            atendimentoControl.getInstance().update(atendimento);
-            
-            
-            
-            
-            atendimento.setNomeCliente(listaAtendimento.get(i).getNomeCliente());
             atendimento.setAssunto(listaAtendimento.get(i).getAssunto());
-            atendimento.setNomeContato(listaAtendimento.get(i).getNomeContato());
-            atendimento.setObservacao(listaAtendimento.get(i).getObservacao());
-            atendimento.setObservacao2(listaAtendimento.get(i).getObservacao2());
-            atendimento.setRelato(listaAtendimento.get(i).getRelato());
-            atendimento.setSolucao(listaAtendimento.get(i).getSolucao());
             atendimento.setStatus("RECEBIDO");
-            atendimento.setUsuario(usuarioRecebe);
-            atendimento.setTransferencia(Login.getInstance().getUsuario()+ " PARA" + usuarioRecebe);      // Aqui estara na variavel transferencia ( ITALO PARA RAFAEL)  
-            atendimento.setIdTransferido(atendimento.getId());
+            atendimento.setUsuario(listaAtendimento.get(i).getUsuario());
+            atendimento.setNomeContato(listaAtendimento.get(i).getNomeContato());
+            atendimento.setData(listaAtendimento.get(i).getData());
+            atendimento.setTransferencia(Login.getInstance().getUsuario()+" TRANSFERIU PARA "+ usuarioRecebe);
             atendimento.setObsTransferencia(jTextObsTransferencia.getText());
-            atendimentoControl.getInstance().create(atendimento);
-            
+            atendimento.setIdTransferido(listaAtendimento.get(i).getId());
+            int id = atendimentoControl.getInstance().create(atendimento);
             //crio um novo atendimento, para o usuario que esta recebendo o atendimento, transferido.
+            
+            
+            atendimento.setId(listaAtendimento.get(i).getId());        
+            atendimento.setNomeCliente(listaAtendimento.get(i).getNomeCliente());
+            atendimento.setRelato(listaAtendimento.get(i).getRelato());
+            atendimento.setObservacao(listaAtendimento.get(i).getObservacao());
+            atendimento.setObservacao2(listaAtendimento.get(i).getObservacao2());
+            atendimento.setSolucao(listaAtendimento.get(i).getSolucao());
+            atendimento.setAssunto(listaAtendimento.get(i).getAssunto());
+            atendimento.setStatus("TRANSFERIDO");
+            atendimento.setUsuario(listaAtendimento.get(i).getUsuario());
+            atendimento.setNomeContato(listaAtendimento.get(i).getNomeContato());
+            atendimento.setData(listaAtendimento.get(i).getData());
+            atendimento.setTransferencia(Login.getInstance().getUsuario()+" TRANSFERIU PARA "+ usuarioRecebe);
+            atendimento.setIdTransferido(id);    
+            atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
+            atendimentoControl.getInstance().update(atendimento);
+            //faço um update no atendimento que foi transferido colocando o status como transferido, e as informações da transferencia
         }
-        
-        
-        atendimento.setAssunto("");
-        atendimento.setNomeCliente("");
-        atendimento.setNomeContato("");
-        atendimento.setObservacao("");
-        atendimento.setObservacao2("");
-        atendimento.setRelato("");
-        atendimento.setSolucao("");
-        atendimento.setStatus("INICIADO");
-        atendimento.setData(new Timestamp(System.currentTimeMillis()));
-        atendimento.setUsuario(Login.getInstance().getUsuario());
-        
-        int x = atendimentoControl.getInstance().create(atendimento);
-        
-        
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -95,8 +86,14 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextObsTransferencia = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonConcluirTransferencia = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
+
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 2, 18)); // NOI18N
         jLabel1.setText("Informe alguma informação sobre a transferencia do atendimento");
@@ -105,19 +102,19 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         jTextObsTransferencia.setRows(5);
         jScrollPane1.setViewportView(jTextObsTransferencia);
 
-        jButton1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jButton1.setText("Concluir Transferencia");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConcluirTransferencia.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonConcluirTransferencia.setText("Concluir Transferencia");
+        jButtonConcluirTransferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonConcluirTransferenciaActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
 
@@ -127,9 +124,9 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
+                .addComponent(jButtonVoltar)
                 .addGap(291, 291, 291)
-                .addComponent(jButton1)
+                .addComponent(jButtonConcluirTransferencia)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -147,26 +144,26 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)))
+                    .addComponent(jButtonVoltar)
+                    .addComponent(jButtonConcluirTransferencia)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         transferenciaAtendimentos.getInstance(id).setVisible(false);
-        transferenciaAtendimentos.getInstance(id).setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        transferenciaAtendimentos.getInstance(id).setVisible(true);
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonConcluirTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirTransferenciaActionPerformed
        concluirTransferencia();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonConcluirTransferenciaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonConcluirTransferencia;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextObsTransferencia;

@@ -113,7 +113,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
          
      }
      public void novoAtendimento(){
-            
+        jButtonNovoAtendimento.setVisible(false);
+        jButtonRetornarAtendimento.setVisible(false);
         jTextNomeContato.requestFocus();
         atendimento atendimento = new atendimento();
         
@@ -145,8 +146,10 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jLabelId.setText(""+x);
      }
      public void pausarAtendimento(){
-        atendimento atendimento = new atendimento();
+         jButtonNovoAtendimento.setVisible(true);
+         atendimento atendimento = new atendimento();
         
+           
         atendimento.setAssunto(jComboAssunto.getSelectedItem().toString());
         atendimento.setNomeCliente(jComboCliente.getSelectedItem().toString());
         atendimento.setNomeContato(jTextNomeContato.getText());
@@ -154,9 +157,10 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setObservacao2(jTextObs2.getText());
         atendimento.setRelato(jTextRelato.getText());
         atendimento.setSolucao(jTextSolucao.getText());
-        atendimento.setUsuario(Login.getInstance().getUsuario());
         atendimento.setStatus("PAUSADO");
+        atendimento.setUsuario(Login.getInstance().getUsuario());
         atendimento.setId(Integer.parseInt(jLabelId.getText()));
+        atendimento.setData(new Timestamp(System.currentTimeMillis()));
         atendimentoControl.getInstance().update(atendimento);
         
          
@@ -195,7 +199,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
          
           if(jComboAtendimentosPausados.getSelectedIndex() == 0){
             transferenciaAtendimentos.getInstance(0).setVisible(false);
-        transferenciaAtendimentos.getInstance(0).setVisible(true);
+            transferenciaAtendimentos.getInstance(0).setVisible(true);
+            
+        
         }else{
        String atendimentoPausado = jComboAtendimentosPausados.getSelectedItem().toString();
        String vect[] = atendimentoPausado.split(" - "); //split no texto do jComboBox, pois o texto armazena, o nome do cliente - id
@@ -349,7 +355,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addComponent(jLabelAtendimentosPausados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboAtendimentosPausados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 531, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2))
@@ -412,20 +418,20 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jTextNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextNomeContato, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel7)))
+                        .addComponent(jLabel7))
+                    .addComponent(jComboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jComboAssunto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 128, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -480,7 +486,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addComponent(jLabelIdAtendimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -493,7 +499,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                     .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jLabelGracinha);
@@ -502,11 +508,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
 
         pack();
