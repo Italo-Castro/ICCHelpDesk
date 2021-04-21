@@ -50,31 +50,33 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton5" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButtonPausar" max="32767" attributes="0"/>
                                   <Component id="jButtonGravar" max="32767" attributes="0"/>
                                   <Component id="jButtonNovoAtendimento" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jComboAtendimentosPausados" max="32767" attributes="0"/>
-                                  <Component id="jButton5" alignment="0" pref="188" max="32767" attributes="0"/>
                                   <Component id="jButtonRetornarAtendimento" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="jLabelAtendimentosPausados" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonTransferir" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonTransferirAtendimento" min="-2" pref="179" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -90,7 +92,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonRetornarAtendimento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Component id="jButtonTransferirAtendimento" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonTransferir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelAtendimentosPausados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -144,7 +146,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Atendimentos Pausados"/>
+                <Property name="text" type="java.lang.String" value="Ver Atendimentos Transferidos"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboAtendimentosPausados">
@@ -179,7 +181,7 @@
                 <Property name="text" type="java.lang.String" value="Atendimentos Pausados"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonTransferirAtendimento">
+            <Component class="javax.swing.JButton" name="jButtonTransferir">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/icchelpdesk/sistema/view/16x16/16x16transfer-icon.png"/>
@@ -187,7 +189,7 @@
                 <Property name="text" type="java.lang.String" value="Transferir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTransferirAtendimentoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTransferirActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

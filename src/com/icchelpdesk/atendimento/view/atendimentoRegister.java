@@ -9,7 +9,9 @@ import com.icchelpdesk.sistema.view.Principal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -34,6 +36,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
             jButtonGravar.setVisible(false);
             jButtonPausar.setVisible(false);
+            jButtonTransferir.setVisible(false);
             ArrayList<Cliente> listaClientes = new ArrayList();
             listaClientes = ClienteControl.getInstance().read();
              
@@ -75,6 +78,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      public void retomarAtendimento(){
                  jButtonGravar.setVisible(true);
                  jButtonPausar.setVisible(true);
+                 jButtonTransferir.setVisible(true);
                 String atendimentoPausado = jComboAtendimentosPausados.getSelectedItem().toString();
                 String vect[] = atendimentoPausado.split(" - ");
                 
@@ -114,6 +118,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      }
      public void novoAtendimento(){
         jButtonNovoAtendimento.setVisible(false);
+        jButtonTransferir.setVisible(false);
         jButtonRetornarAtendimento.setVisible(false);
         jTextNomeContato.requestFocus();
         atendimento atendimento = new atendimento();
@@ -146,7 +151,20 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jLabelId.setText(""+x);
      }
      public void pausarAtendimento(){
+             if(jTextNomeContato.getText().equals("")){
+                 JOptionPane.showMessageDialog(null,"Nome do contato obrigatorio");
+                 jTextNomeContato.setBorder(new LineBorder(java.awt.Color.RED));
+             }
+             else if(jComboCliente.getSelectedIndex() == 0){
+                 JOptionPane.showMessageDialog(null,"Nome do cliente obrigatorio");  
+                 jComboCliente.setBorder(new LineBorder(java.awt.Color.RED));
+             }
+             else {
+         
+         
          jButtonNovoAtendimento.setVisible(true);
+         jButtonTransferir.setVisible(true);
+         jButtonRetornarAtendimento.setVisible(true);
          atendimento atendimento = new atendimento();
         
            
@@ -175,7 +193,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jButtonGravar.setVisible(false);
         jButtonPausar.setVisible(false);
-        
+    }
      }
      public void gravarAtendimento(){
         atendimento atendimento = new atendimento();
@@ -198,16 +216,20 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      public void transferirAtendimento(){
          
           if(jComboAtendimentosPausados.getSelectedIndex() == 0){
+             JOptionPane.showMessageDialog(null,"Selecione na sua lista de atendimentos pausados, o atendimento que deseja transferir");
             transferenciaAtendimentos.getInstance(0).setVisible(false);
             transferenciaAtendimentos.getInstance(0).setVisible(true);
             
         
         }else{
+              
+      
        String atendimentoPausado = jComboAtendimentosPausados.getSelectedItem().toString();
        String vect[] = atendimentoPausado.split(" - "); //split no texto do jComboBox, pois o texto armazena, o nome do cliente - id
-                  
+      
+       
        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
-       int id = Integer.parseInt(vect[1]); //convertendo o vetor na possição 1 para um inteiro
+       int id = Integer.parseInt(vect[1]);
        
         transferenciaAtendimentos.getInstance(id).setVisible(false);
         transferenciaAtendimentos.getInstance(id).setVisible(true);
@@ -228,7 +250,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jComboAtendimentosPausados = new javax.swing.JComboBox<>();
         jButtonRetornarAtendimento = new javax.swing.JButton();
         jLabelAtendimentosPausados = new javax.swing.JLabel();
-        jButtonTransferirAtendimento = new javax.swing.JButton();
+        jButtonTransferir = new javax.swing.JButton();
         jLabelGracinha = new javax.swing.JPanel();
         jLabelIdAtendimento = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -285,7 +307,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton5.setText("Ver Atendimentos Pausados");
+        jButton5.setText("Ver Atendimentos Transferidos");
 
         jComboAtendimentosPausados.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -304,11 +326,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jLabelAtendimentosPausados.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabelAtendimentosPausados.setText("Atendimentos Pausados");
 
-        jButtonTransferirAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16x16transfer-icon.png"))); // NOI18N
-        jButtonTransferirAtendimento.setText("Transferir");
-        jButtonTransferirAtendimento.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTransferir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16x16transfer-icon.png"))); // NOI18N
+        jButtonTransferir.setText("Transferir");
+        jButtonTransferir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTransferirAtendimentoActionPerformed(evt);
+                jButtonTransferirActionPerformed(evt);
             }
         });
 
@@ -317,26 +339,27 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonPausar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonNovoAtendimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboAtendimentosPausados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addComponent(jButtonRetornarAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabelAtendimentosPausados)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonTransferir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonTransferirAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +373,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonRetornarAtendimento)
                 .addGap(7, 7, 7)
-                .addComponent(jButtonTransferirAtendimento)
+                .addComponent(jButtonTransferir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelAtendimentosPausados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -512,7 +535,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
 
         pack();
@@ -521,6 +544,15 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
          int x = JOptionPane.showConfirmDialog(null, "Deseja realmente finalizar o atendimento "+jLabelId.getText());
          if( x == JOptionPane.YES_OPTION){
+             
+             if(jTextNomeContato.getText().equals("")){
+                 JOptionPane.showMessageDialog(null,"Nome do contato obrigatorio");
+                 jTextNomeContato.setBorder(new LineBorder(java.awt.Color.RED));
+             }
+             else if(jComboCliente.getSelectedIndex() == 0){
+                   jComboCliente.setBorder(new LineBorder(java.awt.Color.RED));
+             }
+             else {
               gravarAtendimento();
                
             jTextNomeContato.setText("");
@@ -530,7 +562,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
             jComboCliente.setSelectedIndex(0);
             jComboAssunto.setSelectedIndex(0);
             jTextRelato.setText("");
-
+             }
          }
          else {
              JOptionPane.showMessageDialog(null," PROCESSADO CANCELADO PELO USUARIO "+Login.getInstance().getUsuario());
@@ -575,13 +607,13 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextRelatoKeyPressed
 
-    private void jButtonTransferirAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirAtendimentoActionPerformed
+    private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
        
        transferirAtendimento();
                 
       
        
-    }//GEN-LAST:event_jButtonTransferirAtendimentoActionPerformed
+    }//GEN-LAST:event_jButtonTransferirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -591,7 +623,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonNovoAtendimento;
     private javax.swing.JButton jButtonPausar;
     private javax.swing.JButton jButtonRetornarAtendimento;
-    private javax.swing.JButton jButtonTransferirAtendimento;
+    private javax.swing.JButton jButtonTransferir;
     private javax.swing.JComboBox<String> jComboAssunto;
     private javax.swing.JComboBox<String> jComboAtendimentosPausados;
     private javax.swing.JComboBox<String> jComboCliente;

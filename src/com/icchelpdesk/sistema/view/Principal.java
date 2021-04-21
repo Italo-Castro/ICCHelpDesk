@@ -1,5 +1,6 @@
 package com.icchelpdesk.sistema.view;
 
+import com.icchelpdesk.atendimento.view.AtendimentosTransferidos;
 import com.icchelpdesk.atendimento.view.atendimentoRegister;
 import com.icchelpdesk.atendimento.view.atendimentosView;
 import com.icchelpdesk.atendimento.view.transferenciaAtendimentos;
@@ -57,6 +58,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuConsultarAtendimento = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -173,6 +175,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Transferidos A você");
+
+        jMenuItem6.setText("Atendimentos transferidos para você");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem6);
+
         jMenuBar1.add(jMenu5);
 
         jMenu3.setText("PossiveisClientes");
@@ -263,6 +274,11 @@ public class Principal extends javax.swing.JFrame {
          atendimentoRegister.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        AtendimentosTransferidos.getInstance().setVisible(false);
+        AtendimentosTransferidos.getInstance().setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -285,6 +301,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuRegistrarAtendimento;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;

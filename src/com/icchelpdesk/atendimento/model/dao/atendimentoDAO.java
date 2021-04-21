@@ -206,7 +206,67 @@ public class atendimentoDAO {
         }
         return listaAtendimentoPausados;
     } 
-    
+        public ArrayList<atendimento> buscarAtendimentosTransferidos(String query){
+          ArrayList<atendimento> listaAtendimentoPausados = new ArrayList();
+        
+        try {
+            ResultSet rs = MySQLDAO.getResultSet(query);
+            
+            while(rs.next()){
+                atendimento atendimento = new atendimento();
+                
+                atendimento.setId(rs.getInt("id"));
+                atendimento.setNomeCliente(rs.getString("nomeCliente"));
+                atendimento.setRelato(rs.getString("relato"));
+                atendimento.setObservacao(rs.getString("observacao"));
+                atendimento.setObservacao2(rs.getString("observacao2"));
+                atendimento.setSolucao(rs.getString("solucao"));
+                atendimento.setAssunto(rs.getString("assunto"));
+                atendimento.setStatus(rs.getString("status"));
+                atendimento.setUsuario(rs.getString("usuario"));
+                atendimento.setNomeContato(rs.getString("nomeContato"));
+                atendimento.setData(rs.getTimestamp("data"));
+                atendimento.setTransferencia(rs.getString("transferencia"));
+                atendimento.setIdTransferido(rs.getInt("idTransferido"));
+                atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                listaAtendimentoPausados.add(atendimento);
+            }
+        }catch(SQLException e){
+            Logger.getLogger(possiveisClientesDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return listaAtendimentoPausados;
+    } 
+    public ArrayList<atendimento> buscarAtendimentosTransferidosId(String query){
+          ArrayList<atendimento> listaAtendimentoPausados = new ArrayList();
+        
+        try {
+            ResultSet rs = MySQLDAO.getResultSet(query);
+            
+            while(rs.next()){
+                atendimento atendimento = new atendimento();
+                
+                atendimento.setId(rs.getInt("id"));
+                atendimento.setNomeCliente(rs.getString("nomeCliente"));
+                atendimento.setRelato(rs.getString("relato"));
+                atendimento.setObservacao(rs.getString("observacao"));
+                atendimento.setObservacao2(rs.getString("observacao2"));
+                atendimento.setSolucao(rs.getString("solucao"));
+                atendimento.setAssunto(rs.getString("assunto"));
+                atendimento.setStatus(rs.getString("status"));
+                atendimento.setUsuario(rs.getString("usuario"));
+                atendimento.setNomeContato(rs.getString("nomeContato"));
+                atendimento.setData(rs.getTimestamp("data"));
+                atendimento.setTransferencia(rs.getString("transferencia"));
+                atendimento.setIdTransferido(rs.getInt("idTransferido"));
+                atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                listaAtendimentoPausados.add(atendimento);
+            }
+        }catch(SQLException e){
+            Logger.getLogger(possiveisClientesDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return listaAtendimentoPausados;
+    } 
+
 
 }
 

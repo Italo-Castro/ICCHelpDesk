@@ -3,6 +3,7 @@ package com.icchelpdesk.atendimento.control;
 import com.icchelpdesk.atendimento.model.dao.atendimentoDAO;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.util.ArrayList;
 
 
@@ -53,5 +54,14 @@ public class atendimentoControl {
         String query = "select *from atendimento where id = '"+id+"'";
         return atendimentoDAO.getInstance().buscarAtendimentosPausadosId(query);
     } 
-    
+    public ArrayList<atendimento> buscaAtendimentoTransferido(){
+        String query = "select *from atendimento where transferencia like ('%"+Login.getInstance().getUsuario()+"') and status = 'RECEBIDO'";
+        return atendimentoDAO.getInstance().buscarAtendimentosTransferidos(query);
+        
+    }
+    public ArrayList<atendimento> buscaAtendimentosTransferidosId(int id) {
+         
+        String query = "select *from atendimento where id = '"+id+"'";
+        return atendimentoDAO.getInstance().buscarAtendimentosTransferidosId(query);
+    } 
 }

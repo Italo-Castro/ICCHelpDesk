@@ -4,8 +4,8 @@ import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,10 +31,11 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         this.usuarioRecebe=usuarioRecebe;
         initComponents();
     }
-    //nesta função primeiramnente faço um update no atendimento que estou transferindo, deixando ele como o status de transferido.
-    //
+    
+    
+    
     public void concluirTransferencia(){
-        
+        JOptionPane.showMessageDialog(null,"dentro da função concluir transferencia");
         ArrayList<atendimento> listaAtendimento = new ArrayList();
         listaAtendimento = atendimentoControl.getInstance().buscaAtendimentosId(id);
         
@@ -72,7 +73,7 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
             atendimento.setUsuario(listaAtendimento.get(i).getUsuario());
             atendimento.setNomeContato(listaAtendimento.get(i).getNomeContato());
             atendimento.setData(listaAtendimento.get(i).getData());
-            atendimento.setTransferencia(Login.getInstance().getUsuario()+" TRANSFERIU PARA "+ usuarioRecebe);
+            atendimento.setTransferencia("Atendimento transferido para "+usuarioRecebe);
             atendimento.setIdTransferido(id);    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);

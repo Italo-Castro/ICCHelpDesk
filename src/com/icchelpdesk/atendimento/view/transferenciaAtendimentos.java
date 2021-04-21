@@ -2,6 +2,7 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
@@ -43,7 +44,11 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         ArrayList<Usuario> listaUsuario = new ArrayList();
         listaUsuario = UsuarioControl.getInstance().read();
             
+        
+        
             for (Usuario usuarios : listaUsuario){
+                String usuario = Login.getInstance().getUsuario();
+               listaUsuario.remove(usuarios.getNome().equals(usuario));// REMOVENDO DA LISTA ONDE O NOME DE USUARIO E IGUAL AO USUARIO QUE ESTA LOGADO, PARA NÃO PERMITIR QUE O ATENDIMENTO SEJA TRANSFERIDO PARA SI MESMO
               jComboUsuarios.addItem(usuarios.getNome());
                        }
     }
@@ -69,8 +74,6 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Informe para qual usuario deseja transferir");
-
-        jComboUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Informe o protocolo");
@@ -124,14 +127,14 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTextProtocolo.getText().equals("")){
+        if(jTextProtocolo.getText().equals("0")){
             JOptionPane.showMessageDialog(null,"Informe o protocolo do atendimento que deseja transferir","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         else if(jComboUsuarios.getSelectedIndex() == 0){
               JOptionPane.showMessageDialog(null,"Informe para qual usuario deseja transferir deseja transferir","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         else {
-
+        id = Integer.parseInt(jTextProtocolo.getText());
         String usuarioReecbe = jComboUsuarios.getSelectedItem().toString();
         obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(false);
         obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(true);
