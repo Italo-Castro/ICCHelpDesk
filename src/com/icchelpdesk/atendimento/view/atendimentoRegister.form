@@ -69,7 +69,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="jLabelAtendimentosPausados" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -209,7 +209,7 @@
                       <Component id="jLabelIdAtendimento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabelId" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace pref="161" max="32767" attributes="0"/>
+                      <EmptySpace pref="170" max="32767" attributes="0"/>
                       <Component id="jLabel8" min="-2" pref="126" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -387,44 +387,46 @@
                     <Component class="javax.swing.JComboBox" name="jComboAssunto">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="36">
+                          <StringArray count="35">
                             <StringItem index="0" value=" "/>
-                            <StringItem index="1" value="01; &quot;CONSULTA CLIENTE PRODUTO FORNECEDOR&quot;"/>
-                            <StringItem index="2" value="44; &quot;CONTABIL&quot;"/>
-                            <StringItem index="3" value="13; &quot;CONTAS A PAGAR&quot;"/>
-                            <StringItem index="4" value="14; &quot;CONTAS A RECEBER&quot;"/>
-                            <StringItem index="5" value="15; &quot;CUPOM FISCAL ECF MENUECF NFCE&quot;"/>
-                            <StringItem index="6" value="68; &quot;DATA DO SISTEMA&quot;"/>
-                            <StringItem index="7" value="60; &quot;DEFINITIVIDADE ST SIARE&quot;"/>
-                            <StringItem index="8" value="41; &quot;E-SOCIAL&quot;"/>
-                            <StringItem index="9" value="79; &quot;EDITAL&quot;"/>
-                            <StringItem index="10" value="52; &quot;ENTRADA DE PRODUCAO&quot;"/>
-                            <StringItem index="11" value="16; &quot;ESTOQUE&quot;"/>
-                            <StringItem index="12" value="17; &quot;ETIQUETA CLIENTE PRODUTO FORNECEDOR&quot;"/>
-                            <StringItem index="13" value="54; &quot;ETIQUETA EXPEDI&#xc7;&#xc3;O&quot;"/>
-                            <StringItem index="14" value="63; &quot;FOLHA DE PAGAMENTO&quot;"/>
-                            <StringItem index="15" value="65; &quot;FORMATACAO DE MAQUINA&quot;"/>
-                            <StringItem index="16" value="48; &quot;FORMULA PRODUTO&quot;"/>
-                            <StringItem index="17" value="75; &quot;FRANQUIA&quot;"/>
-                            <StringItem index="18" value="80; &quot;GERA&#xc7;&#xc3;O DE CARNES&quot;"/>
-                            <StringItem index="19" value="42; &quot;GRADE FISCAL&quot;"/>
-                            <StringItem index="20" value="59; &quot;IMPORTACAO PARTE FISCAL PARA CONTABIL&quot;"/>
-                            <StringItem index="21" value="70; &quot;IMPORTAR CSV&quot;"/>
-                            <StringItem index="22" value="18; &quot;IMPRESS&#xc3;O&quot;"/>
-                            <StringItem index="23" value="19; &quot;INVENT&#xc1;RIO&quot;"/>
-                            <StringItem index="24" value="39; &quot;LOCA&#xc7;&#xc3;O&quot;"/>
-                            <StringItem index="25" value="77; &quot;LOGO EMPRESA&quot;"/>
-                            <StringItem index="26" value="40; &quot;MANIFESTO DE CARGA MDFE &quot;"/>
-                            <StringItem index="27" value="20; &quot;MERC&#xda;RIO TABLETS LOJA VIRTUAL&quot;"/>
-                            <StringItem index="28" value="21; &quot;MOVIMENTO DE USU&#xc1;RIO&quot;"/>
-                            <StringItem index="29" value="26; &quot;NOTA FISCAL BLOCO FORMUL&#xc1;RIO&quot;"/>
-                            <StringItem index="30" value="67; &quot;NOTA FISCAL DE MANIFESTO&quot;"/>
-                            <StringItem index="31" value="22; &quot;NOTA FISCAL DE SERVI&#xc7;O ELETR&#xd4;NICA NFSE&quot;"/>
-                            <StringItem index="32" value="23; &quot;NOTA FISCAL DE TRANSFER&#xca;NCIA NFE&quot;"/>
-                            <StringItem index="33" value="24; &quot;NOTA FISCAL ELETR&#xd4;NICA NFE&quot;"/>
-                            <StringItem index="34" value="25; &quot;NOTA FISCAL ENTRADA DE MERCADORIA&quot;"/>
-                            <StringItem index="35" value="36; &quot;OR&#xc7;AMENTO&quot;"/>
+                            <StringItem index="1" value="CONSULTA CLIENTE PRODUTO FORNECEDOR"/>
+                            <StringItem index="2" value="CONTABIL"/>
+                            <StringItem index="3" value="CONTAS A PAGAR"/>
+                            <StringItem index="4" value="CONTAS A RECEBER"/>
+                            <StringItem index="5" value="CUPOM FISCAL ECF MENUECF NFCE"/>
+                            <StringItem index="6" value="DATA DO SISTEMA"/>
+                            <StringItem index="7" value="DEFINITIVIDADE ST SIARE"/>
+                            <StringItem index="8" value="E-SOCIAL"/>
+                            <StringItem index="9" value="EDITAL"/>
+                            <StringItem index="10" value="ENTRADA DE PRODUCAO"/>
+                            <StringItem index="11" value="ESTOQUE"/>
+                            <StringItem index="12" value="ETIQUETA CLIENTE PRODUTO FORNECEDOR"/>
+                            <StringItem index="13" value="ETIQUETA EXPEDI&#xc7;&#xc3;O"/>
+                            <StringItem index="14" value="FOLHA DE PAGAMENTO"/>
+                            <StringItem index="15" value="FORMATACAO DE MAQUINA"/>
+                            <StringItem index="16" value="FORMULA PRODUTO"/>
+                            <StringItem index="17" value="FRANQUIA"/>
+                            <StringItem index="18" value="GERA&#xc7;&#xc3;O DE CARNES"/>
+                            <StringItem index="19" value="GRADE FISCAL"/>
+                            <StringItem index="20" value="IMPORTAR CSV"/>
+                            <StringItem index="21" value="IMPRESS&#xc3;O"/>
+                            <StringItem index="22" value="INVENT&#xc1;RIO"/>
+                            <StringItem index="23" value="LOCA&#xc7;&#xc3;O"/>
+                            <StringItem index="24" value="LOGO EMPRESA"/>
+                            <StringItem index="25" value="MANIFESTO DE CARGA MDFE "/>
+                            <StringItem index="26" value="MERC&#xda;RIO TABLETS LOJA VIRTUAL"/>
+                            <StringItem index="27" value="MOVIMENTO DE USU&#xc1;RIO"/>
+                            <StringItem index="28" value="NOTA FISCAL BLOCO FORMUL&#xc1;RIO"/>
+                            <StringItem index="29" value="NOTA FISCAL DE MANIFESTO"/>
+                            <StringItem index="30" value="NOTA FISCAL DE SERVI&#xc7;O ELETR&#xd4;NICA NFSE"/>
+                            <StringItem index="31" value="NOTA FISCAL DE TRANSFER&#xca;NCIA NFE"/>
+                            <StringItem index="32" value="NOTA FISCAL ELETR&#xd4;NICA NFE"/>
+                            <StringItem index="33" value="NOTA FISCAL ENTRADA DE MERCADORIA"/>
+                            <StringItem index="34" value="OR&#xc7;AMENTO"/>
                           </StringArray>
+                        </Property>
+                        <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="-1&#xd;&#xa;" type="code"/>
                         </Property>
                       </Properties>
                       <AuxValues>

@@ -355,7 +355,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabelAtendimentosPausados)
-                        .addGap(0, 9, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonTransferir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -413,7 +413,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Assunto");
 
-        jComboAssunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "01; \"CONSULTA CLIENTE PRODUTO FORNECEDOR\"", "44; \"CONTABIL\"", "13; \"CONTAS A PAGAR\"", "14; \"CONTAS A RECEBER\"", "15; \"CUPOM FISCAL ECF MENUECF NFCE\"", "68; \"DATA DO SISTEMA\"", "60; \"DEFINITIVIDADE ST SIARE\"", "41; \"E-SOCIAL\"", "79; \"EDITAL\"", "52; \"ENTRADA DE PRODUCAO\"", "16; \"ESTOQUE\"", "17; \"ETIQUETA CLIENTE PRODUTO FORNECEDOR\"", "54; \"ETIQUETA EXPEDIÇÃO\"", "63; \"FOLHA DE PAGAMENTO\"", "65; \"FORMATACAO DE MAQUINA\"", "48; \"FORMULA PRODUTO\"", "75; \"FRANQUIA\"", "80; \"GERAÇÃO DE CARNES\"", "42; \"GRADE FISCAL\"", "59; \"IMPORTACAO PARTE FISCAL PARA CONTABIL\"", "70; \"IMPORTAR CSV\"", "18; \"IMPRESSÃO\"", "19; \"INVENTÁRIO\"", "39; \"LOCAÇÃO\"", "77; \"LOGO EMPRESA\"", "40; \"MANIFESTO DE CARGA MDFE \"", "20; \"MERCÚRIO TABLETS LOJA VIRTUAL\"", "21; \"MOVIMENTO DE USUÁRIO\"", "26; \"NOTA FISCAL BLOCO FORMULÁRIO\"", "67; \"NOTA FISCAL DE MANIFESTO\"", "22; \"NOTA FISCAL DE SERVIÇO ELETRÔNICA NFSE\"", "23; \"NOTA FISCAL DE TRANSFERÊNCIA NFE\"", "24; \"NOTA FISCAL ELETRÔNICA NFE\"", "25; \"NOTA FISCAL ENTRADA DE MERCADORIA\"", "36; \"ORÇAMENTO\"" }));
+        jComboAssunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CONSULTA CLIENTE PRODUTO FORNECEDOR", "CONTABIL", "CONTAS A PAGAR", "CONTAS A RECEBER", "CUPOM FISCAL ECF MENUECF NFCE", "DATA DO SISTEMA", "DEFINITIVIDADE ST SIARE", "E-SOCIAL", "EDITAL", "ENTRADA DE PRODUCAO", "ESTOQUE", "ETIQUETA CLIENTE PRODUTO FORNECEDOR", "ETIQUETA EXPEDIÇÃO", "FOLHA DE PAGAMENTO", "FORMATACAO DE MAQUINA", "FORMULA PRODUTO", "FRANQUIA", "GERAÇÃO DE CARNES", "GRADE FISCAL", "IMPORTAR CSV", "IMPRESSÃO", "INVENTÁRIO", "LOCAÇÃO", "LOGO EMPRESA", "MANIFESTO DE CARGA MDFE ", "MERCÚRIO TABLETS LOJA VIRTUAL", "MOVIMENTO DE USUÁRIO", "NOTA FISCAL BLOCO FORMULÁRIO", "NOTA FISCAL DE MANIFESTO", "NOTA FISCAL DE SERVIÇO ELETRÔNICA NFSE", "NOTA FISCAL DE TRANSFERÊNCIA NFE", "NOTA FISCAL ELETRÔNICA NFE", "NOTA FISCAL ENTRADA DE MERCADORIA", "ORÇAMENTO" }));
+        jComboAssunto.setSelectedItem(-1
+        );
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Observacao");
@@ -509,7 +511,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
                 .addComponent(jLabelIdAtendimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)

@@ -94,19 +94,9 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
         
         }
         
-        
-       
-        
-        
         atendimento.setId(id);
         atendimentoControl.getInstance().delete(atendimento);
-        
-        /*
-        atendimento = new atendimento();
-        atendimento.setId(Integer.parseInt(jLabelProtocolo.getText()));
-        atendimentoControl.getInstance().delete(atendimento);
-        */
-        
+ 
         
         }
    } 
