@@ -4,6 +4,7 @@ import com.icchelpdesk.possiveisClientes.control.possiveisClienteControl;
 import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
 import com.icchelpdesk.sistema.view.Principal;
 import java.sql.Timestamp;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -49,6 +50,7 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         jButtonRegister = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextNome = new javax.swing.JTextField();
@@ -85,7 +87,7 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 2, 18)); // NOI18N
         jLabel1.setText("Possivel Cliente");
 
-        jButtonRegister.setText("Adicionar");
+        jButtonRegister.setText("Gravar");
         jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegisterActionPerformed(evt);
@@ -101,6 +103,13 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
 
         jButton3.setText("Sair");
 
+        jButton1.setText("Novo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,19 +118,22 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(5, 5, 5)
                 .addComponent(jButtonRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -284,6 +296,19 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextTelefoneActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
+        if(jTextNome.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Campo nome vazio!","EMPTY FIELD",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(jTextTelefone.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Campo telefone vazio!","EMPTY FIELD",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(jTextStatus.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Campo status vazio!","EMPTY FIELD",JOptionPane.ERROR_MESSAGE);
+        } 
+        else if(jTextRelato.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Campo relato vazio!","EMPTY FIELD",JOptionPane.ERROR_MESSAGE);
+        } 
+        else {
         Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());
         possiveisClientes possivelCliente = new possiveisClientes();
         
@@ -297,7 +322,7 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
          
        
         possiveisClienteControl.getInstance().create(possivelCliente);
-        
+        }
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -305,8 +330,16 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         viewPossiveisClientes.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       jTextNome.setText("");
+       jTextTelefone.setText("");
+       jTextCidade.setText("");
+       jTextStatus.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonRegister;

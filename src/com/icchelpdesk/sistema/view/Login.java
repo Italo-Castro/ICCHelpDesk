@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
     public String usuario;
     private static Login instance = null;
-
+    private int nvPermissao =0 ;
+    
     public static Login getInstance() {
         if (instance == null) {
             instance = new Login();
@@ -24,7 +25,12 @@ public class Login extends javax.swing.JFrame {
     private void construtor() {
         setLocationRelativeTo(null);
     }
-
+    public void setnvPermiss(int nvPermissao){
+        this.nvPermissao=nvPermissao;
+    }
+    public int getNvPermiss(){
+        return nvPermissao;
+    }
     private void entrar() {
         
         Usuario login = new Usuario();
@@ -35,7 +41,7 @@ public class Login extends javax.swing.JFrame {
 
         if (login != null) {
             if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
-                
+               setnvPermiss(login.getPermissao());
                 JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                 this.usuario = login.getNome();
                 this.setVisible(false);

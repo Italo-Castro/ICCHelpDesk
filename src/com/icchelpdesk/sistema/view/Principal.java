@@ -1,13 +1,17 @@
 package com.icchelpdesk.sistema.view;
 
+import com.icchelpdesk.atendimento.control.atendimentoControl;
+import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.atendimento.view.AtendimentosTransferidos;
 import com.icchelpdesk.atendimento.view.atendimentoRegister;
 import com.icchelpdesk.atendimento.view.atendimentosView;
 import com.icchelpdesk.atendimento.view.transferenciaAtendimentos;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
-import com.icchelpdesk.usuario.view.UsuarioListagemView;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -23,19 +27,21 @@ public class Principal extends javax.swing.JFrame {
     public JDesktopPane getDesktopPane() {
         return jDesktopPane1;
     }
-
+    
     public Principal() {
         initComponents();
         construtor();
+     
         this.setTitle("Ola ! "+Login.getInstance().getUsuario());
         jLabelUsuario.setText("Ola ! "+Login.getInstance().getUsuario());        
     }
 
     private void construtor() {
+       
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,11 +67,12 @@ public class Principal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuRegistrarAtendimento = new javax.swing.JMenuItem();
         jMenuConsultarAtendimento = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -143,34 +150,37 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 866, Short.MAX_VALUE)
                 .addComponent(jButton3))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(131, 131, 131)
+                .addGap(189, 189, 189)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(0, 287, Short.MAX_VALUE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(125, 125, 125)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton3))
         );
@@ -195,6 +205,10 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuConsultarAtendimento);
 
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Transferencia de Atendimento");
+
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setText("Transferencia de atendimento");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -202,23 +216,14 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Transferidos A você");
+        jMenu5.add(jMenuItem5);
 
         jMenuItem6.setText("Atendimentos transferidos para você");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
         jMenu5.add(jMenuItem6);
 
         jMenuBar1.add(jMenu5);
 
-        jMenu3.setText("PossiveisClientes");
+        jMenu3.setText("Possiveis Clientes");
 
         jMenuItem4.setText("Registrar possivel cliente");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -227,6 +232,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem4);
+
+        jMenuItem7.setText("Ver possiveis clientes");
+        jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
 
@@ -270,15 +278,32 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if(Login.getInstance().getNvPermiss() < 10){
+                
+            JOptionPane.showMessageDialog(null,Login.getInstance().getUsuario() + " Você não tem permissão para cadastrar novos clientes","   ACESS DENIED!!!      ",JOptionPane.ERROR_MESSAGE);
+            
+        }else {
+        
         ClienteCadastro.getInstance().setVisible(false);
         ClienteCadastro.getInstance().setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        UsuarioListagemView.getInstance().setVisible(false);
-        UsuarioListagemView.getInstance().setVisible(true);
+        if(Login.getInstance().getNvPermiss() < 10){
+                
+            JOptionPane.showMessageDialog(null,Login.getInstance().getUsuario() + " Você não tem permissão para cadastrar novos usuarios","   ACESS DENIED!!!      ",JOptionPane.ERROR_MESSAGE);
+            
+        }else {
+          
+         AtendimentosTransferidos.getInstance().setVisible(false);
+         AtendimentosTransferidos.getInstance().setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -306,14 +331,17 @@ public class Principal extends javax.swing.JFrame {
          atendimentoRegister.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        AtendimentosTransferidos.getInstance().setVisible(false);
-        AtendimentosTransferidos.getInstance().setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
+        atendimentoControl.getInstance().buscaAtendimentosPausados();
+        
+        if(listaAtendimentosPausados.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Não há atendimentos transferidos para você","",JOptionPane.PLAIN_MESSAGE);
+        }
+        else {
          AtendimentosTransferidos.getInstance().setVisible(false);
          AtendimentosTransferidos.getInstance().setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -345,6 +373,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuRegistrarAtendimento;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
