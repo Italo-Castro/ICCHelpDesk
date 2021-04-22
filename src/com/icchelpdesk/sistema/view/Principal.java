@@ -64,19 +64,19 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuRegistrarAtendimento = new javax.swing.JMenuItem();
-        jMenuConsultarAtendimento = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuAtendimento = new javax.swing.JMenu();
+        jMenuItemRegistrarAtendimento = new javax.swing.JMenuItem();
+        jMenuItemConsultarAtendimento = new javax.swing.JMenuItem();
+        jMenuTransferenciaDeAtendimento = new javax.swing.JMenu();
+        jMenuItemTransferenciaDeAtendimento = new javax.swing.JMenuItem();
+        jMenuItemAtendimentosTransferidos = new javax.swing.JMenuItem();
+        jMenuPossiveisClientes = new javax.swing.JMenu();
+        jMenuItemRegistrarPossivelCliente = new javax.swing.JMenuItem();
+        jMenuItemVerPossiveisClientes = new javax.swing.JMenuItem();
+        jMenuUsuarios = new javax.swing.JMenu();
+        jMenuItemUsuarios = new javax.swing.JMenuItem();
+        jMenuCliente = new javax.swing.JMenu();
+        jMenuItemCadastro = new javax.swing.JMenuItem();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -185,83 +185,83 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButton3))
         );
 
-        jMenu4.setText("Atendimento");
+        jMenuAtendimento.setText("Atendimento");
 
-        jMenuRegistrarAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuRegistrarAtendimento.setText("Registrar Atendimento");
-        jMenuRegistrarAtendimento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemRegistrarAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemRegistrarAtendimento.setText("Registrar Atendimento");
+        jMenuItemRegistrarAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuRegistrarAtendimentoActionPerformed(evt);
+                jMenuItemRegistrarAtendimentoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuRegistrarAtendimento);
+        jMenuAtendimento.add(jMenuItemRegistrarAtendimento);
 
-        jMenuConsultarAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuConsultarAtendimento.setText("Consultar Atendimento");
-        jMenuConsultarAtendimento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemConsultarAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemConsultarAtendimento.setText("Consultar Atendimento");
+        jMenuItemConsultarAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultarAtendimentoActionPerformed(evt);
+                jMenuItemConsultarAtendimentoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuConsultarAtendimento);
+        jMenuAtendimento.add(jMenuItemConsultarAtendimento);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenuAtendimento);
 
-        jMenu5.setText("Transferencia de Atendimento");
+        jMenuTransferenciaDeAtendimento.setText("Transferencia de Atendimento");
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setText("Transferencia de atendimento");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTransferenciaDeAtendimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemTransferenciaDeAtendimento.setText("Transferencia de atendimento");
+        jMenuItemTransferenciaDeAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItemTransferenciaDeAtendimentoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem5);
+        jMenuTransferenciaDeAtendimento.add(jMenuItemTransferenciaDeAtendimento);
 
-        jMenuItem6.setText("Atendimentos transferidos para você");
-        jMenu5.add(jMenuItem6);
+        jMenuItemAtendimentosTransferidos.setText("Atendimentos transferidos para você");
+        jMenuTransferenciaDeAtendimento.add(jMenuItemAtendimentosTransferidos);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMenuTransferenciaDeAtendimento);
 
-        jMenu3.setText("Possiveis Clientes");
+        jMenuPossiveisClientes.setText("Possiveis Clientes");
 
-        jMenuItem4.setText("Registrar possivel cliente");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemRegistrarPossivelCliente.setText("Registrar possivel cliente");
+        jMenuItemRegistrarPossivelCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemRegistrarPossivelClienteActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenuPossiveisClientes.add(jMenuItemRegistrarPossivelCliente);
 
-        jMenuItem7.setText("Ver possiveis clientes");
-        jMenu3.add(jMenuItem7);
+        jMenuItemVerPossiveisClientes.setText("Ver possiveis clientes");
+        jMenuPossiveisClientes.add(jMenuItemVerPossiveisClientes);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuPossiveisClientes);
 
-        jMenu2.setText("Usuarios");
+        jMenuUsuarios.setText("Usuarios");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Usuários");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemUsuarios.setText("Usuários");
+        jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemUsuariosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenuUsuarios.add(jMenuItemUsuarios);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuUsuarios);
 
-        jMenu1.setText("Cliente");
+        jMenuCliente.setText("Cliente");
 
-        jMenuItem1.setText("Cadastro");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCadastro.setText("Cadastro");
+        jMenuItemCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemCadastroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenuCliente.add(jMenuItemCadastro);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuCliente);
 
         setJMenuBar(jMenuBar1);
 
@@ -282,7 +282,7 @@ public class Principal extends javax.swing.JFrame {
     
     
     
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroActionPerformed
         if(Login.getInstance().getNvPermiss() < 10){
                 
             JOptionPane.showMessageDialog(null,Login.getInstance().getUsuario() + " Você não tem permissão para cadastrar novos clientes","   ACESS DENIED!!!      ",JOptionPane.ERROR_MESSAGE);
@@ -292,9 +292,9 @@ public class Principal extends javax.swing.JFrame {
         ClienteCadastro.getInstance().setVisible(false);
         ClienteCadastro.getInstance().setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemCadastroActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuariosActionPerformed
         if(Login.getInstance().getNvPermiss() < 10){
                 
             JOptionPane.showMessageDialog(null,Login.getInstance().getUsuario() + " Você não tem permissão para cadastrar novos usuarios","   ACESS DENIED!!!      ",JOptionPane.ERROR_MESSAGE);
@@ -304,27 +304,27 @@ public class Principal extends javax.swing.JFrame {
          AtendimentosTransferidos.getInstance().setVisible(false);
          AtendimentosTransferidos.getInstance().setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemUsuariosActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemRegistrarPossivelClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarPossivelClienteActionPerformed
         possiveisClientesVIEW.getInstance().setVisible(false);
         possiveisClientesVIEW.getInstance().setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemRegistrarPossivelClienteActionPerformed
 
-    private void jMenuRegistrarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRegistrarAtendimentoActionPerformed
+    private void jMenuItemRegistrarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarAtendimentoActionPerformed
          atendimentoRegister.getInstance().setVisible(false);
          atendimentoRegister.getInstance().setVisible(true);
-    }//GEN-LAST:event_jMenuRegistrarAtendimentoActionPerformed
+    }//GEN-LAST:event_jMenuItemRegistrarAtendimentoActionPerformed
 
-    private void jMenuConsultarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultarAtendimentoActionPerformed
+    private void jMenuItemConsultarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultarAtendimentoActionPerformed
          atendimentosView.getInstance().setVisible(false);
          atendimentosView.getInstance().setVisible(true);
-    }//GEN-LAST:event_jMenuConsultarAtendimentoActionPerformed
+    }//GEN-LAST:event_jMenuItemConsultarAtendimentoActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuItemTransferenciaDeAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
          new transferenciaAtendimentos(0).setVisible(false);
          new transferenciaAtendimentos(0).setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          atendimentoRegister.getInstance().setVisible(false);
@@ -360,21 +360,21 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuConsultarAtendimento;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jMenuCliente;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuRegistrarAtendimento;
+    private javax.swing.JMenuItem jMenuItemAtendimentosTransferidos;
+    private javax.swing.JMenuItem jMenuItemCadastro;
+    private javax.swing.JMenuItem jMenuItemConsultarAtendimento;
+    private javax.swing.JMenuItem jMenuItemRegistrarAtendimento;
+    private javax.swing.JMenuItem jMenuItemRegistrarPossivelCliente;
+    private javax.swing.JMenuItem jMenuItemTransferenciaDeAtendimento;
+    private javax.swing.JMenuItem jMenuItemUsuarios;
+    private javax.swing.JMenuItem jMenuItemVerPossiveisClientes;
+    private javax.swing.JMenu jMenuPossiveisClientes;
+    private javax.swing.JMenu jMenuTransferenciaDeAtendimento;
+    private javax.swing.JMenu jMenuUsuarios;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
