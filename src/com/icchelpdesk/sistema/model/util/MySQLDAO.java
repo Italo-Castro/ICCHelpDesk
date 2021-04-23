@@ -10,17 +10,27 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class MySQLDAO {
-
+    
+    public static int resultado =0 ;
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static String DBURL = "";
     private static Connection connection;
 
     private static final String WAMP_USER = "root", WAMP_PASSWORD = "";
 
+    
     private static void setDBURL() {
         DBURL = "jdbc:mysql://localhost:3306/icchelpdesk?allowPublicKeyRetrieval=true&useSSL=false";
     }
 
+    public int getResultado() {
+        return resultado;
+    }
+
+    public static void  setResultado(int resultado) {
+        MySQLDAO.resultado = resultado;
+    }
+    
     public static Connection setConnection(String USER, String PASSWORD) {
         try {
             Class.forName(DRIVER).newInstance();
@@ -70,12 +80,16 @@ public class MySQLDAO {
             ResultSet rs = psmt.getGeneratedKeys();
             if (rs != null && rs.next()) {
                 update = rs.getLong(1);
+                
                  
             }
-            
-            JOptionPane.showMessageDialog(null,"Processo realizado com sucesso");
+            setResultado(1);
+           
+            //JOptionPane.showMessageDialog(null,"Processo realizado com sucesso");
             psmt.close();
+            
         } catch (SQLException ex) {
+            setResultado(0);
             JOptionPane.showMessageDialog(null, "Falha ao Executar Query.\n\n"
                     + (ex.getMessage()) + "\n\n"
                     + query, "Falha!", JOptionPane.ERROR_MESSAGE);

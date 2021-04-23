@@ -4,6 +4,7 @@ import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.bean.Cliente;
+import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
 import java.sql.Timestamp;
@@ -121,8 +122,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jButtonTransferir.setVisible(false);
         jButtonRetornarAtendimento.setVisible(false);
         jTextNomeContato.requestFocus();
-        atendimento atendimento = new atendimento();
-        
+        atendimento atendimento = new atendimento();        
         atendimento.setAssunto("");
         atendimento.setNomeCliente("");
         atendimento.setNomeContato("");
@@ -132,11 +132,14 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setSolucao("");
         atendimento.setStatus("INICIADO");
         atendimento.setData(new Timestamp(System.currentTimeMillis()));
-        atendimento.setUsuario(Login.getInstance().getUsuario());
-        
+        atendimento.setUsuario(Login.getInstance().getUsuario());       
         int x = atendimentoControl.getInstance().create(atendimento);
       
+
         
+        int resultado = MySQLDAO.resultado;
+        if(resultado == 1){
+         
         jTextNomeContato.setText("");
         jTextSolucao.setText("");
         jTextObs.setText("");
@@ -148,7 +151,10 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jButtonGravar.setVisible(true);
         jButtonPausar.setVisible(true);
 
-        jLabelId.setText(""+x);
+        jLabelId.setText(""+x);         
+        }else {
+            JOptionPane.showMessageDialog(null,"Erro ao iniciar novo atendimento");
+        }
      }
      public void pausarAtendimento(){
              if(jTextNomeContato.getText().equals("")){
@@ -211,6 +217,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setData(new Timestamp(System.currentTimeMillis()));
         atendimentoControl.getInstance().update(atendimento);
         
+        if(MySQLDAO.resultado == 1){
+            JOptionPane.showMessageDialog(null,"Atendimento registrado com sucesso");
+        }else {
+            JOptionPane.showMessageDialog(null,"  ");
+        }
         
      }
      public void transferirAtendimento(){
