@@ -15,14 +15,24 @@ public class MySQLDAO {
     public static int resultado = 2 ;
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static String DBURL = "";
+    private static String endereco;
+    private static String nomeDataBase = "";
+    private static int porta = 0 ;
+    
     private static Connection connection;
 
-    private static final String WAMP_USER = "root", WAMP_PASSWORD = "";
+    private static String WAMP_USER = "";//root
+    private static  String WAMP_PASSWORD = ""; //vazio
 
-    
-    
-    private static void setDBURL(String endereco, int porta, String nomeDataBase) {
-        DBURL = "jdbc:mysql://"+endereco+":"+porta+"/"+nomeDataBase;
+   public static void setUsuarioSenha(String usuario,String senha){
+       WAMP_USER = usuario;
+       WAMP_PASSWORD = senha;
+   }
+    public static void setDBURL(String endereco, int porta, String nomeDataBase) {
+        MySQLDAO.endereco = endereco;
+        MySQLDAO.nomeDataBase = nomeDataBase;
+        MySQLDAO.porta = porta ;
+         DBURL = "jdbc:mysql://"+endereco+":"+porta+"/"+nomeDataBase;
         //DBURL = "jdbc:mysql://localhost:3306/icchelpdesk?allowPublicKeyRetrieval=true&useSSL=false";
     }
 
@@ -32,6 +42,9 @@ public class MySQLDAO {
 
     public static void  setResultado(int resultado) {
         MySQLDAO.resultado = resultado;
+    }
+     public static void  setConnection(Connection con) {
+        MySQLDAO.connection = con;
     }
     
     public static Connection setConnection(String USER, String PASSWORD) {
@@ -60,10 +73,11 @@ Implementarei em outra clase apartir do resultado == 1
          return null;
     }
 
-    public static Connection getConnection_Local(String endereco, int porta, String icchelpdesk) {    
+    public static Connection getConnection_Local() {    
         
-        setDBURL("localhost",3306,"icchelpdesk");
+        setDBURL(endereco,porta,nomeDataBase);
         setConnection(WAMP_USER, WAMP_PASSWORD);   
+        
         if(connection != null){
              setResultado(1);
         }
@@ -74,7 +88,7 @@ Implementarei em outra clase apartir do resultado == 1
     }
 
     public static ResultSet getResultSet(String query, Object... parametros) {
-        getConnection_Local("localhost",3306,"icchelpdesk");
+        getConnection_Local();
         PreparedStatement psmt;
         ResultSet rs = null;
         try {
@@ -91,7 +105,7 @@ Implementarei em outra clase apartir do resultado == 1
 
     public static int executeQuery(String query, Object... parametros) {
        
-        getConnection_Local("localhost",3306,"icchelpdesk");
+        getConnection_Local();
         long update = 0;
         PreparedStatement psmt;
         try {

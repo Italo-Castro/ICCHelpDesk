@@ -62,6 +62,11 @@ public class ConfigDB extends javax.swing.JFrame {
 
         jButtoTest.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtoTest.setText("Testar");
+        jButtoTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtoTestActionPerformed(evt);
+            }
+        });
 
         jButtonExit.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jButtonExit.setText("Sair");
@@ -98,19 +103,19 @@ public class ConfigDB extends javax.swing.JFrame {
                             .addComponent(jTextPorta)
                             .addComponent(jTextNomeBaseDeDados, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextSenha)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jLabel3))
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel5)
-                            .addComponent(jTextSenha))
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel4))
+                                    .addComponent(jLabel5))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -150,15 +155,22 @@ public class ConfigDB extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSaveAndExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveAndExitActionPerformed
+        MySQLDAO.setConnection(null);
         String endereco = jTextEndereco.getText();
         int porta  = Integer.parseInt(jTextPorta.getText());
         String nomeBaseDeDados = jTextNomeBaseDeDados.getText();
+        String usuario = jTextUsuario.getText();
+        String senha = jTextSenha.getText();
         
-        MySQLDAO.getConnection_Local(endereco, porta, nomeBaseDeDados);
         
+        MySQLDAO.setDBURL(endereco, porta, nomeBaseDeDados);
+        MySQLDAO.setUsuarioSenha(usuario, senha);
+        MySQLDAO.getConnection_Local();
+        
+       
         if( MySQLDAO.resultado == 1){
             JOptionPane.showMessageDialog(null, "CONECTADO");
-           
+            this.dispose();
         }
         else {
              JOptionPane.showMessageDialog(null, "ERRO AO CONECTAR");
@@ -168,6 +180,30 @@ public class ConfigDB extends javax.swing.JFrame {
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
        this.dispose();
     }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jButtoTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoTestActionPerformed
+        MySQLDAO.setConnection(null);
+        String endereco = jTextEndereco.getText();
+        int porta  = Integer.parseInt(jTextPorta.getText());
+        String nomeBaseDeDados = jTextNomeBaseDeDados.getText();
+        String usuario = jTextUsuario.getText();
+        String senha = jTextSenha.getText();
+        
+        
+        MySQLDAO.setDBURL(endereco, porta, nomeBaseDeDados);
+        MySQLDAO.setUsuarioSenha(usuario, senha);
+        MySQLDAO.getConnection_Local();
+        
+       
+        if( MySQLDAO.resultado == 1){
+            JOptionPane.showMessageDialog(null, "CONECTADO");
+           
+        }
+        else {
+             JOptionPane.showMessageDialog(null, "ERRO AO CONECTAR");
+        }
+                           
+    }//GEN-LAST:event_jButtoTestActionPerformed
 
     /**
      * @param args the command line arguments
