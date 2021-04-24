@@ -1,5 +1,6 @@
 package com.icchelpdesk.sistema.view;
 
+import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.awt.event.KeyEvent;
@@ -32,27 +33,43 @@ public class Login extends javax.swing.JFrame {
         return nvPermissao;
     }
     private void entrar() {
-        
+        if(MySQLDAO.resultado == 1){
         Usuario login = new Usuario();
         login.setCodigo(jtfUsuario.getText());
         login.setSenha(jpfSenha.getText());
 
         login = UsuarioControl.getInstance().realizarLogin(login);
+        
+       
+            
+            if (login != null) {
+                if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
+                   setnvPermiss(login.getPermissao());
+                    JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
+                    this.usuario = login.getNome();
+                    this.setVisible(false);
+                    Principal.getInstance().setVisible(true);
 
-        if (login != null) {
-            if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
-               setnvPermiss(login.getPermissao());
-                JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
-                this.usuario = login.getNome();
-                this.setVisible(false);
-                Principal.getInstance().setVisible(true);
-                
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuário Desativado.");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Usuário Desativado.");
+                JOptionPane.showMessageDialog(null, "Dados não conferem");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Dados não conferem");
+            
+        }else {
+            JOptionPane.showMessageDialog(null,"Não conectado ao banco de dados","ERROR",JOptionPane.ERROR_MESSAGE);
+            int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração da conexao com o banco de dados ?");
+            
+            if(x == JOptionPane.YES_OPTION){
+                 new ConfigDB().setVisible(true);
+            }
+            else {
+                System.exit(0);
+            }
         }
+
+            
     }
      public String getUsuario(){
         return this.usuario;

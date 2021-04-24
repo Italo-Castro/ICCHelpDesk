@@ -1,5 +1,6 @@
 package com.icchelpdesk.sistema.model.util;
 
+import com.icchelpdesk.sistema.view.ConfigDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
 
 public class MySQLDAO {
     
-    public static int resultado =0 ;
+    public static int resultado = 2 ;
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static String DBURL = "";
     private static Connection connection;
@@ -19,8 +20,10 @@ public class MySQLDAO {
     private static final String WAMP_USER = "root", WAMP_PASSWORD = "";
 
     
-    private static void setDBURL() {
-        DBURL = "jdbc:mysql://localhost:3306/icchelpdesk?allowPublicKeyRetrieval=true&useSSL=false";
+    
+    private static void setDBURL(String endereco, int porta, String nomeDataBase) {
+        DBURL = "jdbc:mysql://"+endereco+":"+porta+"/"+nomeDataBase;
+        //DBURL = "jdbc:mysql://localhost:3306/icchelpdesk?allowPublicKeyRetrieval=true&useSSL=false";
     }
 
     public int getResultado() {
@@ -37,19 +40,41 @@ public class MySQLDAO {
             connection = DriverManager.getConnection(DBURL, USER, PASSWORD);
             return connection;
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            
+/*Aqui esta a logica que se cair no cacth eu chamo um JoptionPane para abrir ou nao a tela ConfigDB
+            
             JOptionPane.showMessageDialog(null,"Não conectado ao banco de dados","ERROR",JOptionPane.ERROR_MESSAGE);
+            int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração da conexao com o banco de dados ?");
+            
+            if(x == JOptionPane.YES_OPTION){
+                 new ConfigDB().setVisible(true);
+            }
+            else {
+                return null;
+            }
+            
+Implementarei em outra clase apartir do resultado == 1
+*/
+
         }
-        return null;
+         return null;
     }
 
-    public static Connection getConnection_Local() {
-        setDBURL();
-        setConnection(WAMP_USER, WAMP_PASSWORD);
+    public static Connection getConnection_Local(String endereco, int porta, String icchelpdesk) {    
+        
+        setDBURL("localhost",3306,"icchelpdesk");
+        setConnection(WAMP_USER, WAMP_PASSWORD);   
+        if(connection != null){
+             setResultado(1);
+        }
+        else {
+             setResultado(0);
+        }
         return connection;
     }
 
     public static ResultSet getResultSet(String query, Object... parametros) {
-        getConnection_Local();
+        getConnection_Local("localhost",3306,"icchelpdesk");
         PreparedStatement psmt;
         ResultSet rs = null;
         try {
@@ -66,7 +91,7 @@ public class MySQLDAO {
 
     public static int executeQuery(String query, Object... parametros) {
        
-        getConnection_Local();
+        getConnection_Local("localhost",3306,"icchelpdesk");
         long update = 0;
         PreparedStatement psmt;
         try {

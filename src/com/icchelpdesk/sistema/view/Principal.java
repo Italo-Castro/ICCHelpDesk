@@ -1,3 +1,5 @@
+
+
 package com.icchelpdesk.sistema.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
@@ -219,6 +221,11 @@ public class Principal extends javax.swing.JFrame {
         jMenuTransferenciaDeAtendimento.add(jMenuItemTransferenciaDeAtendimento);
 
         jMenuItemAtendimentosTransferidos.setText("Atendimentos transferidos para você");
+        jMenuItemAtendimentosTransferidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAtendimentosTransferidosActionPerformed(evt);
+            }
+        });
         jMenuTransferenciaDeAtendimento.add(jMenuItemAtendimentosTransferidos);
 
         jMenuBar1.add(jMenuTransferenciaDeAtendimento);
@@ -322,8 +329,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemConsultarAtendimentoActionPerformed
 
     private void jMenuItemTransferenciaDeAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
-         new transferenciaAtendimentos(0).setVisible(false);
-         new transferenciaAtendimentos(0).setVisible(true);
+          transferenciaAtendimentos.getInstance(0).setVisible(false);
+           transferenciaAtendimentos.getInstance(0).setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -343,6 +350,19 @@ public class Principal extends javax.swing.JFrame {
          AtendimentosTransferidos.getInstance().setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItemAtendimentosTransferidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtendimentosTransferidosActionPerformed
+        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
+        atendimentoControl.getInstance().buscaAtendimentosPausados();
+        
+        if(listaAtendimentosPausados.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Não há atendimentos transferidos para você","",JOptionPane.PLAIN_MESSAGE);
+        }
+        else {
+         AtendimentosTransferidos.getInstance().setVisible(false);
+         AtendimentosTransferidos.getInstance().setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItemAtendimentosTransferidosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

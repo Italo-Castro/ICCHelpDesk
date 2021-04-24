@@ -58,9 +58,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
         listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausados();
             
-            for (atendimento atendimentos : listaAtendimentosPausados){
+                  for (atendimento atendimentos : listaAtendimentosPausados){
                jComboAtendimentosPausados.addItem(atendimentos.getNomeCliente()+ " - "+atendimentos.getId());
-               }
+                  }
         
     }
      public void PegarHora(){
@@ -187,18 +187,23 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setData(new Timestamp(System.currentTimeMillis()));
         atendimentoControl.getInstance().update(atendimento);
         
-         
-        
-        jTextNomeContato.setText("");
-        jTextSolucao.setText("");
-        jTextObs.setText("");
-        jTextObs2.setText("");
-        jComboCliente.setSelectedIndex(0);
-        jComboAssunto.setSelectedIndex(0);
-        jTextRelato.setText("");
+        if(MySQLDAO.resultado == 1){
+            jTextNomeContato.setText("");
+            jTextSolucao.setText("");
+            jTextObs.setText("");
+            jTextObs2.setText("");
+            jComboCliente.setSelectedIndex(0);
+            jComboAssunto.setSelectedIndex(0);
+            jTextRelato.setText("");
 
-        jButtonGravar.setVisible(false);
-        jButtonPausar.setVisible(false);
+            jButtonGravar.setVisible(false);
+            jButtonPausar.setVisible(false);
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"ERRO AO PAUSAR ATENDIMENTO","FATAL ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
     }
      }
      public void gravarAtendimento(){
@@ -220,7 +225,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         if(MySQLDAO.resultado == 1){
             JOptionPane.showMessageDialog(null,"Atendimento registrado com sucesso");
         }else {
-            JOptionPane.showMessageDialog(null,"  ");
+            JOptionPane.showMessageDialog(null," Erro ao gravar atendimeto ","FATAL ERROR",JOptionPane.ERROR_MESSAGE);
         }
         
      }
@@ -628,6 +633,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jButtonTransferirActionPerformed
 
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
