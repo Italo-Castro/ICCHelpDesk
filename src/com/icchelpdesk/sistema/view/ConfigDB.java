@@ -49,11 +49,17 @@ public class ConfigDB extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Endereço");
 
+        jTextEndereco.setText("localhost");
+
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Porta");
 
+        jTextPorta.setText("3306");
+
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Base de Dados");
+
+        jTextNomeBaseDeDados.setText("icchelpdesk");
 
         jButtonSaveAndExit.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonSaveAndExit.setText("Salvar e Sair");
@@ -82,6 +88,8 @@ public class ConfigDB extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Usuario");
 
+        jTextUsuario.setText("root");
+
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("Senha");
 
@@ -107,15 +115,14 @@ public class ConfigDB extends javax.swing.JFrame {
                             .addComponent(jTextSenha)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel3))
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jLabel5))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -170,16 +177,12 @@ public class ConfigDB extends javax.swing.JFrame {
             bw.write(porta+";");
             bw.write(nomeBaseDeDados+";");
             bw.write(usuario+";");
-            bw.write(senha);
-            
-            
+            bw.write(senha+"  "+";");
             bw.close();
             
         }catch (IOException e){
             JOptionPane.showMessageDialog(null,"Error ao abrir arquivo de configuração!");
-        }
-       
-
+        }    
 
         MySQLDAO.setConnection(null);
         

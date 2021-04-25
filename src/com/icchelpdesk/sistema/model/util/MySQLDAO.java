@@ -17,32 +17,36 @@ public class MySQLDAO {
     public static int resultado = 2 ;
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static String DBURL = "";
-    private static String endereco;
-    private static String nomeDataBase = "";
-    private static int porta = 0 ;
+   private static String endereco = "localhost";
+    private static String nomeDataBase = "icchelpDesk";
+    private static int porta = 3306 ;
     
     private static Connection connection;
 
     private static String WAMP_USER = "";//root
     private static  String WAMP_PASSWORD = ""; //vazio
-
     
-    public static void configDB(){
-       String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+  
+    
+   /* public static void configDB(){
+ 
+        String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
         try (BufferedReader bw = new BufferedReader(new FileReader(path))){
         
-            String line = bw.readLine();
+                String line = bw.readLine();
             
-            while(line != null ){
+                
                 String vect[] = line.split(";");
+                System.out.print(vect[0]);
                 endereco = vect[0];
                 porta = Integer.parseInt(vect[1]);
                 nomeDataBase = vect[2];
                 WAMP_USER = vect[3];
                 WAMP_PASSWORD = vect[4];
-                DBURL = "jdbc:mysql://"+endereco+":"+porta+"/"+nomeDataBase;
-            }
+                setUsuarioSenha(WAMP_USER,WAMP_PASSWORD);
+                setDBURL(endereco,porta,nomeDataBase);
             
+            bw.close();
             
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo");
@@ -50,7 +54,7 @@ public class MySQLDAO {
         }
     
     }
-    
+    */
    public static void setUsuarioSenha(String usuario,String senha){
        WAMP_USER = usuario;
        WAMP_PASSWORD = senha;
@@ -87,7 +91,8 @@ public class MySQLDAO {
     }
 
     public static Connection getConnection_Local() {    
-        configDB();
+       
+       
         setDBURL(endereco,porta,nomeDataBase);
         setConnection(WAMP_USER, WAMP_PASSWORD);   
         
@@ -101,6 +106,7 @@ public class MySQLDAO {
     }
 
     public static ResultSet getResultSet(String query, Object... parametros) {
+   
         getConnection_Local();
         PreparedStatement psmt;
         ResultSet rs = null;
@@ -117,7 +123,7 @@ public class MySQLDAO {
     }
 
     public static int executeQuery(String query, Object... parametros) {
-       
+    
         getConnection_Local();
         long update = 0;
         PreparedStatement psmt;

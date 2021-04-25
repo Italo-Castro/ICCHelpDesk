@@ -1,1 +1,1 @@
-localhost;3306;icchelpdesk;root;
+localhost;3306;icchelpdesk;root;  ;

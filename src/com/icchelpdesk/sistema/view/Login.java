@@ -1,9 +1,14 @@
 package com.icchelpdesk.sistema.view;
 
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
+import static com.icchelpdesk.sistema.model.util.MySQLDAO.setDBURL;
+import static com.icchelpdesk.sistema.model.util.MySQLDAO.setUsuarioSenha;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -21,6 +26,58 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         construtor();
+        String endereco = "";
+        int porta = 3306;
+        String nomeDataBase = "";
+        String WAMP_USER = "";
+        String WAMP_PASSWORD = " ";
+        
+        String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+        try (BufferedReader bw = new BufferedReader(new FileReader(path))){
+        
+                String line = bw.readLine();
+            
+                
+                 String vect[] = line.split(";");
+                 endereco = vect[0];
+                 Integer.parseInt(vect[1]);
+                 nomeDataBase = vect[2];
+                 WAMP_USER = vect[3];
+                 WAMP_PASSWORD = vect[4];
+  
+            
+           ;
+            
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo");
+            
+        }catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null,"Verifique o arquivo de configuração","Arquivo de configuração de conexão invalido",JOptionPane.ERROR_MESSAGE);
+             int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração da conexao com o banco de dados ?");
+            
+            if(x == JOptionPane.YES_OPTION){
+                 new ConfigDB().setVisible(true);
+            }
+            else {
+                System.exit(0);
+            }
+        
+        }
+        
+        System.out.print("\n"+endereco);
+         System.out.print("\n"+porta);
+          System.out.print("\n"+nomeDataBase);
+           System.out.print("\n"+WAMP_USER);
+           System.out.print("\n Senha -> "+WAMP_PASSWORD);
+        
+       
+        JOptionPane.showMessageDialog(null,"Estou na classe login agora vou setar os dados que li do arquivo so um momento");
+        
+        MySQLDAO.setConnection(null);
+        MySQLDAO.setDBURL(endereco, porta, nomeDataBase);
+        MySQLDAO.setUsuarioSenha(WAMP_USER, WAMP_PASSWORD);
+        MySQLDAO.getConnection_Local();
+        
     }
    
     private void construtor() {
