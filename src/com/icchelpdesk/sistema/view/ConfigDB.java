@@ -1,6 +1,9 @@
 package com.icchelpdesk.sistema.view;
 
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,8 +85,6 @@ public class ConfigDB extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("Senha");
 
-        jTextSenha.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,12 +156,33 @@ public class ConfigDB extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSaveAndExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveAndExitActionPerformed
-        MySQLDAO.setConnection(null);
         String endereco = jTextEndereco.getText();
         int porta  = Integer.parseInt(jTextPorta.getText());
         String nomeBaseDeDados = jTextNomeBaseDeDados.getText();
         String usuario = jTextUsuario.getText();
         String senha = jTextSenha.getText();
+        
+        
+        String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+            
+            bw.write(endereco+";");
+            bw.write(porta+";");
+            bw.write(nomeBaseDeDados+";");
+            bw.write(usuario+";");
+            bw.write(senha);
+            
+            
+            bw.close();
+            
+        }catch (IOException e){
+            JOptionPane.showMessageDialog(null,"Error ao abrir arquivo de configuração!");
+        }
+       
+
+
+        MySQLDAO.setConnection(null);
+        
         
         
         MySQLDAO.setDBURL(endereco, porta, nomeBaseDeDados);

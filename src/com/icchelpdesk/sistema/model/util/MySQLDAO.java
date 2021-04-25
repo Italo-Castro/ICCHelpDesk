@@ -1,6 +1,8 @@
 package com.icchelpdesk.sistema.model.util;
 
-import com.icchelpdesk.sistema.view.ConfigDB;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,6 +26,31 @@ public class MySQLDAO {
     private static String WAMP_USER = "";//root
     private static  String WAMP_PASSWORD = ""; //vazio
 
+    
+    public static void configDB(){
+       String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+        try (BufferedReader bw = new BufferedReader(new FileReader(path))){
+        
+            String line = bw.readLine();
+            
+            while(line != null ){
+                String vect[] = line.split(";");
+                endereco = vect[0];
+                porta = Integer.parseInt(vect[1]);
+                nomeDataBase = vect[2];
+                WAMP_USER = vect[3];
+                WAMP_PASSWORD = vect[4];
+                DBURL = "jdbc:mysql://"+endereco+":"+porta+"/"+nomeDataBase;
+            }
+            
+            
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo");
+            
+        }
+    
+    }
+    
    public static void setUsuarioSenha(String usuario,String senha){
        WAMP_USER = usuario;
        WAMP_PASSWORD = senha;
@@ -53,28 +80,14 @@ public class MySQLDAO {
             connection = DriverManager.getConnection(DBURL, USER, PASSWORD);
             return connection;
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            
-/*Aqui esta a logica que se cair no cacth eu chamo um JoptionPane para abrir ou nao a tela ConfigDB
-            
-            JOptionPane.showMessageDialog(null,"Não conectado ao banco de dados","ERROR",JOptionPane.ERROR_MESSAGE);
-            int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração da conexao com o banco de dados ?");
-            
-            if(x == JOptionPane.YES_OPTION){
-                 new ConfigDB().setVisible(true);
-            }
-            else {
-                return null;
-            }
-            
-Implementarei em outra clase apartir do resultado == 1
-*/
+            JOptionPane.showMessageDialog(null,ex.getMessage());
 
         }
          return null;
     }
 
     public static Connection getConnection_Local() {    
-        
+        configDB();
         setDBURL(endereco,porta,nomeDataBase);
         setConnection(WAMP_USER, WAMP_PASSWORD);   
         
