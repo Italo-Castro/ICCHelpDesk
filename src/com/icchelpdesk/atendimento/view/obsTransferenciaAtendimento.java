@@ -40,10 +40,15 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         listaAtendimento = atendimentoControl.getInstance().buscaAtendimentosId(id);
         
         
+        
         atendimento atendimento = new atendimento();
         
         for(int i=0;i<listaAtendimento.size();i++){
     
+            if((listaAtendimento.get(i).getStatus().equals("CONCLUIDO")) || (listaAtendimento.get(i).getStatus().equals("TRANSFERIDO"))){
+                JOptionPane.showMessageDialog(null,"Atendimento já transferido ou finalizado\n TRANSFERENCIA IMPOSSIVEL","ERROR",JOptionPane.WARNING_MESSAGE);
+            }
+            else {
             atendimento.setId(listaAtendimento.get(i).getId());        
             atendimento.setNomeCliente(listaAtendimento.get(i).getNomeCliente());
             atendimento.setRelato(listaAtendimento.get(i).getRelato());
@@ -78,6 +83,7 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);
             //faço um update no atendimento que foi transferido colocando o status como transferido, e as informações da transferencia
+        }
         }
     }
     @SuppressWarnings("unchecked")
