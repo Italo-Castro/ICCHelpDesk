@@ -43,14 +43,15 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         
         ArrayList<Usuario> listaUsuario = new ArrayList();
         listaUsuario = UsuarioControl.getInstance().read();
-            
-        
+
         
             for (Usuario usuarios : listaUsuario){
                 String usuario = Login.getInstance().getUsuario();
-               listaUsuario.remove(usuarios.getNome().equals(usuario));// REMOVENDO DA LISTA ONDE O NOME DE USUARIO E IGUAL AO USUARIO QUE ESTA LOGADO, PARA NÃO PERMITIR QUE O ATENDIMENTO SEJA TRANSFERIDO PARA SI MESMO
-              jComboUsuarios.addItem(usuarios.getNome());
-                       }
+                
+                jComboUsuarios.addItem(usuarios.getNome());
+                
+               
+            }
     }
   
     @SuppressWarnings("unchecked")
@@ -132,6 +133,9 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         }
         else if(jComboUsuarios.getSelectedIndex() == 0){
               JOptionPane.showMessageDialog(null,"Informe para qual usuario deseja transferir deseja transferir","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if (jComboUsuarios.getSelectedItem().toString().equals(Login.getInstance().getUsuario())){
+            JOptionPane.showMessageDialog(null,"Você não pode transferir atendimentos para você mesmo");
         }
         else {
             
