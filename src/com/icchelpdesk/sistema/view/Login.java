@@ -71,7 +71,7 @@ public class Login extends javax.swing.JFrame {
            System.out.print("\n Senha -> "+WAMP_PASSWORD);
         
        
-        JOptionPane.showMessageDialog(null,"Estou na classe login agora vou setar os dados que li do arquivo so um momento");
+        //JOptionPane.showMessageDialog(null,"Estou na classe login agora vou setar os dados que li do arquivo so um momento");
         
         MySQLDAO.setConnection(null);
         MySQLDAO.setDBURL(endereco, porta, nomeDataBase);

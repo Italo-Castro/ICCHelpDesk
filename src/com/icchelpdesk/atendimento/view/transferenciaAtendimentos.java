@@ -134,6 +134,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
               JOptionPane.showMessageDialog(null,"Informe para qual usuario deseja transferir deseja transferir","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         else {
+            
         id = Integer.parseInt(jTextProtocolo.getText());
         String usuarioReecbe = jComboUsuarios.getSelectedItem().toString();
         obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(false);

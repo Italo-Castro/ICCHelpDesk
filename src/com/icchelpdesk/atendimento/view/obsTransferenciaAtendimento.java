@@ -2,6 +2,7 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
 import java.util.ArrayList;
@@ -30,12 +31,13 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
         this.id=id;
         this.usuarioRecebe=usuarioRecebe;
         initComponents();
+        JOptionPane.showMessageDialog(null,"id"+id);
     }
     
     
     
     public void concluirTransferencia(){
-        JOptionPane.showMessageDialog(null,"dentro da função concluir transferencia");
+       
         ArrayList<atendimento> listaAtendimento = new ArrayList();
         listaAtendimento = atendimentoControl.getInstance().buscaAtendimentosId(id);
         
@@ -49,6 +51,8 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null,"Atendimento já transferido ou finalizado\n TRANSFERENCIA IMPOSSIVEL","ERROR",JOptionPane.WARNING_MESSAGE);
             }
             else {
+                
+                if(MySQLDAO.resultado == 1){
             atendimento.setId(listaAtendimento.get(i).getId());        
             atendimento.setNomeCliente(listaAtendimento.get(i).getNomeCliente());
             atendimento.setRelato(listaAtendimento.get(i).getRelato());
@@ -83,6 +87,11 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);
             //faço um update no atendimento que foi transferido colocando o status como transferido, e as informações da transferencia
+            JOptionPane.showMessageDialog(null,"Atendimento "+atendimento.getId()+" transferido para "+usuarioRecebe);
+            
+        }else {
+         JOptionPane.showMessageDialog(null,"Erro ao transferir atendimento");
+         }
         }
         }
     }

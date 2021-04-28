@@ -139,7 +139,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         
         int resultado = MySQLDAO.resultado;
         if(resultado == 1){
-         
+        
         jTextNomeContato.setText("");
         jTextSolucao.setText("");
         jTextObs.setText("");
@@ -198,6 +198,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
             jButtonGravar.setVisible(false);
             jButtonPausar.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Atendimento Pausado");
         }
         else {
             JOptionPane.showMessageDialog(null,"ERRO AO PAUSAR ATENDIMENTO","FATAL ERROR",JOptionPane.ERROR_MESSAGE);
@@ -613,10 +614,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
 
     private void jButtonRetornarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarAtendimentoActionPerformed
         if(jComboAtendimentosPausados.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null," Você deve selecionar um atendimento da sua lista de atendimentos em pausa","",JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(null," Você deve selecionar um atendimento da sua lista de atendimentos em pausa","",JOptionPane.WARNING_MESSAGE);
         }
+        else {
         retomarAtendimento(); 
-        
+        }
     }//GEN-LAST:event_jButtonRetornarAtendimentoActionPerformed
 
     private void jTextRelatoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextRelatoKeyPressed
