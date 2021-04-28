@@ -19,13 +19,18 @@ public class Principal extends javax.swing.JFrame {
 
     private static Principal instance = null;
 
+   
     public static Principal getInstance() {
         if (instance == null) {
             instance = new Principal();
         }
         return instance;
     }
-
+    
+    public void setInstance(Principal in){
+        instance = in;
+    }
+    
     public JDesktopPane getDesktopPane() {
         return jDesktopPane1;
     }
@@ -288,7 +293,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -348,33 +353,29 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
-        atendimentoControl.getInstance().buscaAtendimentosPausados();
+        listaAtendimentosPausados = atendimentoControl.getInstance().buscaAtendimentosPausados();
         
-        if(listaAtendimentosPausados.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Não há atendimentos transferidos para você","",JOptionPane.PLAIN_MESSAGE);
-        }
-        else {
+       // if(listaAtendimentosPausados.isEmpty()){
+       //     JOptionPane.showMessageDialog(null,"Não há atendimentos transferidos para você","",JOptionPane.PLAIN_MESSAGE);
+       // }
+      //  else {
+        
          AtendimentosTransferidos.getInstance().setVisible(false);
          AtendimentosTransferidos.getInstance().setVisible(true);
-        }
+   //     }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItemAtendimentosTransferidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtendimentosTransferidosActionPerformed
-        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
-        atendimentoControl.getInstance().buscaAtendimentosPausados();
-        
-        if(listaAtendimentosPausados.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Não há atendimentos transferidos para você","",JOptionPane.PLAIN_MESSAGE);
-        }
-        else {
+       
          AtendimentosTransferidos.getInstance().setVisible(false);
          AtendimentosTransferidos.getInstance().setVisible(true);
-        }
+        
     }//GEN-LAST:event_jMenuItemAtendimentosTransferidosActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
      this.dispose();
      Login.getInstance().setInstance(null);
+     Principal.getInstance().setInstance(null);
      Login.getInstance().setVisible(false);
      Login.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed

@@ -2,6 +2,7 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.Principal;
 import java.text.SimpleDateFormat;
@@ -32,7 +33,10 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
    public void addAtendimentosTransferidosJCombo(){
        ArrayList<atendimento> listaAtendimento = new ArrayList();
        listaAtendimento = atendimentoControl.getInstance().buscaAtendimentoTransferido();
+       
+      
             for (atendimento atendimentoTransferido : listaAtendimento){
+                 jComboNomeCliente.removeAll();
                 jComboNomeCliente.addItem(atendimentoTransferido.getNomeCliente());
        }
        
@@ -74,7 +78,7 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
         
         for(int i=0;i<listaAtendimento.size();i++){
             
-           idTransferido = listaAtendimento.get(i).getIdTransferido();
+            idTransferido = listaAtendimento.get(i).getIdTransferido();
             atendimento.setId(idTransferido);
             atendimento.setNomeCliente(listaAtendimento.get(i).getNomeCliente());
             atendimento.setRelato(listaAtendimento.get(i).getRelato());
@@ -90,15 +94,18 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
             atendimento.setIdTransferido(id);    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);
-             atendimentoControl.getInstance().update(atendimento);
-        
-        }
-        
+            
+        }       
         atendimento.setId(id);
         atendimentoControl.getInstance().delete(atendimento);
- 
-        
         }
+       if(MySQLDAO.resultado == 1){
+           JOptionPane.showMessageDialog(null," Atendimento "+ jLabelProtocolo.getText() +" recusado");
+           jButtonAccept.disable();
+       }
+       else {
+           JOptionPane.showMessageDialog(null,"Erro ao recusar atendimento","ERROR",JOptionPane.INFORMATION_MESSAGE);
+       }
    } 
    public void aceitarAtendimento(){
         atendimento atendimento = new atendimento(); 
@@ -125,8 +132,13 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
             atendimento.setIdTransferido(listaAtendimento.get(i).getIdTransferido());    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);
-             atendimentoControl.getInstance().update(atendimento);
+            atendimentoControl.getInstance().update(atendimento);
         
+        }
+        if(MySQLDAO.resultado == 1){
+            JOptionPane.showMessageDialog(null,"Atendimento "+jLabelProtocolo.getText() +" adicionado a sua lista de atendimentos pausados");
+        }else {
+            JOptionPane.showMessageDialog(null,"Erro ao aceitar transferencia de atendimento");
         }
    }
    
@@ -435,15 +447,19 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      consultarDetalhesDeAtendimentoTransferido();
+        jButtonAccept.enable();
+                
+        consultarDetalhesDeAtendimentoTransferido();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonNegativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNegativeActionPerformed
         recusarAtendimento();
+        addAtendimentosTransferidosJCombo();
     }//GEN-LAST:event_jButtonNegativeActionPerformed
 
     private void jButtonAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcceptActionPerformed
         aceitarAtendimento();
+        addAtendimentosTransferidosJCombo();
     }//GEN-LAST:event_jButtonAcceptActionPerformed
 
     private void jComboNomeClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboNomeClienteKeyPressed

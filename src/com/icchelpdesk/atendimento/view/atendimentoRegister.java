@@ -418,11 +418,6 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         jTextRelato.setColumns(20);
         jTextRelato.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextRelato.setRows(5);
-        jTextRelato.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextRelatoKeyPressed(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTextRelato);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -607,7 +602,7 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextNomeContatoActionPerformed
 
     private void jComboAtendimentosPausadosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAtendimentosPausadosKeyPressed
-        if(evt.getKeyCode() == 10){
+        if(evt.getKeyCode() == 116){
             adicionarAtendimentoPausadoJCombo();
         }
     }//GEN-LAST:event_jComboAtendimentosPausadosKeyPressed
@@ -620,12 +615,6 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         retomarAtendimento(); 
         }
     }//GEN-LAST:event_jButtonRetornarAtendimentoActionPerformed
-
-    private void jTextRelatoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextRelatoKeyPressed
-       if(evt.getKeyCode() == 116){
-            jComboAssunto.requestFocus();
-        }
-    }//GEN-LAST:event_jTextRelatoKeyPressed
 
     private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
        
