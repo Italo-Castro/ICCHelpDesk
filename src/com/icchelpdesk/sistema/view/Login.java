@@ -23,6 +23,9 @@ public class Login extends javax.swing.JFrame {
         return instance;
     }
     
+    public void  setInstance(Login in){
+        instance = in;
+    }
     public Login() {
         initComponents();
         construtor();
