@@ -177,7 +177,7 @@ public class ConfigDB extends javax.swing.JFrame {
             bw.write(porta+";");
             bw.write(nomeBaseDeDados+";");
             bw.write(usuario+";");
-            bw.write(senha+"  "+";");
+            bw.write(senha+";");
             bw.close();
             
         }catch (IOException e){

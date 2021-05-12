@@ -306,6 +306,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("SAIR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButtonPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/sistema/view/16x16/16X16Pause.png"))); // NOI18N
         jButtonPausar.setText("Pausar ");
@@ -597,12 +602,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonNovoAtendimentoActionPerformed
 
     private void jButtonRetomarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetomarAtendimentoActionPerformed
-   
-    
+
     }//GEN-LAST:event_jButtonRetomarAtendimentoActionPerformed
 
     private void jTextNomeContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeContatoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextNomeContatoActionPerformed
 
     private void jComboAtendimentosPausadosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAtendimentosPausadosKeyPressed
@@ -626,12 +630,12 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextRelatoKeyPressed
 
     private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
-       
-       transferirAtendimento();
-                
-      
-       
+      transferirAtendimento();
     }//GEN-LAST:event_jButtonTransferirActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
    
 
