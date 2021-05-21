@@ -1,20 +1,20 @@
 # ICCHelpDesk
 
-## Projeto de estudo. 
+## Projeto de estudo
  A aplicação consiste em registro de atendimento ao cliente, onde é possivel,
 pausar o atendimento para retornar o mesmo em outro momento, também conta
 com a funcionalidade de transferencias de atendimentos, onde um usuario consegue 
 transferir algum atendimento para outro usuario.
 
 ## Funcionalidades
-A aplicação conta com uma tela de login, cadastro de usuarios, cadastro de clientes e possiveis clientes
+A aplicação conta com uma tela de login, cadastro de usuarios, cadastro de clientes e possiveis clientes.
 
 A ideia principal da ferramenta é poder registrar atendimentos aos clientes, para uma consulta futura.
 A ferramenta conta também com a funcionalidade de transferencia de atendimento, onde um usuario pode transferir um atendimento para outro usuario.
 
 ## Ferramentas Utilizadas
 
- Utilizei a biblioteca SWING do JAVA, e para acesso ao banco de dados utilizei 
+ Utilizei a biblioteca SWING do JAVA, e para acesso ao banco de dados utilizei.
  JDBC, contando também com a arquitetura de desenvolvimento de projetos MVC e o design partterns SINGLETON.
 
 
