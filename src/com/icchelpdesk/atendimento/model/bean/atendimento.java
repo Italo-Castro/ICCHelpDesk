@@ -19,13 +19,14 @@ public class atendimento {
     private String transferencia;
     private int idTransferido;
     private String obsTransferencia;
+    private String motivoPausa;
     
     
     public atendimento() {
         
     }
 
-    public atendimento(int id,String nomeCliente, String relato, String observacao, String observacao2, String solucao, String assunto,String status,String nomeContato,String usuario,Timestamp data,String transferencia,int idTransferido,String obsTransferencia) {
+    public atendimento(int id,String nomeCliente, String relato, String observacao, String observacao2, String solucao, String assunto,String status,String nomeContato,String usuario,Timestamp data,String transferencia,int idTransferido,String obsTransferencia, String motivoPausa) {
         this.nomeCliente = nomeCliente;
         this.relato = relato;
         this.observacao = observacao;
@@ -40,6 +41,7 @@ public class atendimento {
         this.transferencia=transferencia;
         this.idTransferido=idTransferido;
         this.obsTransferencia=obsTransferencia;
+        this.motivoPausa=motivoPausa;
     }
 
     public String getObsTransferencia() {
@@ -157,6 +159,14 @@ public class atendimento {
 
     public void setAssunto(String assunto) {
         this.assunto = assunto;
+    }
+
+    public String getMotivoPausa() {
+        return motivoPausa;
+    }
+
+    public void setMotivoPausa(String motivoPausa) {
+        this.motivoPausa = motivoPausa;
     }
    
     

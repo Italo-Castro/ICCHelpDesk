@@ -20,7 +20,8 @@ import javax.swing.border.LineBorder;
  */
 public class atendimentoRegister extends javax.swing.JInternalFrame {
      private static atendimentoRegister instance = null;
-
+     String motivoPausa;
+     
     public static atendimentoRegister getInstance() {
         if (instance == null) {
             instance = new atendimentoRegister();
@@ -28,8 +29,13 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         }
         return instance;
     }
+    public void setMotivoPausa(String motivoPausa){
+        this.motivoPausa=motivoPausa;
+    }
     
-    
+    public String getMotivoPausa(){
+        return motivoPausa;
+    }
      public atendimentoRegister() {
             initComponents();
             PegarHora();
@@ -157,7 +163,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         }
      }
      public void pausarAtendimento(){
-             if(jTextNomeContato.getText().equals("")){
+             
+       
+
+        
+         if(jTextNomeContato.getText().equals("")){
                  JOptionPane.showMessageDialog(null,"Nome do contato obrigatorio");
                  jTextNomeContato.setBorder(new LineBorder(java.awt.Color.RED));
              }
@@ -185,6 +195,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         atendimento.setUsuario(Login.getInstance().getUsuario());
         atendimento.setId(Integer.parseInt(jLabelId.getText()));
         atendimento.setData(new Timestamp(System.currentTimeMillis()));
+        atendimento.setMotivoPausa(getMotivoPausa());
+        
         atendimentoControl.getInstance().update(atendimento);
         
         if(MySQLDAO.resultado == 1){
@@ -591,9 +603,10 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
              JOptionPane.showMessageDialog(null," PROCESSADO CANCELADO PELO USUARIO "+Login.getInstance().getUsuario());
          }
     }//GEN-LAST:event_jButtonGravarActionPerformed
-
+    
     private void jButtonPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPausarActionPerformed
-        pausarAtendimento();
+        MotivoPausa.getInstance().setVisible(false);
+        MotivoPausa.getInstance().setVisible(true);
         adicionarAtendimentoPausadoJCombo();
     }//GEN-LAST:event_jButtonPausarActionPerformed
 

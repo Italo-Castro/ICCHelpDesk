@@ -27,7 +27,7 @@ public class atendimentoDAO {
     
     public int create(atendimento atendimento){
         
-        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into atendimento values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query,
                 null,
                 atendimento.getNomeCliente(),
@@ -42,7 +42,8 @@ public class atendimentoDAO {
                 atendimento.getData(),
                 atendimento.getTransferencia(),
                 atendimento.getIdTransferido(),
-                atendimento.getObsTransferencia()
+                atendimento.getObsTransferencia(),
+                atendimento.getMotivoPausa()
                
                 
                 );       
@@ -70,6 +71,7 @@ public class atendimentoDAO {
                 atendimento.setTransferencia(rs.getString("transferencia"));
                 atendimento.setIdTransferido(rs.getInt("idTransferido"));
                 atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                atendimento.setMotivoPausa(rs.getString("motivoPausa"));
                 listaAtendimento.add(atendimento);
             }
         }catch(SQLException e){
@@ -91,7 +93,8 @@ public class atendimentoDAO {
                 + "`data` = ?,\n"
                 + "`transferencia` = ?,\n"
                 + "idTransferido = ?,\n"
-                + "obsTransferencia = ? \n"
+                + "obsTransferencia = ?, \n"
+                + "motivoPausa = ? \n"
                 + "WHERE `id` = ?";
                 MySQLDAO.executeQuery(query,
                        atendimento.getNomeCliente(),
@@ -107,6 +110,7 @@ public class atendimentoDAO {
                        atendimento.getTransferencia(),
                        atendimento.getIdTransferido(),
                        atendimento.getObsTransferencia(),
+                       atendimento.getMotivoPausa(),
                        atendimento.getId()
                         );
                  
@@ -138,6 +142,7 @@ public class atendimentoDAO {
                 atendimento.setIdTransferido(rs.getInt("idTransferido"));
                 atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
                 atendimento.setData(rs.getTimestamp("data"));
+                atendimento.setMotivoPausa(rs.getString("motivoPausa"));
                 
                 listaAtendimentoPausados.add(atendimento);
             }
@@ -169,6 +174,7 @@ public class atendimentoDAO {
                 atendimento.setTransferencia(rs.getString("transferencia"));
                 atendimento.setIdTransferido(rs.getInt("idTransferido"));
                 atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                atendimento.setMotivoPausa(rs.getString("motivoPausa"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){
@@ -199,6 +205,7 @@ public class atendimentoDAO {
                 atendimento.setTransferencia(rs.getString("transferencia"));
                 atendimento.setIdTransferido(rs.getInt("idTransferido"));
                 atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                atendimento.setMotivoPausa(rs.getString("motivoPausa"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){
@@ -229,6 +236,7 @@ public class atendimentoDAO {
                 atendimento.setTransferencia(rs.getString("transferencia"));
                 atendimento.setIdTransferido(rs.getInt("idTransferido"));
                 atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                atendimento.setMotivoPausa(rs.getString("motivoPausa"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){
@@ -259,6 +267,7 @@ public class atendimentoDAO {
                 atendimento.setTransferencia(rs.getString("transferencia"));
                 atendimento.setIdTransferido(rs.getInt("idTransferido"));
                 atendimento.setObsTransferencia(rs.getString("obsTransferencia"));
+                atendimento.setMotivoPausa(rs.getString("motivoPausa"));
                 listaAtendimentoPausados.add(atendimento);
             }
         }catch(SQLException e){
