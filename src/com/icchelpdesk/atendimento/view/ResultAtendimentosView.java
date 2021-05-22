@@ -3,18 +3,18 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.sistema.view.Principal;
 
-public class resultAtendimentosView extends javax.swing.JInternalFrame {
+public class ResultAtendimentosView extends javax.swing.JInternalFrame {
 
-  private static resultAtendimentosView instance = null;
+  private static ResultAtendimentosView instance = null;
 
-    public static resultAtendimentosView getInstance() {
+    public static ResultAtendimentosView getInstance() {
         if (instance == null) {
-            instance = new resultAtendimentosView();
+            instance = new ResultAtendimentosView();
             Principal.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }
-    public resultAtendimentosView() {
+    public ResultAtendimentosView() {
       
          initComponents();
      

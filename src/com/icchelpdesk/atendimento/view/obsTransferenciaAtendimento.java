@@ -35,7 +35,6 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
     
     
     public void concluirTransferencia(){
-        JOptionPane.showMessageDialog(null,"dentro da função concluir transferencia");
         ArrayList<atendimento> listaAtendimento = new ArrayList();
         listaAtendimento = atendimentoControl.getInstance().buscaAtendimentosId(id);
         
@@ -63,6 +62,7 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
             atendimento.setTransferencia(Login.getInstance().getUsuario()+" TRANSFERIU PARA "+ usuarioRecebe);
             atendimento.setObsTransferencia(jTextObsTransferencia.getText());
             atendimento.setIdTransferido(listaAtendimento.get(i).getId());
+            atendimento.setMotivoPausa("");
             int id = atendimentoControl.getInstance().create(atendimento);
             //crio um novo atendimento, para o usuario que esta recebendo o atendimento, transferido.
             
@@ -159,8 +159,8 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        transferenciaAtendimentos.getInstance(id).setVisible(false);
-        transferenciaAtendimentos.getInstance(id).setVisible(true);
+        TransferenciaAtendimentos.getInstance(id).setVisible(false);
+        TransferenciaAtendimentos.getInstance(id).setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonConcluirTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirTransferenciaActionPerformed

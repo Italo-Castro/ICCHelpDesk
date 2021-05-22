@@ -18,28 +18,34 @@ import javax.swing.border.LineBorder;
  *
  * @author Italo
  */
-public class atendimentoRegister extends javax.swing.JInternalFrame {
-     private static atendimentoRegister instance = null;
+public class AtendimentoRegister extends javax.swing.JInternalFrame {
+     private static AtendimentoRegister instance = null;
      String motivoPausa;
      
-    public static atendimentoRegister getInstance() {
+    public static AtendimentoRegister getInstance() {
         if (instance == null) {
-            instance = new atendimentoRegister();
+            instance = new AtendimentoRegister();
             Principal.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }
-    public void setMotivoPausa(String motivoPausa){
+    
+    public static void setInstance(AtendimentoRegister in){
+        instance = in;
+    }
+    
+    
+    public  void setMotivoPausa(String motivoPausa){
         this.motivoPausa=motivoPausa;
     }
     
     public String getMotivoPausa(){
         return motivoPausa;
     }
-     public atendimentoRegister() {
+     public AtendimentoRegister() {
             initComponents();
             PegarHora();
-            jScrollPane5.getVerticalScrollBar().setUnitIncrement(10);
+            jScrollPane5.getVerticalScrollBar().setUnitIncrement(15); //esta linha faz com que a barra de rolagem /ScrollPane role mais rapido
 
             jButtonGravar.setVisible(false);
             jButtonPausar.setVisible(false);
@@ -164,9 +170,6 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
      }
      public void pausarAtendimento(){
              
-       
-
-        
          if(jTextNomeContato.getText().equals("")){
                  JOptionPane.showMessageDialog(null,"Nome do contato obrigatorio");
                  jTextNomeContato.setBorder(new LineBorder(java.awt.Color.RED));
@@ -245,8 +248,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
          
           if(jComboAtendimentosPausados.getSelectedIndex() == 0){
              JOptionPane.showMessageDialog(null,"Selecione na sua lista de atendimentos pausados, o atendimento que deseja transferir");
-            transferenciaAtendimentos.getInstance(0).setVisible(false);
-            transferenciaAtendimentos.getInstance(0).setVisible(true);
+            TransferenciaAtendimentos.getInstance(0).setVisible(false);
+            TransferenciaAtendimentos.getInstance(0).setVisible(true);
             
         
         }else{
@@ -259,8 +262,8 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
        int id = Integer.parseInt(vect[1]);
        
-        transferenciaAtendimentos.getInstance(id).setVisible(false);
-        transferenciaAtendimentos.getInstance(id).setVisible(true);
+        TransferenciaAtendimentos.getInstance(id).setVisible(false);
+        TransferenciaAtendimentos.getInstance(id).setVisible(true);
         }
      }
      
@@ -341,6 +344,11 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         });
 
         jButton5.setText("Ver Atendimentos Transferidos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jComboAtendimentosPausados.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -632,8 +640,9 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
         if(jComboAtendimentosPausados.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null," Você deve selecionar um atendimento da sua lista de atendimentos em pausa","",JOptionPane.QUESTION_MESSAGE);
         }
-        retomarAtendimento(); 
-        
+        else {
+            retomarAtendimento(); 
+        }
     }//GEN-LAST:event_jButtonRetornarAtendimentoActionPerformed
 
     private void jTextRelatoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextRelatoKeyPressed
@@ -647,8 +656,15 @@ public class atendimentoRegister extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonTransferirActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       this.dispose();
+        AtendimentoRegister.setInstance(null);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        AtendimentosTransferidos.getInstance().setVisible(false);
+        AtendimentosTransferidos.getInstance().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
    
 

@@ -6,22 +6,22 @@ import com.icchelpdesk.sistema.view.Principal;
  *
  * @author Italo
  */
-public class atendimentosView extends javax.swing.JInternalFrame {
+public class AtendimentosView extends javax.swing.JInternalFrame {
 
-    private static atendimentosView instance = null;
+    private static AtendimentosView instance = null;
     
  
         
-     public static atendimentosView getInstance() {
+     public static AtendimentosView getInstance() {
         if (instance == null) {
-            instance = new atendimentosView();
+            instance = new AtendimentosView();
             Principal.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }
     
         
-    public atendimentosView() {
+    public AtendimentosView() {
         initComponents();
     }
 
@@ -190,8 +190,8 @@ public class atendimentosView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        resultAtendimentosView.getInstance().setVisible(false);
-        resultAtendimentosView.getInstance().setVisible(true);
+        ResultAtendimentosView.getInstance().setVisible(false);
+        ResultAtendimentosView.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed

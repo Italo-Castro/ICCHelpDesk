@@ -5,9 +5,9 @@ package com.icchelpdesk.sistema.view;
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.atendimento.view.AtendimentosTransferidos;
-import com.icchelpdesk.atendimento.view.atendimentoRegister;
-import com.icchelpdesk.atendimento.view.atendimentosView;
-import com.icchelpdesk.atendimento.view.transferenciaAtendimentos;
+import com.icchelpdesk.atendimento.view.AtendimentoRegister;
+import com.icchelpdesk.atendimento.view.AtendimentosView;
+import com.icchelpdesk.atendimento.view.TransferenciaAtendimentos;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import java.util.ArrayList;
@@ -319,23 +319,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemRegistrarPossivelClienteActionPerformed
 
     private void jMenuItemRegistrarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarAtendimentoActionPerformed
-         atendimentoRegister.getInstance().setVisible(false);
-         atendimentoRegister.getInstance().setVisible(true);
+         AtendimentoRegister.getInstance().setVisible(false);
+         AtendimentoRegister.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuItemRegistrarAtendimentoActionPerformed
 
     private void jMenuItemConsultarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultarAtendimentoActionPerformed
-         atendimentosView.getInstance().setVisible(false);
-         atendimentosView.getInstance().setVisible(true);
+         AtendimentosView.getInstance().setVisible(false);
+         AtendimentosView.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuItemConsultarAtendimentoActionPerformed
 
     private void jMenuItemTransferenciaDeAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
-          transferenciaAtendimentos.getInstance(0).setVisible(false);
-           transferenciaAtendimentos.getInstance(0).setVisible(true);
+          TransferenciaAtendimentos.getInstance(0).setVisible(false);
+           TransferenciaAtendimentos.getInstance(0).setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         atendimentoRegister.getInstance().setVisible(false);
-         atendimentoRegister.getInstance().setVisible(true);
+         AtendimentoRegister.getInstance().setVisible(false);
+         AtendimentoRegister.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

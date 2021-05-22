@@ -90,7 +90,8 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
             atendimento.setIdTransferido(id);    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);
-             atendimentoControl.getInstance().update(atendimento);
+            atendimento.setMotivoPausa(",");
+            atendimentoControl.getInstance().update(atendimento);
         
         }
         
@@ -124,8 +125,9 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
             atendimento.setTransferencia("TRANSFERENCIA DE ACEITA");
             atendimento.setIdTransferido(listaAtendimento.get(i).getIdTransferido());    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
+            atendimento.setMotivoPausa("");
             atendimentoControl.getInstance().update(atendimento);
-             atendimentoControl.getInstance().update(atendimento);
+ 
         
         }
    }

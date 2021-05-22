@@ -12,15 +12,15 @@ import javax.swing.JOptionPane;
     
 
 
-public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
+public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
     
     static int id =0; // protocolo que chegara por parametro da classe atendimento register depois da execução do botão  de transferir
     
-    private static transferenciaAtendimentos instance = null;
+    private static TransferenciaAtendimentos instance = null;
     
-    public static transferenciaAtendimentos getInstance(int id){
+    public static TransferenciaAtendimentos getInstance(int id){
         if(instance == null){
-            instance = new transferenciaAtendimentos(id); // se a instancia for nula crio uma nova, com o id passado pelo parametro
+            instance = new TransferenciaAtendimentos(id); // se a instancia for nula crio uma nova, com o id passado pelo parametro
              Principal.getInstance().getDesktopPane().add(instance);
         }
         return instance;
@@ -32,7 +32,7 @@ public class transferenciaAtendimentos extends javax.swing.JInternalFrame {
         
     
     
-    public transferenciaAtendimentos(int id) {
+    public TransferenciaAtendimentos(int id) {
         this.id=id;
         initComponents();
         jTextProtocolo.setText(""+id);
