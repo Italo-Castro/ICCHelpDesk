@@ -101,21 +101,27 @@ public class Login extends javax.swing.JFrame {
             
             if (login != null) {
                 if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
-                   setnvPermiss(login.getPermissao());
+                    setnvPermiss(login.getPermissao());
                     JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                     this.usuario = login.getNome();
                     
                     if(login.getPerfil().equals("DEV")) {
-                         PrincipalDev.getInstance().setVisible(true);    
-                         this.setVisible(false);   
+                        
+                        Principalde.getInstance().setVisible(true);
+                        this.setVisible(false); 
+                        System.out.print("dev");
+                        
                     }
                     else if (login.getPerfil().equals("SUPORTE")) {
                         
                         this.setVisible(false);
                     }
                     else if (login.getPerfil().equals("TESTE")) {
+                        
                       PrincipalTeste.getInstance().setVisible(true);
                       this.setVisible(false);
+                      System.out.print("teste");
+                      
                     }
                    
                     else {
