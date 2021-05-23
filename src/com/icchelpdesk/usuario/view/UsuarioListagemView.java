@@ -52,12 +52,12 @@ public class UsuarioListagemView extends javax.swing.JInternalFrame {
     }
 
     private void novo() {
-        UsuarioDadosView.getInstance().novo();
+        UsuariosRegisterView.getInstance().novo();
     }
 
     private void editar() {
         Usuario usuarioParaEditar = lista.get(jtDados.getSelectedRow());
-        UsuarioDadosView.getInstance().editar(usuarioParaEditar);
+        UsuariosRegisterView.getInstance().editar(usuarioParaEditar);
     }
 
     private void excluir() {

@@ -10,6 +10,7 @@ import com.icchelpdesk.atendimento.view.AtendimentosView;
 import com.icchelpdesk.atendimento.view.TransferenciaAtendimentos;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
+import com.icchelpdesk.usuario.view.UsuariosRegisterView;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JDesktopPane;
@@ -307,9 +308,8 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,Login.getInstance().getUsuario() + " Você não tem permissão para cadastrar novos usuarios","   ACESS DENIED!!!      ",JOptionPane.ERROR_MESSAGE);
             
         }else {
-          
-         AtendimentosTransferidos.getInstance().setVisible(false);
-         AtendimentosTransferidos.getInstance().setVisible(true);
+         UsuariosRegisterView.getInstance().setVisible(false);
+         UsuariosRegisterView.getInstance().setVisible(true);
         }
     }//GEN-LAST:event_jMenuItemUsuariosActionPerformed
 

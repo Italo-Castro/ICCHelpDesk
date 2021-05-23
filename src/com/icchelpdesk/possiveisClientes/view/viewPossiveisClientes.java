@@ -24,14 +24,24 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
            return instance;
     }
     
+    public static void setInstance(viewPossiveisClientes in) {
+        instance = in;
+    }
+    
     public viewPossiveisClientes() {
         initComponents();
        
         
     }
-   public String getDate(){
+   public String pegaNomeParaConsultaCompleta(){
        DefaultTableModel modelo  = (DefaultTableModel) jTable1.getModel();
-       String nome = modelo.getValueAt(jTable1.getSelectedRow(), 0).toString();
+       String nome  = "";
+       if(jTable1.getSelectedRowCount() == 0){
+           JOptionPane.showMessageDialog(null,"Selecione na table o possivel cliente que deseja consultar detalhes");
+       }
+       else {
+        nome = modelo.getValueAt(jTable1.getSelectedRow(), 0).toString();
+       }
        return nome;
    }
     
@@ -55,11 +65,7 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Telefone", "Cidade", "Status"
@@ -78,13 +84,11 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1166, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel1);
@@ -97,6 +101,11 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
         });
 
         jButton3.setText("Sair");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("ATUALIZAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +135,7 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);
@@ -139,7 +148,7 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -188,9 +197,14 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        consultPossivelCliente.getInstance().setVisible(false);
        consultPossivelCliente.getInstance().setVisible(true);
-       getDate();
+       pegaNomeParaConsultaCompleta();
        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        viewPossiveisClientes.setInstance(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

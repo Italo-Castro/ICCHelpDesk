@@ -5,13 +5,13 @@ import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import javax.swing.JOptionPane;
 
-public class UsuarioDadosView extends javax.swing.JInternalFrame {
+public class UsuariosRegisterView extends javax.swing.JInternalFrame {
 
-    private static UsuarioDadosView instance = null;
+    private static UsuariosRegisterView instance = null;
 
-    public static UsuarioDadosView getInstance() {
+    public static UsuariosRegisterView getInstance() {
         if (instance == null) {
-            instance = new UsuarioDadosView();
+            instance = new UsuariosRegisterView();
             Principal.getInstance().getDesktopPane().add(instance);
         }
         return instance;
@@ -21,7 +21,7 @@ public class UsuarioDadosView extends javax.swing.JInternalFrame {
 
     boolean exclusaoPermitida = false;
 
-    public UsuarioDadosView() {
+    public UsuariosRegisterView() {
         initComponents();
     }
 

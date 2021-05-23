@@ -20,7 +20,7 @@ public class UsuarioDAO {
     }
 
     public int create(Usuario usuario) {
-        String query = "INSERT INTO `usuarios` values (?,?,?,?,?,?,?,?);";
+        String query = "INSERT INTO `usuarios` values (?,?,?,?,?,?,?);";
         return MySQLDAO.executeQuery(
                 query,
                 null,
