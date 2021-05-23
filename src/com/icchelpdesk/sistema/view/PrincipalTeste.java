@@ -16,13 +16,13 @@ import java.util.Calendar;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
-public class Principal extends javax.swing.JFrame {
+public class PrincipalTeste extends javax.swing.JFrame {
 
-    private static Principal instance = null;
+    private static PrincipalTeste instance = null;
 
-    public static Principal getInstance() {
+    public static PrincipalTeste getInstance() {
         if (instance == null) {
-            instance = new Principal();
+            instance = new PrincipalTeste();
         }
         return instance;
     }
@@ -31,7 +31,7 @@ public class Principal extends javax.swing.JFrame {
         return jDesktopPane1;
     }
     
-    public Principal() {
+    public PrincipalTeste() {
         initComponents();
         construtor();
      
@@ -59,6 +59,7 @@ public class Principal extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabelUsuario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -66,6 +67,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAtendimento = new javax.swing.JMenu();
         jMenuItemRegistrarAtendimento = new javax.swing.JMenuItem();
@@ -113,6 +115,8 @@ public class Principal extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jPasswordField1.setText("jPasswordField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,12 +143,16 @@ public class Principal extends javax.swing.JFrame {
 
         jButton3.setText("LOGOUT");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel3.setText("Voce esta logado com o perfil de teste");
+
         jDesktopPane1.setLayer(jLabelUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -156,23 +164,28 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 866, Short.MAX_VALUE)
                 .addComponent(jButton3))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel2))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGap(263, 263, 263)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(148, 148, 148)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel1)
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel2))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel3)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel3)
+                .addGap(116, 116, 116)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -180,11 +193,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3))
         );
 
@@ -379,6 +392,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JMenu jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
@@ -395,6 +409,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuPossiveisClientes;
     private javax.swing.JMenu jMenuTransferenciaDeAtendimento;
     private javax.swing.JMenu jMenuUsuarios;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables

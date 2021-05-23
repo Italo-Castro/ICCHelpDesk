@@ -63,13 +63,13 @@ public class Login extends javax.swing.JFrame {
             }
         
         }
-        
+        /*
         System.out.print("\n"+endereco);
         System.out.print("\n"+porta);
         System.out.print("\n"+nomeDataBase);
         System.out.print("\n"+WAMP_USER);
         System.out.print("\n Senha -> "+WAMP_PASSWORD);
-        
+        */
        
         
         
@@ -104,8 +104,23 @@ public class Login extends javax.swing.JFrame {
                    setnvPermiss(login.getPermissao());
                     JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                     this.usuario = login.getNome();
-                    this.setVisible(false);
-                    Principal.getInstance().setVisible(true);
+                    
+                    if(login.getPerfil().equals("DEV")) {
+                         PrincipalDev.getInstance().setVisible(true);    
+                         this.setVisible(false);   
+                    }
+                    else if (login.getPerfil().equals("SUPORTE")) {
+                        
+                        this.setVisible(false);
+                    }
+                    else if (login.getPerfil().equals("TESTE")) {
+                      PrincipalTeste.getInstance().setVisible(true);
+                      this.setVisible(false);
+                    }
+                   
+                    else {
+                        JOptionPane.showMessageDialog(null,"USUARIO SEM PERFIL");
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuário Desativado.");

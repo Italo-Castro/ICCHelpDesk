@@ -4,7 +4,7 @@ package com.icchelpdesk.possiveisClientes.view;
 
 import com.icchelpdesk.possiveisClientes.control.possiveisClienteControl;
 import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +19,7 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
     public static viewPossiveisClientes getInstance(){
         if(instance == null){
           instance = new viewPossiveisClientes();
-                Principal.getInstance().getDesktopPane().add(instance);
+                PrincipalTeste.getInstance().getDesktopPane().add(instance);
             }
            return instance;
     }

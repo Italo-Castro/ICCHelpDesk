@@ -5,7 +5,7 @@ import br.com.parg.viacep.ViaCEPException;
 import com.icchelpdesk.cliente.model.bean.Cliente;
 import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.dao.ClienteDAO;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,7 +20,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
     public static ClienteCadastro getInstance() {
         if (instance == null) {
             instance = new ClienteCadastro();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }

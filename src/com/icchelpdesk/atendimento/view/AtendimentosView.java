@@ -1,6 +1,6 @@
 package com.icchelpdesk.atendimento.view;
 
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 
 /**
  *
@@ -15,7 +15,7 @@ public class AtendimentosView extends javax.swing.JInternalFrame {
      public static AtendimentosView getInstance() {
         if (instance == null) {
             instance = new AtendimentosView();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }

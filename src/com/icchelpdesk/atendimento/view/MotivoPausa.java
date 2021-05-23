@@ -1,6 +1,6 @@
 package com.icchelpdesk.atendimento.view;
 
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +14,7 @@ public class MotivoPausa extends javax.swing.JInternalFrame {
     public static MotivoPausa getInstance(){
         if(instance == null){
             instance = new MotivoPausa();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }

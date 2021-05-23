@@ -2,7 +2,7 @@ package com.icchelpdesk.possiveisClientes.view;
 
 import com.icchelpdesk.possiveisClientes.control.possiveisClienteControl;
 import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 
@@ -19,7 +19,7 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         public static possiveisClientesVIEW getInstance(){
             if(instance == null){
                 instance = new possiveisClientesVIEW();
-                Principal.getInstance().getDesktopPane().add(instance);
+                PrincipalTeste.getInstance().getDesktopPane().add(instance);
             }
            return instance;
         }

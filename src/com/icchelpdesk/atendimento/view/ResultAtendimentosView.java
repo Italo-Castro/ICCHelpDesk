@@ -1,7 +1,7 @@
 package com.icchelpdesk.atendimento.view;
 
 
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 
 public class ResultAtendimentosView extends javax.swing.JInternalFrame {
 
@@ -10,7 +10,7 @@ public class ResultAtendimentosView extends javax.swing.JInternalFrame {
     public static ResultAtendimentosView getInstance() {
         if (instance == null) {
             instance = new ResultAtendimentosView();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }

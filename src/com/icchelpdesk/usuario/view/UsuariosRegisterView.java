@@ -1,6 +1,6 @@
 package com.icchelpdesk.usuario.view;
 
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import javax.swing.JOptionPane;
@@ -12,7 +12,7 @@ public class UsuariosRegisterView extends javax.swing.JInternalFrame {
     public static UsuariosRegisterView getInstance() {
         if (instance == null) {
             instance = new UsuariosRegisterView();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }

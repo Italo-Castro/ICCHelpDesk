@@ -3,7 +3,7 @@ package com.icchelpdesk.atendimento.view;
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.sistema.view.Login;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
     public static TransferenciaAtendimentos getInstance(int id){
         if(instance == null){
             instance = new TransferenciaAtendimentos(id); // se a instancia for nula crio uma nova, com o id passado pelo parametro
-             Principal.getInstance().getDesktopPane().add(instance);
+             PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
         }
