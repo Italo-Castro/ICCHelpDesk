@@ -2,7 +2,7 @@ package com.icchelpdesk.possiveisClientes.view;
 
 import com.icchelpdesk.possiveisClientes.control.possiveisClienteControl;
 import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
-import com.icchelpdesk.sistema.view.PrincipalTeste;
+import com.icchelpdesk.sistema.view.*;
 import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 
@@ -19,8 +19,15 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         public static possiveisClientesVIEW getInstance(){
             if(instance == null){
                 instance = new possiveisClientesVIEW();
-                PrincipalTeste.getInstance().getDesktopPane().add(instance);
-            }
+                if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }else if(Login.getInstance().getPerfil().equals("DEV")) {
+                PrincipalDev.getInstance().getDesktopPane().add(instance);
+  
+            }else if(Login.getInstance().getPerfil().equals("TESTE"))  
+                 PrincipalTeste.getInstance().getDesktopPane().add(instance);
+          }
+          
            return instance;
         }
         
@@ -146,12 +153,6 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
         jLabel2.setText("Nome");
 
         jLabel4.setText("Telefone");
-
-        jTextTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextTelefoneActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Status");
 
@@ -295,10 +296,6 @@ public class possiveisClientesVIEW extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTelefoneActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
         if(jTextNome.getText().equals("")){

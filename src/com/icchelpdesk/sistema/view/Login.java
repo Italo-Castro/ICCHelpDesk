@@ -15,12 +15,15 @@ public class Login extends javax.swing.JFrame {
     public String usuario;
     private static Login instance = null;
     private int nvPermissao =0 ;
-    
+    String perfil ="";
     public static Login getInstance() {
         if (instance == null) {
             instance = new Login();
         }
         return instance;
+    }
+    public String getPerfil(){
+        return perfil;
     }
     
     public Login() {
@@ -108,17 +111,22 @@ public class Login extends javax.swing.JFrame {
                     if(login.getPerfil().equals("DEV")) {
                         
                         PrincipalDev.getInstance().setVisible(true);
+                        perfil = "DEV";
                         this.setVisible(false); 
                         System.out.print("dev");
                         
                     }
                     else if (login.getPerfil().equals("SUPORTE")) {
                         
+                        PrincipalSuporte.getInstance().setVisible(true);
+                        perfil = "SUPORTE";
                         this.setVisible(false);
+                        System.out.print("suporte");
                     }
-                    else if (login.getPerfil().equals("TESTE")) {
-                        
+                    
+                    else if (login.getPerfil().equals("TESTE")) {                        
                       PrincipalTeste.getInstance().setVisible(true);
+                      perfil = "TESTE";
                       this.setVisible(false);
                       System.out.print("teste");
                       

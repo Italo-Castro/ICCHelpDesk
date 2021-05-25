@@ -12,7 +12,6 @@ import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.usuario.view.UsuariosRegisterView;
 import java.util.ArrayList;
-import java.util.Calendar;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -255,6 +254,11 @@ public class PrincipalTeste extends javax.swing.JFrame {
         jMenuPossiveisClientes.add(jMenuItemRegistrarPossivelCliente);
 
         jMenuItemVerPossiveisClientes.setText("Ver possiveis clientes");
+        jMenuItemVerPossiveisClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVerPossiveisClientesActionPerformed(evt);
+            }
+        });
         jMenuPossiveisClientes.add(jMenuItemVerPossiveisClientes);
 
         jMenuBar1.add(jMenuPossiveisClientes);
@@ -342,7 +346,7 @@ public class PrincipalTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemConsultarAtendimentoActionPerformed
 
     private void jMenuItemTransferenciaDeAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
-          TransferenciaAtendimentos.getInstance(0).setVisible(false);
+            TransferenciaAtendimentos.getInstance(0).setVisible(false);
            TransferenciaAtendimentos.getInstance(0).setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
 
@@ -376,6 +380,10 @@ public class PrincipalTeste extends javax.swing.JFrame {
          AtendimentosTransferidos.getInstance().setVisible(true);
         }
     }//GEN-LAST:event_jMenuItemAtendimentosTransferidosActionPerformed
+
+    private void jMenuItemVerPossiveisClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerPossiveisClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemVerPossiveisClientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

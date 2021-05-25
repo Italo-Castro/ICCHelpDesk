@@ -2,8 +2,12 @@ package com.icchelpdesk.possiveisClientes.view;
 
 import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
 import com.icchelpdesk.possiveisClientes.model.dao.possiveisClientesDAO;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class consultPossivelCliente
@@ -14,8 +18,15 @@ public class consultPossivelCliente
     public static consultPossivelCliente getInstance(){
         if (instance == null){
             instance = new consultPossivelCliente();
-            Principal.getInstance().getDesktopPane().add(instance);
-        }
+           if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+                
+            }else if(Login.getInstance().getPerfil().equals("DEV")) {
+                PrincipalDev.getInstance().getDesktopPane().add(instance);
+  
+            }else if(Login.getInstance().getPerfil().equals("TESTE"))  
+                 PrincipalTeste.getInstance().getDesktopPane().add(instance);
+          }
         return instance;
     }
     
@@ -31,7 +42,7 @@ public class consultPossivelCliente
         
         String nome = (viewPossiveisClientes.getInstance().pegaNomeParaConsultaCompleta());
         if(nome == " "){
-            break;
+              JOptionPane.showMessageDialog(null,"Selecione na table o possivel cliente que deseja consultar detalhes");
         }
         else {
         listaConsult = possiveisClientesDAO.getInstance().readName(nome);

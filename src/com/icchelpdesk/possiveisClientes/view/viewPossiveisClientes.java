@@ -4,10 +4,11 @@ package com.icchelpdesk.possiveisClientes.view;
 
 import com.icchelpdesk.possiveisClientes.control.possiveisClienteControl;
 import com.icchelpdesk.possiveisClientes.model.bean.possiveisClientes;
+import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,11 +20,20 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
     public static viewPossiveisClientes getInstance(){
         if(instance == null){
           instance = new viewPossiveisClientes();
-                PrincipalTeste.getInstance().getDesktopPane().add(instance);
-            }
+          
+          if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+             }
+            else if(Login.getInstance().getPerfil().equals("DEV")) {
+                PrincipalDev.getInstance().getDesktopPane().add(instance);
+  
+            }else if(Login.getInstance().getPerfil().equals("TESTE"))  
+                 PrincipalTeste.getInstance().getDesktopPane().add(instance);
+          }
+          
            return instance;
     }
-    
+ 
     public static void setInstance(viewPossiveisClientes in) {
         instance = in;
     }
@@ -195,9 +205,12 @@ public class viewPossiveisClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1KeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    
        consultPossivelCliente.getInstance().setVisible(false);
        consultPossivelCliente.getInstance().setVisible(true);
        pegaNomeParaConsultaCompleta();
+       
+       
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
