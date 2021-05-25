@@ -6,7 +6,7 @@ pausar o atendimento para retornar o mesmo em outro momento, também conta
 com a funcionalidade de transferencias de atendimentos, onde um usuario consegue 
 transferir algum atendimento para outro usuario.
 
-## Funcionalidades
+## Funcionalidades 
 A aplicação conta com uma tela de login, cadastro de usuarios, cadastro de clientes e possiveis clientes.
 A ferramenta conssiste em 3 modulos principais, que são acessados de acordo com  cada perfil de usuario,
 inicialmente conta com 3 perfis, SUPORTE, DEV e TESTE.
