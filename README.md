@@ -8,6 +8,8 @@ transferir algum atendimento para outro usuario.
 
 ## Funcionalidades
 A aplicação conta com uma tela de login, cadastro de usuarios, cadastro de clientes e possiveis clientes.
+A ferramenta conssiste em 3 modulos principais, que são acessados de acordo com  cada perfil de usuario,
+inicialmente conta com 3 perfis, SUPORTE, DEV e TESTE.
 
 A ideia principal da ferramenta é poder registrar atendimentos aos clientes, para uma consulta futura.
 A ferramenta conta também com a funcionalidade de transferencia de atendimento, onde um usuario pode transferir um atendimento para outro usuario.
