@@ -7,7 +7,7 @@ com a funcionalidade de transferencias de atendimentos, onde um usuario consegue
 transferir algum atendimento para outro usuario.
 
 ## Funcionalidades 
-A aplicação conta com uma tela de login, cadastro de usuarios, cadastro de clientes e possiveis clientes.
+A aplicação conta com uma tela de login, cadastro de usuarios, cadastro de clientes e possiveis clientes e registro de pendencias a serem resolvidas.
 A ferramenta conssiste em 3 modulos principais, que são acessados de acordo com  cada perfil de usuario,
 inicialmente conta com 3 perfis, SUPORTE, DEV e TESTE.
 
