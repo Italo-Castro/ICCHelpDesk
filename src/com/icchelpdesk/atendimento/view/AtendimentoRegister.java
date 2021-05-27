@@ -10,7 +10,6 @@ import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
-import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 

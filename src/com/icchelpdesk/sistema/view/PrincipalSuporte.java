@@ -2,6 +2,7 @@ package com.icchelpdesk.sistema.view;
 
 import com.icchelpdesk.atendimento.view.AtendimentoRegister;
 import com.icchelpdesk.atendimento.view.TransferenciaAtendimentos;
+import com.icchelpdesk.pendencia.view.RegistrarPendencia;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.possiveisClientes.view.viewPossiveisClientes;
 import javax.swing.JDesktopPane;
@@ -155,7 +156,9 @@ public class PrincipalSuporte extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        System.out.print("pende");
+        
+        RegistrarPendencia.getInstance().setVisible(false);
+        RegistrarPendencia.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
