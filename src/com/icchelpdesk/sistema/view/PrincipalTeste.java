@@ -9,6 +9,7 @@ import com.icchelpdesk.atendimento.view.AtendimentoRegister;
 import com.icchelpdesk.atendimento.view.AtendimentosView;
 import com.icchelpdesk.atendimento.view.TransferenciaAtendimentos;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
+import com.icchelpdesk.pendencia.view.RegistrarPendencia;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.usuario.view.UsuariosRegisterView;
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class PrincipalTeste extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabelUsuario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -81,6 +83,8 @@ public class PrincipalTeste extends javax.swing.JFrame {
         jMenuItemUsuarios = new javax.swing.JMenuItem();
         jMenuCliente = new javax.swing.JMenu();
         jMenuItemCadastro = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -115,6 +119,8 @@ public class PrincipalTeste extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jPasswordField1.setText("jPasswordField1");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,7 +166,9 @@ public class PrincipalTeste extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 866, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
                 .addComponent(jButton3))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,18 +181,13 @@ public class PrincipalTeste extends javax.swing.JFrame {
                         .addGap(213, 213, 213)
                         .addComponent(jLabel1)
                         .addGap(57, 57, 57)
-                        .addComponent(jLabel2))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel2)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel3)
-                .addGap(116, 116, 116)
+                .addGap(210, 210, 210)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -197,7 +200,9 @@ public class PrincipalTeste extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel3)))
         );
 
         jMenuAtendimento.setText("Atendimento");
@@ -287,6 +292,18 @@ public class PrincipalTeste extends javax.swing.JFrame {
         jMenuCliente.add(jMenuItemCadastro);
 
         jMenuBar1.add(jMenuCliente);
+
+        jMenu1.setText("Pendencias");
+
+        jMenuItem2.setText("Registrar Pendencia");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -385,6 +402,11 @@ public class PrincipalTeste extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemVerPossiveisClientesActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        RegistrarPendencia.getInstance().setVisible(false);
+        RegistrarPendencia.getInstance().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -402,9 +424,12 @@ public class PrincipalTeste extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCliente;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAtendimentosTransferidos;
     private javax.swing.JMenuItem jMenuItemCadastro;

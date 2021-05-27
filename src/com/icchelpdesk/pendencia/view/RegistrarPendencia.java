@@ -1,6 +1,8 @@
 package com.icchelpdesk.pendencia.view;
 
 import com.icchelpdesk.pendencia.model.bean.Pendencias;
+import com.icchelpdesk.pendencia.model.dao.PendenciasDAO;
+import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;
 import com.icchelpdesk.sistema.view.PrincipalSuporte;
@@ -58,6 +60,15 @@ public class RegistrarPendencia extends javax.swing.JInternalFrame {
             }
             else if (jRadioProblemaProduto.isSelected()) {
                  pendencia.setTipoProblema("PROBLEMA COM O PRODUTO");
+            }
+            PendenciasDAO dao = new PendenciasDAO();
+            dao.create(pendencia);
+            
+            if(MySQLDAO.resultado == 1){
+                JOptionPane.showMessageDialog(null,"Pendencia registrada com sucesso");
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Erro ao registrar pendencia");
             }
           }
     }
