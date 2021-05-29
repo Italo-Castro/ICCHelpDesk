@@ -2,7 +2,10 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,7 +23,16 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
     public static obsTransferenciaAtendimento getInstance(int id,String usuarioRecebe){
         if(instance == null){
             instance = new obsTransferenciaAtendimento(id,usuarioRecebe);
-             PrincipalTeste.getInstance().getDesktopPane().add(instance);
+               
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+            }
         }
         return instance;
         }

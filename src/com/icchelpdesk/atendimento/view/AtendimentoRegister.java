@@ -4,8 +4,11 @@ import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.bean.Cliente;
+import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -24,7 +27,16 @@ public class AtendimentoRegister extends javax.swing.JInternalFrame {
     public static AtendimentoRegister getInstance() {
         if (instance == null) {
             instance = new AtendimentoRegister();
-            PrincipalTeste.getInstance().getDesktopPane().add(instance);
+              
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+            }
         }
         return instance;
     }

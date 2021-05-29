@@ -2,7 +2,10 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
@@ -21,7 +24,16 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
     public static TransferenciaAtendimentos getInstance(int id){
         if(instance == null){
             instance = new TransferenciaAtendimentos(id); // se a instancia for nula crio uma nova, com o id passado pelo parametro
-             PrincipalTeste.getInstance().getDesktopPane().add(instance);
+               
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+            }
         }
         return instance;
         }

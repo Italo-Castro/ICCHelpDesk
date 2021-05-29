@@ -1,6 +1,10 @@
 package com.icchelpdesk.atendimento.view;
 
 
+import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
+import com.icchelpdesk.sistema.view.Login;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
 
 public class ResultAtendimentosView extends javax.swing.JInternalFrame {
@@ -10,7 +14,16 @@ public class ResultAtendimentosView extends javax.swing.JInternalFrame {
     public static ResultAtendimentosView getInstance() {
         if (instance == null) {
             instance = new ResultAtendimentosView();
-            PrincipalTeste.getInstance().getDesktopPane().add(instance);
+              
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+            }
         }
         return instance;
     }

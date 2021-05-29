@@ -386,16 +386,10 @@ public class PrincipalTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItemAtendimentosTransferidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtendimentosTransferidosActionPerformed
-        ArrayList<atendimento> listaAtendimentosPausados = new ArrayList();
-        atendimentoControl.getInstance().buscaAtendimentosPausados();
         
-        if(listaAtendimentosPausados.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Não há atendimentos transferidos para você","",JOptionPane.PLAIN_MESSAGE);
-        }
-        else {
          AtendimentosTransferidos.getInstance().setVisible(false);
          AtendimentosTransferidos.getInstance().setVisible(true);
-        }
+        
     }//GEN-LAST:event_jMenuItemAtendimentosTransferidosActionPerformed
 
     private void jMenuItemVerPossiveisClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerPossiveisClientesActionPerformed
