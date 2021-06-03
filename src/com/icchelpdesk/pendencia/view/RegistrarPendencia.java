@@ -54,6 +54,7 @@ public class RegistrarPendencia extends javax.swing.JInternalFrame {
             pendencia.setObservacao(jTextObservacao.getText());
             pendencia.setRegistradoPor(Login.getInstance().getUsuario());
             pendencia.setSetor(jComboDepartamento.getSelectedItem().toString());
+            pendencia.setStatus("NAO FEITO");
             
             if(jRadioSolicitacao.isSelected()){
                 pendencia.setTipoProblema("SOLICITACAO DE CLIENTE");
@@ -86,16 +87,16 @@ public class RegistrarPendencia extends javax.swing.JInternalFrame {
         jPanelBt2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextDescricao = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jComboDepartamento = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jRadioProblemaProduto = new javax.swing.JRadioButton();
         jRadioSolicitacao = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextDescricao = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextObservacao = new javax.swing.JTextArea();
@@ -140,6 +141,36 @@ public class RegistrarPendencia extends javax.swing.JInternalFrame {
         jSplitPane1.setLeftComponent(jPanelBt1);
 
         jLabel1.setText("PROTOCOLO");
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel2.setText("Descrição do Problema");
+
+        jTextDescricao.setColumns(20);
+        jTextDescricao.setRows(5);
+        jScrollPane1.setViewportView(jTextDescricao);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(247, 247, 247))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane2.addTab("Descrição", jPanel1);
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel4.setText("Informe o departamento, que o problema se melhor relaciona");
@@ -193,36 +224,6 @@ public class RegistrarPendencia extends javax.swing.JInternalFrame {
 
         jTabbedPane2.addTab("Informações", jPanel3);
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel2.setText("Descrição do Problema");
-
-        jTextDescricao.setColumns(20);
-        jTextDescricao.setRows(5);
-        jScrollPane1.setViewportView(jTextDescricao);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(247, 247, 247))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane2.addTab("Descrição", jPanel1);
-
         jTextObservacao.setColumns(20);
         jTextObservacao.setRows(5);
         jScrollPane2.setViewportView(jTextObservacao);
@@ -261,7 +262,7 @@ public class RegistrarPendencia extends javax.swing.JInternalFrame {
             .addGroup(jPanelBt2Layout.createSequentialGroup()
                 .addGap(313, 313, 313)
                 .addComponent(jLabel1)
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelBt2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane2)

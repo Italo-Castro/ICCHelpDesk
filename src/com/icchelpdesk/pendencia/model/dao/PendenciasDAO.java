@@ -20,7 +20,7 @@ public class PendenciasDAO {
     }
     
     public int create(Pendencias pendencia){
-        String query = "insert into pendencias values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into pendencias values (?, ?, ?, ?, ?, ?, ?, ?,?)";
         
         return MySQLDAO.executeQuery(query,
                 null,
@@ -30,7 +30,8 @@ public class PendenciasDAO {
                 pendencia.getObservacao(),
                 pendencia.getSetor(),
                 pendencia.getRegistradoPor(),
-                pendencia.getTipoProblema()
+                pendencia.getTipoProblema(),
+                pendencia.getStatus()
         );
     }
     
@@ -52,7 +53,7 @@ public class PendenciasDAO {
                 pendencia.setResolved_at(rs.getTimestamp("resolved_at"));
                 pendencia.setSetor(rs.getString("departamento"));
                 pendencia.setTipoProblema(rs.getString("tipoProblema"));
-                
+                pendencia.setStatus(rs.getString("status"));
                 listaPendencias.add(pendencia);
             }
             
@@ -78,8 +79,9 @@ public class PendenciasDAO {
                 pendencia.setResolved_at(rs.getTimestamp("resolved_at"));
                 pendencia.setSetor(rs.getString("departamento"));
                 pendencia.setTipoProblema(rs.getString("tipoProblema"));
-                
+                pendencia.setStatus(rs.getString("status"));
                 lista.add(pendencia);
+                JOptionPane.showMessageDialog(null,"Adicionada a lista");
             }
             
         }catch(SQLException e) {
@@ -100,5 +102,16 @@ public class PendenciasDAO {
                 pendencia.getResolved_at(),
                 pendencia.getId()
                );
+   }
+   public void updateStatus(Pendencias pendencia){
+       
+       String query = "update pendencias \n"
+               + "set status = ? "
+               + "where id = ?";
+               
+       MySQLDAO.executeQuery(query,
+               pendencia.getStatus(),
+               pendencia.getId());
+       
    }
 }

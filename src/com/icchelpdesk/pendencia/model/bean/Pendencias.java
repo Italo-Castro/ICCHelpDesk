@@ -13,11 +13,12 @@ public class Pendencias {
     private String setor;
     private String registradoPor;
     private String tipoProblema;
+    private String status;
 
     public Pendencias() {
     }
 
-    public Pendencias(int id, Timestamp created_at, Timestamp resolved_at, String descricao, String observacao, String setor, String registradoPor, String tipoProblema) {
+    public Pendencias(int id, Timestamp created_at, Timestamp resolved_at, String descricao, String observacao, String setor, String registradoPor, String tipoProblema, String status) {
         this.id = id;
         this.created_at = created_at;
         this.resolved_at = resolved_at;
@@ -26,6 +27,15 @@ public class Pendencias {
         this.setor = setor;
         this.registradoPor = registradoPor;
         this.tipoProblema = tipoProblema;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {
