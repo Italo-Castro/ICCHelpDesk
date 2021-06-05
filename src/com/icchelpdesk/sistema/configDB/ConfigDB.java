@@ -1,4 +1,4 @@
-package com.icchelpdesk.sistema.view;
+package com.icchelpdesk.sistema.configDB;
 
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import java.io.BufferedWriter;
@@ -170,7 +170,7 @@ public class ConfigDB extends javax.swing.JFrame {
         String senha = jTextSenha.getText();
         
         
-        String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+        String path = "configDB.txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
             
             bw.write(endereco+";");

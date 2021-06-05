@@ -1,5 +1,6 @@
 package com.icchelpdesk.sistema.view;
 
+import com.icchelpdesk.sistema.configDB.ConfigDB;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import static com.icchelpdesk.sistema.model.util.MySQLDAO.setDBURL;
 import static com.icchelpdesk.sistema.model.util.MySQLDAO.setUsuarioSenha;
@@ -35,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         String WAMP_USER = "";
         String WAMP_PASSWORD = " ";
         
-        String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+        String path = "C:\\Users\\Italo\\Documents\\NetBeansProjects\\ICCHelpDesk\\src\\com\\icchelpdesk\\sistema\\configDB\\configDB.txt"; //AONDE VOU LER MEU ARQUIVO DEPOIS QUE EU GERAR O JAR?????
         try (BufferedReader bw = new BufferedReader(new FileReader(path))){
         
                 String line = bw.readLine();
@@ -53,7 +54,7 @@ public class Login extends javax.swing.JFrame {
             
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo");
-            
+            System.exit(0);
         }catch (NullPointerException ex){
             JOptionPane.showMessageDialog(null,"Verifique o arquivo de configuração","Arquivo de configuração de conexão invalido",JOptionPane.ERROR_MESSAGE);
              int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração da conexao com o banco de dados ?");

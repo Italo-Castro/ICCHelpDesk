@@ -28,7 +28,8 @@ public class PendenciasControl {
         PendenciasDAO.getInstance().updateResolved_at(pendencia);
     }
    public ArrayList <Pendencias> buscarPorDepartamento(String departamento){
-       String query = "select *from pendencias where departamento = '"+departamento+"'";
+
+        String query = "select *from pendencias where departamento = '"+departamento+"'";             
        return PendenciasDAO.getInstance().buscaPorDepartamento(query); 
    } 
    

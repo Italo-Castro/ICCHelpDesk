@@ -6,15 +6,15 @@ import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;
 import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class PendenciasView extends javax.swing.JInternalFrame {
 
     private static PendenciasView instance = null;
-    public String perfil;
+    
     
     public PendenciasView getInstance(){
         if (instance == null) {
@@ -22,15 +22,16 @@ public class PendenciasView extends javax.swing.JInternalFrame {
 
             if(Login.getInstance().getPerfil().equals("SUPORTE")){
                   PrincipalSuporte.getInstance().getDesktopPane().add(instance);
-                  perfil = "SUPORTE";
+                 
             }
             else if(Login.getInstance().getPerfil().equals("DEV")){
+                 
                   PrincipalDev.getInstance().getDesktopPane().add(instance);
-                  perfil = "DEV";
+                 
             }
             else if(Login.getInstance().getPerfil().equals("TESTE")){
                   PrincipalTeste.getInstance().getDesktopPane().add(instance);
-                  perfil = "TESTE";
+                  
             }
         }
         return instance;
@@ -46,7 +47,9 @@ public class PendenciasView extends javax.swing.JInternalFrame {
     }
 
     public void carregarTabela(){
-       String departamento = "";
+        String perfil = Login.getInstance().getPerfil();
+        
+        String departamento = "";
         if(perfil == "DEV"){
             departamento = "desenvolvimento";
         }
@@ -56,7 +59,7 @@ public class PendenciasView extends javax.swing.JInternalFrame {
         
         ArrayList<Pendencias> listaPendencias = PendenciasControl.getInstance().buscarPorDepartamento(departamento);
        
-        System.out.print("taamanho lista = \n"+ listaPendencias.size());
+       
         for(Pendencias p : listaPendencias) {
             modelo.addRow(new String []{p.getTipoProblema(),"","",});
         }

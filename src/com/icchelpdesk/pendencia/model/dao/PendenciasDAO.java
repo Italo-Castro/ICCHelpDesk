@@ -64,24 +64,26 @@ public class PendenciasDAO {
         return listaPendencias;
     }
     public  ArrayList<Pendencias> buscaPorDepartamento (String query){
+        
         ArrayList<Pendencias> lista = new ArrayList();
         
         try {
             ResultSet rs = MySQLDAO.getResultSet(query);
             
             while (rs.next()){
+                
                 Pendencias pendencia = new Pendencias();
                 pendencia.setId(rs.getInt("id"));
                 pendencia.setCreated_at(rs.getTimestamp("created_at"));
                 pendencia.setDescricao(rs.getString("descricao"));
                 pendencia.setObservacao(rs.getString("observacao"));
-                pendencia.setRegistradoPor(rs.getString("registradoPor"));
+                pendencia.setRegistradoPor(rs.getString("registrarPor"));
                 pendencia.setResolved_at(rs.getTimestamp("resolved_at"));
                 pendencia.setSetor(rs.getString("departamento"));
                 pendencia.setTipoProblema(rs.getString("tipoProblema"));
                 pendencia.setStatus(rs.getString("status"));
                 lista.add(pendencia);
-                JOptionPane.showMessageDialog(null,"Adicionada a lista");
+                
             }
             
         }catch(SQLException e) {
