@@ -58,12 +58,38 @@ public class PendenciasView extends javax.swing.JInternalFrame {
         modelo.setNumRows(0);
         
         ArrayList<Pendencias> listaPendencias = PendenciasControl.getInstance().buscarPorDepartamento(departamento);
-       
-       
-        for(Pendencias p : listaPendencias) {
-            modelo.addRow(new String []{p.getTipoProblema(),"","",});
+        ArrayList<String> listaNaoFeitos = new ArrayList();
+        ArrayList<String> listaEmAndamento = new ArrayList();
+        ArrayList<String> listaTeste = new ArrayList();
+        for (int i=0;i<listaPendencias.size();i++){
+            if(listaPendencias.get(i).getStatus().equals("NAO FEITO")) {
+                listaNaoFeitos.add(listaPendencias.get(i).getDescricao());                
+            }
+            else  if(listaPendencias.get(i).getStatus().equals("EM ANDAMENTO")) {
+                listaEmAndamento.add(listaPendencias.get(i).getDescricao());                
+            }
+            else  if(listaPendencias.get(i).getStatus().equals("TESTE")) {
+                listaTeste.add(listaPendencias.get(i).getDescricao());                
+            }
+        }
+        for (int i=0 ;i<listaNaoFeitos.size();i++){
+           // JOptionPane.showMessageDialog(null,"Tamanho lista nao feitos"+listaNaoFeitos.size());
+        modelo.setValueAt(new String[]{listaNaoFeitos.get(i).toString()},i,0);
+
+        //modelo.setValueAt(new String[]{listaEmAndamento.get(i).toString()},i,1);
+        //modelo.setValueAt(new String[]{listaTeste.get(i).toString()},i,2);
+        
         }
     }
+        /*
+        for(Pendencias p : listaPendencias) {
+            if(p.getStatus().equals("NAO FEITO")) {
+                modelo.setValueAt(p.getDescricao(), 0, 1);
+            }
+           // modelo.addRow(new String []{p.getTipoProblema(),"","",});
+        }
+    }
+*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -81,7 +107,14 @@ public class PendenciasView extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "Não Feito", "Em andamento", "Teste", "Concluido"
@@ -100,8 +133,8 @@ public class PendenciasView extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 348, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 472, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);

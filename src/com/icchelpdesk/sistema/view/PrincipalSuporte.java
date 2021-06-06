@@ -29,6 +29,8 @@ public class PrincipalSuporte extends javax.swing.JFrame {
     
     public PrincipalSuporte() {
         initComponents();
+        setLocationRelativeTo(null);
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
    
