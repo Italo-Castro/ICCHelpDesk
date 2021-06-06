@@ -3,7 +3,6 @@ package com.icchelpdesk.atendimento.control;
 import com.icchelpdesk.atendimento.model.dao.atendimentoDAO;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.sistema.view.Login;
-import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.util.ArrayList;
 
 

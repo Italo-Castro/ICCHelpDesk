@@ -5,7 +5,7 @@ import br.com.parg.viacep.ViaCEPException;
 import com.icchelpdesk.cliente.model.bean.Cliente;
 import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.dao.ClienteDAO;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,14 +20,19 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
     public static ClienteCadastro getInstance() {
         if (instance == null) {
             instance = new ClienteCadastro();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }
 
+    public static void setInstance(ClienteCadastro in) {
+        instance = in;
+    }
+    
     public ClienteCadastro() {
         initComponents();
     }
+    
     
     public void insertCliente (Cliente cliente){
      
@@ -150,7 +155,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
                 .addComponent(jButtonSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonExit)
-                .addContainerGap(492, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel8);
@@ -196,7 +201,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
-                        .addGap(0, 570, Short.MAX_VALUE))
+                        .addGap(0, 593, Short.MAX_VALUE))
                     .addComponent(jTextFantasia)
                     .addComponent(jTextResponsavel)
                     .addComponent(jTextTel_1)
@@ -234,7 +239,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextTel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPaneClient.addTab("Cliente", null, jPanel1, "k,");
@@ -267,6 +272,11 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
         });
 
         jComboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------------------------------------------------------------------------------------------------------------------------------------------------------", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
+        jComboEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboEstadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -275,7 +285,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboEstado, 0, 651, Short.MAX_VALUE)
+                    .addComponent(jComboEstado, 0, 674, Short.MAX_VALUE)
                     .addComponent(jTextCidade)
                     .addComponent(jTextCep)
                     .addComponent(jTextBairro)
@@ -322,24 +332,22 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 663, Short.MAX_VALUE)
+            .addGap(0, 686, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 398, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 31, Short.MAX_VALUE)))
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPaneClient.addTab("Endereço", jPanel9);
@@ -361,14 +369,6 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
         jButton1.setText("Limpar texto");
 
         jLabelCaracters.setText("500");
-        jLabelCaracters.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabelCaractersKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jLabelCaractersKeyReleased(evt);
-            }
-        });
 
         jLabel15.setText("INFORME OS MODULOS QUE O CLIENTE UTILIZA");
 
@@ -420,7 +420,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
                         .addComponent(jCheckNfce)
                         .addComponent(jCheckNfe))
                     .addComponent(jCheckMdfe, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel15)
@@ -462,7 +462,7 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
                     .addComponent(jButton1)
                     .addComponent(jLabel16)
                     .addComponent(jLabelCaracters))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jTabbedPaneClient.addTab("Módulos", jPanel10);
@@ -659,20 +659,9 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        // TODO add your handling code here:
+        ClienteCadastro.setInstance(null);
+        this.dispose();
     }//GEN-LAST:event_jButtonExitActionPerformed
-
-    private void jLabelCaractersKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabelCaractersKeyPressed
-        
-        
-    }//GEN-LAST:event_jLabelCaractersKeyPressed
-
-    private void jLabelCaractersKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabelCaractersKeyReleased
-        
-       
-        
-        
-    }//GEN-LAST:event_jLabelCaractersKeyReleased
 
     private void jTextAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaKeyPressed
          String jText = jTextArea.getText();
@@ -701,6 +690,10 @@ public class ClienteCadastro extends javax.swing.JInternalFrame {
         
        
     }//GEN-LAST:event_jTextCepKeyPressed
+
+    private void jComboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

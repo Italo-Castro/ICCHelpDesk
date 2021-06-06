@@ -1,6 +1,6 @@
 package com.icchelpdesk.usuario.view;
 
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.awt.event.KeyEvent;
@@ -14,7 +14,7 @@ public class UsuarioListagemView extends javax.swing.JInternalFrame {
     public static UsuarioListagemView getInstance() {
         if (instance == null) {
             instance = new UsuarioListagemView();
-            Principal.getInstance().getDesktopPane().add(instance);
+            PrincipalTeste.getInstance().getDesktopPane().add(instance);
         }
         return instance;
     }
@@ -52,12 +52,12 @@ public class UsuarioListagemView extends javax.swing.JInternalFrame {
     }
 
     private void novo() {
-        UsuarioDadosView.getInstance().novo();
+        UsuariosRegisterView.getInstance().novo();
     }
 
     private void editar() {
         Usuario usuarioParaEditar = lista.get(jtDados.getSelectedRow());
-        UsuarioDadosView.getInstance().editar(usuarioParaEditar);
+        UsuariosRegisterView.getInstance().editar(usuarioParaEditar);
     }
 
     private void excluir() {

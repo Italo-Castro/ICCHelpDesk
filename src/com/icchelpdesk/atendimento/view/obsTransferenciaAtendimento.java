@@ -2,8 +2,11 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.view.Login;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -20,7 +23,16 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
     public static obsTransferenciaAtendimento getInstance(int id,String usuarioRecebe){
         if(instance == null){
             instance = new obsTransferenciaAtendimento(id,usuarioRecebe);
-             Principal.getInstance().getDesktopPane().add(instance);
+               
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+            }
         }
         return instance;
         }
@@ -35,7 +47,6 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
     
     
     public void concluirTransferencia(){
-        JOptionPane.showMessageDialog(null,"dentro da função concluir transferencia");
         ArrayList<atendimento> listaAtendimento = new ArrayList();
         listaAtendimento = atendimentoControl.getInstance().buscaAtendimentosId(id);
         
@@ -63,6 +74,7 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
             atendimento.setTransferencia(Login.getInstance().getUsuario()+" TRANSFERIU PARA "+ usuarioRecebe);
             atendimento.setObsTransferencia(jTextObsTransferencia.getText());
             atendimento.setIdTransferido(listaAtendimento.get(i).getId());
+            atendimento.setMotivoPausa("");
             int id = atendimentoControl.getInstance().create(atendimento);
             //crio um novo atendimento, para o usuario que esta recebendo o atendimento, transferido.
             
@@ -159,8 +171,8 @@ public class obsTransferenciaAtendimento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        transferenciaAtendimentos.getInstance(id).setVisible(false);
-        transferenciaAtendimentos.getInstance(id).setVisible(true);
+        TransferenciaAtendimentos.getInstance(id).setVisible(false);
+        TransferenciaAtendimentos.getInstance(id).setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonConcluirTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirTransferenciaActionPerformed

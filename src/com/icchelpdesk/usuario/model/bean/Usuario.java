@@ -12,6 +12,7 @@ public class Usuario {
     private String estado;
     private Timestamp created_at;
     private Timestamp updated_at;
+    private String perfil;
 
     public Usuario() {
     }
@@ -27,7 +28,7 @@ public class Usuario {
      * @param created_at
      * @param updated_at 
      */
-    public Usuario(int id, int permissao, String nome, String codigo, String senha, String estado, Timestamp created_at, Timestamp updated_at) {
+    public Usuario(int id, int permissao, String nome, String codigo, String senha, String estado, Timestamp created_at, Timestamp updated_at, String perfil) {
         this.id = id;
         this.permissao = permissao;
         this.nome = nome;
@@ -36,6 +37,7 @@ public class Usuario {
         this.estado = estado;
         this.created_at = created_at;
         this.updated_at = updated_at;
+        this.perfil = perfil;
     }
 
     public int getId() {
@@ -102,4 +104,13 @@ public class Usuario {
         this.updated_at = updated_at;
     }
 
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
+    
 }

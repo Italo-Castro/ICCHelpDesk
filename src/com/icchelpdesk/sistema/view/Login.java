@@ -1,26 +1,31 @@
 package com.icchelpdesk.sistema.view;
 
+import com.icchelpdesk.sistema.configDB.ConfigDB;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
-import static com.icchelpdesk.sistema.model.util.MySQLDAO.setDBURL;
-import static com.icchelpdesk.sistema.model.util.MySQLDAO.setUsuarioSenha;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
+    
     public String usuario;
     private static Login instance = null;
     private int nvPermissao =0 ;
+    String perfil ="";
     
     public static Login getInstance() {
         if (instance == null) {
             instance = new Login();
         }
         return instance;
+    }
+    public String getPerfil(){
+        return perfil;
     }
     
     public Login() {
@@ -32,9 +37,13 @@ public class Login extends javax.swing.JFrame {
         String WAMP_USER = "";
         String WAMP_PASSWORD = " ";
         
-        String path = "C://Users//Italo//Documents//NetBeansProjects//ICCHelpDesk//configDB.txt";
+        File f = new File("configDB.txt");
+        if(f.exists()){
+           
+            String path = "configDB.txt"; //AONDE VOU LER MEU ARQUIVO DEPOIS QUE EU GERAR O JAR?????
+       
         try (BufferedReader bw = new BufferedReader(new FileReader(path))){
-        
+                
                 String line = bw.readLine();
             
                 
@@ -45,15 +54,13 @@ public class Login extends javax.swing.JFrame {
                  WAMP_USER = vect[3];
                  WAMP_PASSWORD = vect[4];
   
-            
-           ;
-            
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo");
-            
+       
         }catch (NullPointerException ex){
             JOptionPane.showMessageDialog(null,"Verifique o arquivo de configuração","Arquivo de configuração de conexão invalido",JOptionPane.ERROR_MESSAGE);
-             int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração da conexao com o banco de dados ?");
+            
+             int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração de conexao com o banco de dados ?");
             
             if(x == JOptionPane.YES_OPTION){
                  new ConfigDB().setVisible(true);
@@ -61,15 +68,21 @@ public class Login extends javax.swing.JFrame {
             else {
                 System.exit(0);
             }
-        
         }
-        
+            }
+        else {
+            JOptionPane.showMessageDialog(null,"Arquivo de configuração BD não encontrado");
+            ConfigDB.getInstance().setVisible(true);
+            this.dispose();
+        }
+
+        /*
         System.out.print("\n"+endereco);
         System.out.print("\n"+porta);
         System.out.print("\n"+nomeDataBase);
         System.out.print("\n"+WAMP_USER);
         System.out.print("\n Senha -> "+WAMP_PASSWORD);
-        
+        */
        
         
         
@@ -79,7 +92,7 @@ public class Login extends javax.swing.JFrame {
         MySQLDAO.getConnection_Local();
         
     }
-   
+
     private void construtor() {
         setLocationRelativeTo(null);
     }
@@ -101,11 +114,37 @@ public class Login extends javax.swing.JFrame {
             
             if (login != null) {
                 if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
-                   setnvPermiss(login.getPermissao());
+                    setnvPermiss(login.getPermissao());
                     JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                     this.usuario = login.getNome();
-                    this.setVisible(false);
-                    Principal.getInstance().setVisible(true);
+                    
+                    if(login.getPerfil().equals("DEV")) {
+                        
+                        PrincipalDev.getInstance().setVisible(true);
+                        perfil = "DEV";
+                        this.setVisible(false); 
+                        System.out.print("dev");
+                        
+                    }
+                    else if (login.getPerfil().equals("SUPORTE")) {
+                        
+                        PrincipalSuporte.getInstance().setVisible(true);
+                        perfil = "SUPORTE";
+                        this.setVisible(false);
+                        System.out.print("suporte");
+                    }
+                    
+                    else if (login.getPerfil().equals("TESTE")) {                        
+                      PrincipalTeste.getInstance().setVisible(true);
+                      perfil = "TESTE";
+                      this.setVisible(false);
+                      System.out.print("teste");
+                      
+                    }
+                   
+                    else {
+                        JOptionPane.showMessageDialog(null,"USUARIO SEM PERFIL");
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuário Desativado.");
@@ -122,7 +161,7 @@ public class Login extends javax.swing.JFrame {
                  new ConfigDB().setVisible(true);
             }
             else {
-                System.exit(0);
+                this.dispose();
             }
         }
 

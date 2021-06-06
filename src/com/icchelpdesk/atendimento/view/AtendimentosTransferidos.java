@@ -2,8 +2,11 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
+import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.view.Login;
-import com.icchelpdesk.sistema.view.Principal;
+import com.icchelpdesk.sistema.view.PrincipalDev;
+import com.icchelpdesk.sistema.view.PrincipalSuporte;
+import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -19,7 +22,16 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
     public static AtendimentosTransferidos getInstance(){
         if (instance == null){
             instance = new AtendimentosTransferidos();
-            Principal.getInstance().getDesktopPane().add(instance);
+             
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+            }
         }
         return instance;
     }
@@ -90,7 +102,8 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
             atendimento.setIdTransferido(id);    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
             atendimentoControl.getInstance().update(atendimento);
-             atendimentoControl.getInstance().update(atendimento);
+            atendimento.setMotivoPausa(",");
+            atendimentoControl.getInstance().update(atendimento);
         
         }
         
@@ -124,8 +137,9 @@ public class AtendimentosTransferidos extends javax.swing.JInternalFrame {
             atendimento.setTransferencia("TRANSFERENCIA DE ACEITA");
             atendimento.setIdTransferido(listaAtendimento.get(i).getIdTransferido());    
             atendimento.setObsTransferencia(jTextObsTransferencia.getText()); 
+            atendimento.setMotivoPausa("");
             atendimentoControl.getInstance().update(atendimento);
-             atendimentoControl.getInstance().update(atendimento);
+ 
         
         }
    }

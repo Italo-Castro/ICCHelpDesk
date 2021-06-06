@@ -34,25 +34,25 @@ public class PrincipalTest {
     }
 
     /**
-     * Test of getInstance method, of class Principal.
+     * Test of getInstance method, of class PrincipalTeste.
      */
     @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        Principal expResult = null;
-        Principal result = Principal.getInstance();
+        PrincipalTeste expResult = null;
+        PrincipalTeste result = PrincipalTeste.getInstance();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getDesktopPane method, of class Principal.
+     * Test of getDesktopPane method, of class PrincipalTeste.
      */
     @Test
     public void testGetDesktopPane() {
         System.out.println("getDesktopPane");
-        Principal instance = new Principal();
+        PrincipalTeste instance = new PrincipalTeste();
         JDesktopPane expResult = null;
         JDesktopPane result = instance.getDesktopPane();
         assertEquals(expResult, result);

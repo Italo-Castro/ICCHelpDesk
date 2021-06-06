@@ -30,6 +30,7 @@ public class UsuarioDAO {
                 usuario.getEstado(),
                 usuario.getCreated_at(),
                 usuario.getPermissao(),
+                usuario.getPerfil(),
                 null
         );
     }
@@ -50,6 +51,7 @@ public class UsuarioDAO {
                 usuario.setEstado(rs.getString("estado"));
                 usuario.setCreated_at(rs.getTimestamp("created_at"));
                 usuario.setUpdated_at(rs.getTimestamp("updated_at"));
+                usuario.setPerfil(rs.getString("perfil"));
                 // adicionando usuário na lista que sera o retorna desta função 
                 lista.add(usuario);
             }
@@ -66,7 +68,8 @@ public class UsuarioDAO {
                 + "`codigo` = ?,\n"
                 + "`senha` = ?,\n"
                 + "`estado` = ?,\n"
-                + "`updated_at` = now()\n"
+                + "`updated_at` = now() \n,"
+                + "perfil = ? \n"
                 + " WHERE `id` = ?";
         MySQLDAO.executeQuery(query,
                 usuario.getPermissao(),
@@ -74,6 +77,7 @@ public class UsuarioDAO {
                 usuario.getCodigo(),
                 usuario.getSenha(),
                 usuario.getEstado(),
+                usuario.getPerfil(),
                 usuario.getId()
         );
     }
