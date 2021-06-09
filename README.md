@@ -18,7 +18,8 @@
     Cada perfil de usuario, tem acesso a determinadas rotinas do sistema,
     o usuario so pode consultar pendencias do propio setor.
    
-    A ferramenta conta também com a funcionalidade de transferencia de atendimento, onde um usuario pode transferir um atendimento para outro usuario.
+    A ferramenta conta também com a funcionalidade de transferencia de atendimento,
+	onde um usuario pode transferir um atendimento para outro usuario.
 
 ## Ferramentas Utilizadas
 
