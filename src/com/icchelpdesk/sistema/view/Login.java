@@ -55,10 +55,10 @@ public class Login extends javax.swing.JFrame {
                  WAMP_PASSWORD = vect[4];
   
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo");
+            JOptionPane.showMessageDialog(null,"Erro ao manipular arquivo \n"+e.getMessage());
        
         }catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(null,"Verifique o arquivo de configuração","Arquivo de configuração de conexão invalido",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Verifique o arquivo de configuração","Arquivo de configuração de conexão invalido\n",JOptionPane.ERROR_MESSAGE);
             
              int x = JOptionPane.showConfirmDialog(null, "Deseja abrir a tela de configuração de conexao com o banco de dados ?");
             

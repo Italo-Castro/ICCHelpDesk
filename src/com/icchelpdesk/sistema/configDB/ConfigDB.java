@@ -77,6 +77,8 @@ public class ConfigDB extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jTextEndereco = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -90,6 +92,12 @@ public class ConfigDB extends javax.swing.JFrame {
         jTextUsuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextSenha = new javax.swing.JPasswordField();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,6 +147,8 @@ public class ConfigDB extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("Senha");
+
+        jTextSenha.setText("1234");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -281,6 +291,8 @@ public class ConfigDB extends javax.swing.JFrame {
     private javax.swing.JButton jButtoTest;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonSaveAndExit;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
