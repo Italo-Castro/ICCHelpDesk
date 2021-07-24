@@ -64,8 +64,8 @@ public class AtendimentoRegister extends javax.swing.JInternalFrame {
             ArrayList<Cliente> listaClientes = new ArrayList();
             listaClientes = ClienteControl.getInstance().read();
              
-                for (Cliente clientes : listaClientes){
-               jComboCliente.addItem(clientes.getNomeEmpresarial());
+                for (Cliente clientes : listaClientes){  
+                    jComboCliente.addItem(clientes.getNomeEmpresarial());
                 }
               
               adicionarAtendimentoPausadoJCombo();

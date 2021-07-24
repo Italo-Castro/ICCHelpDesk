@@ -21,17 +21,13 @@ public class PendenciasView extends javax.swing.JInternalFrame {
             instance = new PendenciasView();
 
             if(Login.getInstance().getPerfil().equals("SUPORTE")){
-                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
-                 
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance); 
             }
             else if(Login.getInstance().getPerfil().equals("DEV")){
-                 
-                  PrincipalDev.getInstance().getDesktopPane().add(instance);
-                 
+                  PrincipalDev.getInstance().getDesktopPane().add(instance); 
             }
             else if(Login.getInstance().getPerfil().equals("TESTE")){
-                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
-                  
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);  
             }
         }
         return instance;
@@ -61,6 +57,7 @@ public class PendenciasView extends javax.swing.JInternalFrame {
         ArrayList<String> listaNaoFeitos = new ArrayList();
         ArrayList<String> listaEmAndamento = new ArrayList();
         ArrayList<String> listaTeste = new ArrayList();
+        
         for (int i=0;i<listaPendencias.size();i++){
             if(listaPendencias.get(i).getStatus().equals("NAO FEITO")) {
                 listaNaoFeitos.add(listaPendencias.get(i).getDescricao());                
@@ -72,6 +69,8 @@ public class PendenciasView extends javax.swing.JInternalFrame {
                 listaTeste.add(listaPendencias.get(i).getDescricao());                
             }
         }
+    }
+        /*
         for (int i=0 ;i<listaNaoFeitos.size();i++){
            // JOptionPane.showMessageDialog(null,"Tamanho lista nao feitos"+listaNaoFeitos.size());
         modelo.setValueAt(new String[]{listaNaoFeitos.get(i).toString()},i,0);
@@ -81,6 +80,7 @@ public class PendenciasView extends javax.swing.JInternalFrame {
         
         }
     }
+        
         /*
         for(Pendencias p : listaPendencias) {
             if(p.getStatus().equals("NAO FEITO")) {

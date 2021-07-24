@@ -353,7 +353,7 @@ public class PrincipalTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemConsultarAtendimentoActionPerformed
 
     private void jMenuItemTransferenciaDeAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
-            TransferenciaAtendimentos.getInstance(0).setVisible(false);
+           TransferenciaAtendimentos.getInstance(0).setVisible(false);
            TransferenciaAtendimentos.getInstance(0).setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
 

@@ -5,10 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
-/**
- *
- * @author Italo
- */
+
 public class PrincipalDev extends javax.swing.JFrame {
 
     private static PrincipalDev instance = null;

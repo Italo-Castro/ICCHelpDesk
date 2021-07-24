@@ -7,10 +7,6 @@ import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.possiveisClientes.view.viewPossiveisClientes;
 import javax.swing.JDesktopPane;
 
-/**
- *
- * @author Italo
- */
 public class PrincipalSuporte extends javax.swing.JFrame {
 
    static  PrincipalSuporte instance = null;
