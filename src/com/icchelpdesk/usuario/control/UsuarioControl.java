@@ -33,6 +33,11 @@ public class UsuarioControl {
         return UsuarioDAO.getInstance().read(query);
     }
 
+    public Usuario readFromName(String nome) {
+        String query = "SELECT * FROM `usuarios` where nome = ';"+nome+"'";
+        return UsuarioDAO.getInstance().readFromName(query);
+    }
+    
     /**
      *
      * @param usuario

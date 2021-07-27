@@ -30,6 +30,11 @@ public class ClienteControl {
         return ClienteDAO.getInstance().read(query);
     } 
     
+    public Cliente readFromId(String nome){
+        String query = "select *from clientes where nomeEmpresarial =';"+nome+"'";
+        return ClienteDAO.getInstance().readFromNameBusiness(query);
+    } 
+    
     public void update (Cliente cliente){
          ClienteDAO.getInstance().update(cliente);
     }
