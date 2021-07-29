@@ -1,10 +1,11 @@
-package com.icchelpdesk.atendimento.model.dao;
+package com.icchelpdesk.chamado.model.dao;
 
 import com.icchelpdesk.chamado.model.bean.Chamado;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class ChamadoDAO {
@@ -19,17 +20,16 @@ public class ChamadoDAO {
    }
     
    public int insert (Chamado chamado) {
-       String query = "insert into chamado values (?, ?, ?, ?, ?, ?, ?)";
-       
+       String query = "INSERT INTO CHAMADO values (?, ?, ?, ?, ?, ?, ?, ?)";
        return MySQLDAO.executeQuery(query, 
-               null,
                chamado.getIdUsuario().getId(),
                chamado.getNivelPriorirade(),
                chamado.getIdCliente().getId(),
                chamado.getTelefoneContato(),
                chamado.getDataEHora(),
                chamado.getStatus(),
-               chamado.getNomeContato()
+               chamado.getNomeContato(),
+               null
                );
    }
     

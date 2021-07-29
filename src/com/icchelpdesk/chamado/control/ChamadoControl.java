@@ -1,6 +1,6 @@
 package com.icchelpdesk.chamado.control;
 
-import com.icchelpdesk.atendimento.model.dao.ChamadoDAO;
+import com.icchelpdesk.chamado.model.dao.ChamadoDAO;
 import com.icchelpdesk.chamado.model.bean.Chamado;
 import java.util.ArrayList;
 

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class UsuarioDAO {
 
@@ -79,7 +80,7 @@ public class UsuarioDAO {
                 usuario.setCreated_at(rs.getTimestamp("created_at"));
                 usuario.setUpdated_at(rs.getTimestamp("updated_at"));
                 usuario.setPerfil(rs.getString("perfil"));
-              
+                JOptionPane.showMessageDialog(null,"Id do usuario na classe dao  "+usuario.getId());
                 
             }
         } catch (SQLException ex) {
