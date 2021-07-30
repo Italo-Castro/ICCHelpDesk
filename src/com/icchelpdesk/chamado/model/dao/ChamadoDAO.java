@@ -61,4 +61,33 @@ public class ChamadoDAO {
         }
         return listaChamado;
     }
+    
+     public ArrayList<Chamado> buscarChamadosPorUsuario (String query) {
+        ArrayList<Chamado> listaChamado = new ArrayList();
+        
+        
+        try {
+            Chamado chamado = new Chamado();
+            
+           ResultSet rs = MySQLDAO.getResultSet(query);
+           
+           while (rs.next()) {
+               
+               chamado.setId(rs.getInt("id"));
+               chamado.setDataEHora(rs.getDate("dataEHora"));
+               chamado.getIdCliente().setId(rs.getInt("idCliente"));
+               chamado.getIdUsuario().setId(rs.getInt("idUsuario"));
+               chamado.setNivelPriorirade(rs.getInt("nivelPrioridade"));
+               chamado.setTelefoneContato(rs.getString("telefoneContato"));
+               chamado.setStatus(rs.getString("status"));
+               chamado.setNomeContato(rs.getString("nomeContato"));
+               
+               listaChamado.add(chamado);
+           }
+            
+        }catch (SQLException e) {
+            System.out.print("Erro ao buscar todos chamados \n metodo buscarChamados ");
+        }
+        return listaChamado;
+    }
 }

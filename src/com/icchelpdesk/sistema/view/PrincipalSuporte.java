@@ -6,6 +6,7 @@ import com.icchelpdesk.pendencia.view.RegistrarPendencia;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
 import com.icchelpdesk.possiveisClientes.view.viewPossiveisClientes;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 public class PrincipalSuporte extends javax.swing.JFrame {
 
@@ -46,6 +47,8 @@ public class PrincipalSuporte extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -117,6 +120,18 @@ public class PrincipalSuporte extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setText("Chamado");
+
+        jMenuItem7.setText("Chamados em aberto");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,12 +174,17 @@ public class PrincipalSuporte extends javax.swing.JFrame {
         RegistrarPendencia.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        JOptionPane.showMessageDialog(null,Login.getInstance().getId());
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -172,5 +192,6 @@ public class PrincipalSuporte extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }

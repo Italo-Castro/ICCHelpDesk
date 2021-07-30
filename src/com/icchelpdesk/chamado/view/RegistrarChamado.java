@@ -264,12 +264,13 @@ public class RegistrarChamado extends javax.swing.JInternalFrame {
 
             String telefoneContato = jTextTelefoneContato.getText();
             String nomeContato = jTextNomeContato.getText();
-
+           
             String date = "";
             Date data = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-            if(jTextDataHora.equals("   /    /        :     ")) {
+            if(jTextDataHora.equals("  /  /       :     ")) {
+                JOptionPane.showMessageDialog(null,"estou aqui nao coloquei data");
                 date = sdf.format(data);
             }else {
                 date = jTextDataHora.getText();
