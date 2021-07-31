@@ -2,12 +2,12 @@ package com.icchelpdesk.chamado.view;
 
 import com.icchelpdesk.chamado.control.ChamadoControl;
 import com.icchelpdesk.chamado.model.bean.Chamado;
-import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;
 import com.icchelpdesk.sistema.view.PrincipalSuporte;
 import com.icchelpdesk.sistema.view.PrincipalTeste;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ChamadosAbertos extends javax.swing.JInternalFrame {
@@ -34,23 +34,32 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
     
     
     public ChamadosAbertos() {
+        
         initComponents();
+        carregarTabelaChamado();
+        
     }
 
-    public void carregarChamado() {
+    public void carregarTabelaChamado() {
         DefaultTableModel modelo =  (DefaultTableModel) jTable1.getModel();
         
         ArrayList<Chamado> listaChamados = ChamadoControl.getInstance().buscarChamadosPorUsuario(Login.getInstance().getId());
         
-        for(int i=0;i<listaChamados.size();i++) {
-            modelo.addRow(new Object[]{
-                
-                listaChamados.get(i).getNomeContato(),
-                listaChamados.get(i).getDataEHora(),
-                listaChamados.get(i).getNivelPriorirade(),
-                
-            });
+        if(listaChamados.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Não há nenhum chamado em aberto para você"+Login.getInstance().getUsuario()+" (:");
         }
+        else {
+            for(int i=0;i<listaChamados.size();i++) {
+                modelo.addRow(new Object[]{
+                    listaChamados.get(i).getNomeContato(),
+                    listaChamados.get(i).getNomeContato(),
+                    listaChamados.get(i).getDataEHora(),
+                    listaChamados.get(i).getNivelPriorirade(),
+
+                });
+                JOptionPane.showMessageDialog(null,"Preenchi a tabela");
+        }
+            }
     }
     
     @SuppressWarnings("unchecked")

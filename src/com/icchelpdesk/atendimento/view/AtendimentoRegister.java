@@ -4,7 +4,6 @@ import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.bean.Cliente;
-import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;

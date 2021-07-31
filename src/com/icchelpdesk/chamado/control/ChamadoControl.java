@@ -26,7 +26,8 @@ public class ChamadoControl {
     }
     
       public ArrayList<Chamado> buscarChamadosPorUsuario (int idUsuario){
-        String query  = "select *from chamado where idUsuario = "+idUsuario;
+         
+        String query  = "select *from chamado where idUsuario = ' "+idUsuario+" '";
         
         return ChamadoDAO.getInstance().buscarChamadosPorUsuario(query);
     }
