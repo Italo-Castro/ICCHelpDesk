@@ -25,10 +25,10 @@ public class ChamadoControl {
         return ChamadoDAO.getInstance().buscarChamados(query);
     }
     
-      public ArrayList<Chamado> buscarChamadosPorUsuario (int idUsuario){
+      public ArrayList<Chamado> buscarChamadosAbertoPorUsuario (int idUsuario){
          
-        String query  = "select *from chamado where idUsuario = ' "+idUsuario+" '";
+        String query  = "select *from chamado where idUsuario = ' "+idUsuario+" ' and status = 'aberto'";
         
-        return ChamadoDAO.getInstance().buscarChamadosPorUsuario(query);
+        return ChamadoDAO.getInstance().buscarChamadosAbertoPorUsuario(query);
     }
 }

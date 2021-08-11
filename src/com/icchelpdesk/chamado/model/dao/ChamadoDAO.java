@@ -62,7 +62,7 @@ public class ChamadoDAO {
         return listaChamado;
     }
     
-     public ArrayList<Chamado> buscarChamadosPorUsuario (String query) {
+     public ArrayList<Chamado> buscarChamadosAbertoPorUsuario (String query) {
         ArrayList<Chamado> listaChamado = new ArrayList();
         
         
@@ -75,8 +75,9 @@ public class ChamadoDAO {
                
                chamado.setId(rs.getInt("id"));
                chamado.setDataEHora(rs.getDate("dataEHora"));
-               chamado.getIdCliente().setId(rs.getInt("idCliente"));
-               chamado.getIdUsuario().setId(rs.getInt("idUsuario"));
+               
+               //erro na linha abaixo -:
+               
                chamado.setNivelPriorirade(rs.getInt("nivelPrioridade"));
                chamado.setTelefoneContato(rs.getString("telefoneContato"));
                chamado.setStatus(rs.getString("status"));
