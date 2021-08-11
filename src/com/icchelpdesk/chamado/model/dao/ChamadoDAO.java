@@ -75,9 +75,8 @@ public class ChamadoDAO {
                
                chamado.setId(rs.getInt("id"));
                chamado.setDataEHora(rs.getDate("dataEHora"));
-               
-               //erro na linha abaixo -:
-               
+               chamado.getIdCliente().setId(rs.getInt("idCliente"));
+               chamado.getIdUsuario().setId(rs.getInt("idUsuario"));
                chamado.setNivelPriorirade(rs.getInt("nivelPrioridade"));
                chamado.setTelefoneContato(rs.getString("telefoneContato"));
                chamado.setStatus(rs.getString("status"));

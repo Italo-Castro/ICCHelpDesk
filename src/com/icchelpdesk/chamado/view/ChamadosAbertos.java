@@ -42,7 +42,9 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
 
     public void carregarTabelaChamado() {
         DefaultTableModel modelo =  (DefaultTableModel) jTable1.getModel();
-      
+        
+        modelo.setNumRows(0);
+        
         ArrayList<Chamado> listaChamados = ChamadoControl.getInstance().buscarChamadosAbertoPorUsuario(Login.getInstance().getId());
         
         if(listaChamados.isEmpty()) {
@@ -55,9 +57,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
                     listaChamados.get(i).getNomeContato(),
                     listaChamados.get(i).getDataEHora(),
                     listaChamados.get(i).getNivelPriorirade(),
-
-                });
-                JOptionPane.showMessageDialog(null,"Preenchi a tabela");
+                });      
         }
             }
     }
@@ -72,9 +72,10 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonUpdateTable = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setResizable(true);
 
@@ -95,10 +96,11 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
 
         jButton2.setText("Recusar Chamado");
 
-        jButton3.setText("Atualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUpdateTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icchelpdesk/icon16x16/update16x16.png"))); // NOI18N
+        jButtonUpdateTable.setText("Atualizar");
+        jButtonUpdateTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonUpdateTableActionPerformed(evt);
             }
         });
 
@@ -118,14 +120,14 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
                                 .addComponent(jButton1))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(357, 357, 357)
-                        .addComponent(jButton3)))
+                        .addComponent(jButtonUpdateTable)))
                 .addContainerGap(1080, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(jButtonUpdateTable)
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,15 +153,15 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTableActionPerformed
         carregarTabelaChamado();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonUpdateTableActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonUpdateTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

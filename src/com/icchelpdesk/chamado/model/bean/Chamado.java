@@ -15,7 +15,12 @@ public class Chamado {
     private String status;
     private String nomeContato;
 
-    public Chamado() {}
+    public Chamado(){
+           
+           idUsuario = new Usuario();
+           idCliente = new Cliente();
+            
+   }
     
     public Chamado(int id, Usuario idUsuario, int nivelPriorirade, Cliente idCliente, String telefoneContato, Date dataEHora, String status, String nomeContato) {
         this.id = id;
