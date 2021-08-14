@@ -132,7 +132,7 @@ public class Login extends javax.swing.JFrame {
                         PrincipalDev.getInstance().setVisible(true);
                         perfil = "DEV";
                         this.setVisible(false); 
-                        System.out.print("dev");
+                        System.out.print("dev"); 
                         
                     }
                     else if (login.getPerfil().equals("SUPORTE")) {

@@ -81,9 +81,8 @@ public class ChamadoDAO {
                chamado.setTelefoneContato(rs.getString("telefoneContato"));
                chamado.setStatus(rs.getString("status"));
                chamado.setNomeContato(rs.getString("nomeContato"));
-               
                listaChamado.add(chamado);
-               JOptionPane.showMessageDialog(null,"Selecionei joguei na lista");
+               
            }
             
         }catch (SQLException e) {

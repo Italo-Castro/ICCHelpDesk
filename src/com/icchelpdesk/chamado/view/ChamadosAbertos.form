@@ -25,7 +25,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane2" alignment="0" pref="851" max="32767" attributes="0"/>
+          <Component id="jScrollPane2" min="-2" pref="819" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -66,7 +66,7 @@
                               <Component id="jButtonUpdateTable" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="1080" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="254" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

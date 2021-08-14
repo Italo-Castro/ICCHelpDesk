@@ -51,6 +51,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Não há nenhum chamado em aberto para você"+Login.getInstance().getUsuario()+" (:");
         }
         else {
+            
             for(int i=0;i<listaChamados.size();i++) {
                 modelo.addRow(new Object[]{
                     listaChamados.get(i).getNomeContato(),
@@ -121,7 +122,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(357, 357, 357)
                         .addComponent(jButtonUpdateTable)))
-                .addContainerGap(1080, Short.MAX_VALUE))
+                .addGap(0, 254, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +144,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

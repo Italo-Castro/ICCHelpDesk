@@ -8,8 +8,11 @@
 
 ## Funcionalidades 
 
-    A aplicação conta com tela de login, cadastro de usuarios, cadastro de clientes,
-    possiveis clientes e conta também com uma funcionalidade com registro de pendencias para determinado setor. 
+    A aplicação conta com rotinas de login, cadastro de usuarios, cadastro de clientes,
+    possiveis clientes e conta também com rotina para registro de pendencias para determinado algum derterminado setor.
+    
+    Conta também com uma rotina de abrir chamado para algum determinado colaborador, e esse colaborador, tem a rotina de
+    aceitar o negar o chamado.
 	
 	A ferramenta conssiste em 3 modulos 
     que são acessados de acordo com  cada perfil de usuario,
@@ -25,5 +28,6 @@
 
     Utilizei a biblioteca SWING do JAVA, e para acesso ao banco de dados utilizei.
     JDBC, contando também com a arquitetura de desenvolvimento de projetos MVC e o design partterns SINGLETON.
+
 
 
