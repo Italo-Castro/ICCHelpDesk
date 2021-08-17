@@ -51,14 +51,13 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Não há nenhum chamado em aberto para você"+Login.getInstance().getUsuario()+" (:");
         }
         else {
-            
             for(int i=0;i<listaChamados.size();i++) {
-                modelo.addRow(new Object[]{
-                    listaChamados.get(i).getNomeContato(),
+                modelo.addRow(new Object []{
+                     listaChamados.get(i).getNomeContato(),
                     listaChamados.get(i).getNomeContato(),
                     listaChamados.get(i).getDataEHora(),
                     listaChamados.get(i).getNivelPriorirade(),
-                });      
+                }); 
         }
             }
     }
