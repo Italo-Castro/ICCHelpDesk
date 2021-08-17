@@ -1,4 +1,4 @@
-# ICCHelpDesk ![96x96_suporte](D:\PASTA\icones\96x96_suporte.png)
+# ICCHelpDesk 
 
 ## Projeto de estudo
     A aplicação consiste em registro de atendimento ao cliente, onde é possivel,
