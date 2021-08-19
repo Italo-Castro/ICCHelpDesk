@@ -40,10 +40,38 @@ public class AtendimentoRegister extends javax.swing.JInternalFrame {
         return instance;
     }
     
+    public  AtendimentoRegister getInstanceChamado(String nomeCliente, String nomeContato) {
+        if (instance == null) {
+            instance = new AtendimentoRegister();
+              
+            jTextNomeContato.setText("TESTE"+nomeContato);
+            jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+                  jTextNomeContato.setText("TESTE"+nomeContato);
+                  jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                initComponents();
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+                  jTextNomeContato.setText("TESTE"+nomeContato);
+                  jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                    initComponents();
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+                  jTextNomeContato.setText("TESTE"+nomeContato);
+                  jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            }
+        }
+        return instance;
+    }
+    
+    
     public static void setInstance(AtendimentoRegister in){
         instance = in;
     }
-    
     
     public  void setMotivoPausa(String motivoPausa){
         this.motivoPausa=motivoPausa;
@@ -69,6 +97,7 @@ public class AtendimentoRegister extends javax.swing.JInternalFrame {
               
               adicionarAtendimentoPausadoJCombo();
                
+              
             
               
               

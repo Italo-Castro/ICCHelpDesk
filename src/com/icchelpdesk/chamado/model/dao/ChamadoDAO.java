@@ -67,13 +67,13 @@ public class ChamadoDAO {
         
         
         try {
-            Chamado chamado = new Chamado();
+            
             
            ResultSet rs = MySQLDAO.getResultSet(query);
            
            while (rs.next()) {
-               
-               chamado.setId(rs.getInt("id"));
+               Chamado chamado = new Chamado();
+               chamado.setId(rs.getInt("idChamado"));
                chamado.setDataEHora(rs.getDate("dataEHora"));
                chamado.getIdCliente().setId(rs.getInt("idCliente"));
                chamado.getIdUsuario().setId(rs.getInt("idUsuario"));
@@ -86,7 +86,7 @@ public class ChamadoDAO {
            }
             
         }catch (SQLException e) {
-            System.out.print("Erro ao buscar todos chamados \n metodo buscarChamados ");
+            System.out.print("Erro ao buscar todos chamados \n metodo buscarChamados \n"+e.getMessage());
         }
         return listaChamado;
     }

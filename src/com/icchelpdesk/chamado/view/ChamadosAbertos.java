@@ -1,7 +1,10 @@
 package com.icchelpdesk.chamado.view;
 
+import com.icchelpdesk.atendimento.view.AtendimentoRegister;
 import com.icchelpdesk.chamado.control.ChamadoControl;
 import com.icchelpdesk.chamado.model.bean.Chamado;
+import com.icchelpdesk.cliente.control.ClienteControl;
+import com.icchelpdesk.cliente.model.bean.Cliente;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;
 import com.icchelpdesk.sistema.view.PrincipalSuporte;
@@ -49,17 +52,22 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         
         if(listaChamados.isEmpty()) {
             JOptionPane.showMessageDialog(null,"Não há nenhum chamado em aberto para você"+Login.getInstance().getUsuario()+" (:");
+            this.dispose();
         }
-        else {
-            for(int i=0;i<listaChamados.size();i++) {
+        
+        else 
+            //for (Chamado chamados : listaChamados){
+            listaChamados.forEach((chamados) -> {
+                Cliente cliente = new Cliente();
+                cliente = ClienteControl.getInstance().readFromId(chamados.getIdCliente().getId());
                 modelo.addRow(new Object []{
-                     listaChamados.get(i).getNomeContato(),
-                    listaChamados.get(i).getNomeContato(),
-                    listaChamados.get(i).getDataEHora(),
-                    listaChamados.get(i).getNivelPriorirade(),
-                }); 
-        }
-            }
+                    chamados.getId(),
+                    cliente.getNomeEmpresarial(),
+                    chamados.getNomeContato(),
+                    chamados.getDataEHora(),
+                    chamados.getNivelPriorirade(),
+                });
+        });
     }
     
     @SuppressWarnings("unchecked")
@@ -70,7 +78,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jButtonAccept = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButtonUpdateTable = new javax.swing.JButton();
 
@@ -87,12 +95,17 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome Cliente", "Nome Contato", "Data e Hora", "Prioridade"
+                "Protocolo", "Nome Cliente", "Nome Contato", "Data e Hora", "Prioridade"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Aceitar Chamado");
+        jButtonAccept.setText("Aceitar Chamado");
+        jButtonAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAcceptActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Recusar Chamado");
 
@@ -111,17 +124,19 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(345, 345, 345)
+                        .addComponent(jButtonUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(357, 357, 357)
-                        .addComponent(jButtonUpdateTable)))
-                .addGap(0, 254, Short.MAX_VALUE))
+                                .addComponent(jButtonAccept)
+                                .addGap(14, 14, 14)))))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +148,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonAccept))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -143,7 +158,7 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,10 +172,30 @@ public class ChamadosAbertos extends javax.swing.JInternalFrame {
         carregarTabelaChamado();
     }//GEN-LAST:event_jButtonUpdateTableActionPerformed
 
+    private void jButtonAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcceptActionPerformed
+        DefaultTableModel modelo =  (DefaultTableModel) jTable1.getModel();
+        if(jTable1.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(null," Selecione o atendimento que deseja aceitar","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else {
+            int x = JOptionPane.showConfirmDialog(null," O chamado sera transferido para sua lista de atendimentos \n Você deseja iniciar o atendimento neste momento ? ");
+            
+            if (x == JOptionPane.YES_OPTION){
+                modelo.removeRow(jTable1.getSelectedRow()); //Remove da tabela a linha selecionada
+                
+               AtendimentoRegister atd = new AtendimentoRegister();
+               atd.getInstanceChamado("Italo","Jose").setVisible(true);
+                //executar a logica de transferir o atendimento da tabela chamado para a tabela atendimento
+            }
+            else if (x == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(null,"O atendimento sera adicionado a sua lista de atendimentos pausados");
+            }
+        }
+    }//GEN-LAST:event_jButtonAcceptActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonAccept;
     private javax.swing.JButton jButtonUpdateTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
