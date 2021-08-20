@@ -43,9 +43,7 @@ public class atendimentoDAO {
                 atendimento.getTransferencia(),
                 atendimento.getIdTransferido(),
                 atendimento.getObsTransferencia(),
-                atendimento.getMotivoPausa()
-               
-                
+                atendimento.getMotivoPausa()                         
                 );       
     }
     public ArrayList<atendimento>  read(String query){

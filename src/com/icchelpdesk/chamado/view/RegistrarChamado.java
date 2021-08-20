@@ -11,10 +11,13 @@ import com.icchelpdesk.sistema.view.PrincipalTeste;
 import com.icchelpdesk.usuario.control.UsuarioControl;
 import com.icchelpdesk.usuario.model.bean.Usuario;
 import java.awt.Color;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -260,25 +263,46 @@ public class RegistrarChamado extends javax.swing.JInternalFrame {
 
             String telefoneContato = jTextTelefoneContato.getText();
             String nomeContato = jTextNomeContato.getText();
-           
+           /*
             String date = "";
             Date data = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
-            if(jTextDataHora.equals("  /  /       :     ")) {
+            
+*/
+            String caralho = jTextDataHora.getText();
+            
+            if(jTextDataHora.getText().equals("  /  /       :     ")) { //este if nao esta funcionando
                 JOptionPane.showMessageDialog(null,"estou aqui nao coloquei data");
-                date = sdf.format(data);
+                chamado.setDataEHora(new Timestamp(System.currentTimeMillis()));
+                chamado.setIdCliente(cliente);
+                chamado.setIdUsuario(usuario);
+                chamado.setTelefoneContato(telefoneContato);
+                chamado.setNomeContato(nomeContato);
+                chamado.setStatus("ABERTO");
+                chamado.setNivelPriorirade(Integer.parseInt(jComboNivel.getSelectedItem().toString()));
+                ChamadoControl.getInstance().insert(chamado);
+                
             }else {
-                date = jTextDataHora.getText();
-            }
-            JOptionPane.showMessageDialog(null,cliente.getId());
-            chamado.setIdCliente(cliente);
-            chamado.setIdUsuario(usuario);
-            chamado.setTelefoneContato(telefoneContato);
-            chamado.setNomeContato(nomeContato);
-            chamado.setStatus("ABERTO");
-            chamado.setNivelPriorirade(Integer.parseInt(jComboNivel.getSelectedItem().toString()));
+                
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                try {
+                    chamado.setDataEHora(sdf.parse(jTextDataHora.getText()));
+               
+            
+                    
+                JOptionPane.showMessageDialog(null,cliente.getId());
 
+                chamado.setIdCliente(cliente);
+                chamado.setIdUsuario(usuario);
+                chamado.setTelefoneContato(telefoneContato);
+                chamado.setNomeContato(nomeContato);
+                chamado.setStatus("ABERTO");
+                chamado.setNivelPriorirade(Integer.parseInt(jComboNivel.getSelectedItem().toString()));
+                ChamadoControl.getInstance().insert(chamado);
+                
+                 } catch (ParseException ex) {
+                   JOptionPane.showMessageDialog(null,"Erro ao converter data"+ex.getMessage());
+                }
+            /*
         try {
                
             java.util.Date dateUtil = new java.util.Date();
@@ -293,10 +317,11 @@ public class RegistrarChamado extends javax.swing.JInternalFrame {
         } catch (ParseException ex) {
             System.out.print("erro ao converter data"+ex.getMessage());
         }
-
+*/
 
          System.out.print("Chamado registrado com sucesso!");
          }
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
