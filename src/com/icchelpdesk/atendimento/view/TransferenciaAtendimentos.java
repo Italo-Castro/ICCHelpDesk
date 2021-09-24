@@ -148,12 +148,17 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
             for(int i=0;i<listaAtendimento.size();i++) {
                 
                 if(listaAtendimento.get(i).getId() == id){  //verificando se o id existe na lista de atendimento.
+                  if((listaAtendimento.get(i).getStatus().equals("CONCLUIDO")) || (listaAtendimento.get(i).getStatus().equals("TRANSFERIDO"))){
+                      JOptionPane.showMessageDialog(null,"Atendimento já transferido ou finalizado\n TRANSFERENCIA IMPOSSIVEL","ERROR",JOptionPane.WARNING_MESSAGE);
+                    }
+                  else {
                     String usuarioRecebe = jComboUsuarios.getSelectedItem().toString();
                     obsTransferenciaAtendimento.getInstance(id,usuarioRecebe).setVisible(false);
                     obsTransferenciaAtendimento.getInstance(id,usuarioRecebe).setVisible(true);
                     idExiste = true;
+                    this.dispose();
+                    }
                 }
-                
             }
                 if(!idExiste){
                     JOptionPane.showMessageDialog(null,"O atendimento "+id+"\n Não se encontra na base de dados");
