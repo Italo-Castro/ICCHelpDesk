@@ -36,12 +36,6 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
         }
         return instance;
         }
-        
-        
-
-        
-        
-    
     
     public TransferenciaAtendimentos(int id) {
         this.id=id;
@@ -60,8 +54,8 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
             for (Usuario usuarios : listaUsuario){
                 String usuario = Login.getInstance().getUsuario();
                listaUsuario.remove(usuarios.getNome().equals(usuario));// REMOVENDO DA LISTA ONDE O NOME DE USUARIO E IGUAL AO USUARIO QUE ESTA LOGADO, PARA NÃO PERMITIR QUE O ATENDIMENTO SEJA TRANSFERIDO PARA SI MESMO
-              jComboUsuarios.addItem(usuarios.getNome());
-              }
+               jComboUsuarios.addItem(usuarios.getNome());
+            }
     }
   
     @SuppressWarnings("unchecked")
@@ -73,7 +67,7 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboUsuarios = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonTransfer = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -89,10 +83,10 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Informe o protocolo");
 
-        jButton1.setText("Transferir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTransfer.setText("Transferir");
+        jButtonTransfer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonTransferActionPerformed(evt);
             }
         });
 
@@ -114,7 +108,7 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
                             .addComponent(jComboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonTransfer)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,13 +125,13 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jComboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(jButtonTransfer))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferActionPerformed
         if(jTextProtocolo.getText().equals("0")){
             JOptionPane.showMessageDialog(null,"Informe o protocolo do atendimento que deseja transferir","ERROR",JOptionPane.ERROR_MESSAGE);
         }
@@ -149,28 +143,28 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
             id = Integer.parseInt(jTextProtocolo.getText());
             ArrayList<atendimento> listaAtendimento = atendimentoControl.getInstance().read(); //lista que recebe todos os atendimentos;
             
+            boolean idExiste = false; //variavel que recebe true quando o id existe na tabela de atendimentos.
+            
             for(int i=0;i<listaAtendimento.size();i++) {
                 
                 if(listaAtendimento.get(i).getId() == id){  //verificando se o id existe na lista de atendimento.
                     String usuarioRecebe = jComboUsuarios.getSelectedItem().toString();
                     obsTransferenciaAtendimento.getInstance(id,usuarioRecebe).setVisible(false);
                     obsTransferenciaAtendimento.getInstance(id,usuarioRecebe).setVisible(true);
-                    break;
+                    idExiste = true;
                 }
-                else {
-                    JOptionPane.showMessageDialog(null,"O atendimento "+id+"\n Não se encontra na base de dados");
-                    break;
-                }
+                
             }
-            
-            
-
+                if(!idExiste){
+                    JOptionPane.showMessageDialog(null,"O atendimento "+id+"\n Não se encontra na base de dados");
+                }    
+                
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonTransferActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonTransfer;
     private javax.swing.JComboBox<String> jComboUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
