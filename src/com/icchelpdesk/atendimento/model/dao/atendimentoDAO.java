@@ -74,6 +74,7 @@ public class atendimentoDAO {
             }
         }catch(SQLException e){
             Logger.getLogger(possiveisClientesDAO.class.getName()).log(Level.SEVERE, null, e);
+            System.out.print("DAO_ATENDIMENTO/READ");
         }
         return listaAtendimento;
     }

@@ -2,7 +2,6 @@ package com.icchelpdesk.atendimento.view;
 
 import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
-import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;
 import com.icchelpdesk.sistema.view.PrincipalSuporte;
@@ -62,7 +61,7 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
                 String usuario = Login.getInstance().getUsuario();
                listaUsuario.remove(usuarios.getNome().equals(usuario));// REMOVENDO DA LISTA ONDE O NOME DE USUARIO E IGUAL AO USUARIO QUE ESTA LOGADO, PARA NÃO PERMITIR QUE O ATENDIMENTO SEJA TRANSFERIDO PARA SI MESMO
               jComboUsuarios.addItem(usuarios.getNome());
-                       }
+              }
     }
   
     @SuppressWarnings("unchecked")
@@ -146,11 +145,26 @@ public class TransferenciaAtendimentos extends javax.swing.JInternalFrame {
               JOptionPane.showMessageDialog(null,"Informe para qual usuario deseja transferir deseja transferir","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         else {
-        id = Integer.parseInt(jTextProtocolo.getText());
-        String usuarioReecbe = jComboUsuarios.getSelectedItem().toString();
-        obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(false);
-        obsTransferenciaAtendimento.getInstance(id,usuarioReecbe).setVisible(true);
-        
+            
+            id = Integer.parseInt(jTextProtocolo.getText());
+            ArrayList<atendimento> listaAtendimento = atendimentoControl.getInstance().read(); //lista que recebe todos os atendimentos;
+            
+            for(int i=0;i<listaAtendimento.size();i++) {
+                
+                if(listaAtendimento.get(i).getId() == id){  //verificando se o id existe na lista de atendimento.
+                    String usuarioRecebe = jComboUsuarios.getSelectedItem().toString();
+                    obsTransferenciaAtendimento.getInstance(id,usuarioRecebe).setVisible(false);
+                    obsTransferenciaAtendimento.getInstance(id,usuarioRecebe).setVisible(true);
+                    break;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"O atendimento "+id+"\n Não se encontra na base de dados");
+                    break;
+                }
+            }
+            
+            
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

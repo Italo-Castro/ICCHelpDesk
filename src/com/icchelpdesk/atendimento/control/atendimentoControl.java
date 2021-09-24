@@ -28,7 +28,7 @@ public class atendimentoControl {
     }
     
     public ArrayList<atendimento> read(){
-        String query = "select *from clientes;";
+        String query = "select *from atendimento;";
         return atendimentoDAO.getInstance().read(query);
     } 
     
