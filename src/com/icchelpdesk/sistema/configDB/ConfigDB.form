@@ -212,7 +212,11 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="jTextSenha">
       <Properties>
+<<<<<<< HEAD
         <Property name="text" type="java.lang.String" value="1234"/>
+=======
+        <Property name="text" type="java.lang.String" value="8523"/>
+>>>>>>> main
       </Properties>
     </Component>
   </SubComponents>

@@ -17,6 +17,7 @@ public class Login extends javax.swing.JFrame {
     private static Login instance = null;
     private int nvPermissao =0 ;
     String perfil ="";
+    private int id =0;
     
     public static Login getInstance() {
         if (instance == null) {
@@ -102,6 +103,13 @@ public class Login extends javax.swing.JFrame {
     public int getNvPermiss(){
         return nvPermissao;
     }
+    public void setId(int id){
+        this.nvPermissao=nvPermissao;
+    }
+    public int getId(){
+        return id;
+    }
+  
     private void entrar() {
         if(MySQLDAO.resultado == 1){
         Usuario login = new Usuario();
@@ -115,6 +123,7 @@ public class Login extends javax.swing.JFrame {
             if (login != null) {
                 if ((login.getEstado().equals("ATIVO") ) || login.getEstado().equals("A")) {
                     setnvPermiss(login.getPermissao());
+                    id=login.getId();
                     JOptionPane.showMessageDialog(null, "Seja bem vindo " + login.getNome());
                     this.usuario = login.getNome();
                     
@@ -123,7 +132,7 @@ public class Login extends javax.swing.JFrame {
                         PrincipalDev.getInstance().setVisible(true);
                         perfil = "DEV";
                         this.setVisible(false); 
-                        System.out.print("dev");
+                        System.out.print("dev"); 
                         
                     }
                     else if (login.getPerfil().equals("SUPORTE")) {

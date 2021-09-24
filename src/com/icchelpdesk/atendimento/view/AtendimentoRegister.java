@@ -4,7 +4,6 @@ import com.icchelpdesk.atendimento.control.atendimentoControl;
 import com.icchelpdesk.atendimento.model.bean.atendimento;
 import com.icchelpdesk.cliente.control.ClienteControl;
 import com.icchelpdesk.cliente.model.bean.Cliente;
-import static com.icchelpdesk.pendencia.view.RegistrarPendencia.instance;
 import com.icchelpdesk.sistema.model.util.MySQLDAO;
 import com.icchelpdesk.sistema.view.Login;
 import com.icchelpdesk.sistema.view.PrincipalDev;
@@ -41,10 +40,38 @@ public class AtendimentoRegister extends javax.swing.JInternalFrame {
         return instance;
     }
     
+    public  AtendimentoRegister getInstanceChamado(String nomeCliente, String nomeContato) {
+        if (instance == null) {
+            instance = new AtendimentoRegister();
+              
+            jTextNomeContato.setText("TESTE"+nomeContato);
+            jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            
+            if(Login.getInstance().getPerfil().equals("SUPORTE")){
+                  PrincipalSuporte.getInstance().getDesktopPane().add(instance);
+                  jTextNomeContato.setText("TESTE"+nomeContato);
+                  jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            }
+            else if(Login.getInstance().getPerfil().equals("DEV")){
+                initComponents();
+                  PrincipalDev.getInstance().getDesktopPane().add(instance);
+                  jTextNomeContato.setText("TESTE"+nomeContato);
+                  jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            }
+            else if(Login.getInstance().getPerfil().equals("TESTE")){
+                    initComponents();
+                  PrincipalTeste.getInstance().getDesktopPane().add(instance);
+                  jTextNomeContato.setText("TESTE"+nomeContato);
+                  jComboCliente.setSelectedItem("CHORA"+nomeCliente);
+            }
+        }
+        return instance;
+    }
+    
+    
     public static void setInstance(AtendimentoRegister in){
         instance = in;
     }
-    
     
     public  void setMotivoPausa(String motivoPausa){
         this.motivoPausa=motivoPausa;
@@ -64,12 +91,13 @@ public class AtendimentoRegister extends javax.swing.JInternalFrame {
             ArrayList<Cliente> listaClientes = new ArrayList();
             listaClientes = ClienteControl.getInstance().read();
              
-                for (Cliente clientes : listaClientes){
-               jComboCliente.addItem(clientes.getNomeEmpresarial());
+                for (Cliente clientes : listaClientes){  
+                    jComboCliente.addItem(clientes.getNomeEmpresarial());
                 }
               
               adicionarAtendimentoPausadoJCombo();
                
+              
             
               
               

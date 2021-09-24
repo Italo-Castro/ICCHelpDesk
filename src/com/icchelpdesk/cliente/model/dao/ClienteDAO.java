@@ -100,7 +100,91 @@ public class ClienteDAO {
     
    }
    
+    public Cliente readFromNameBusiness(String query){
+  
+     Cliente cliente = new Cliente();
+     
+    try {
+        ResultSet rs = MySQLDAO.getResultSet(query);
+        while (rs.next()){
    
+        cliente.setId(rs.getInt("id"));
+        cliente.setCnpj(rs.getString("cnpj"));
+        cliente.setNomeEmpresarial(rs.getString("nomeEmpresarial"));
+        cliente.setNomeFantasia(rs.getString("nomeFantasia"));
+        cliente.setTel_1(rs.getString("telefone_1"));
+        cliente.setTel_2(rs.getString("telefone_2"));
+        cliente.setResponsavel(rs.getString("responsavel"));
+        cliente.setNfe(rs.getInt("nf_e"));
+        cliente.setNfce(rs.getInt("nfc_e"));
+        cliente.setCte(rs.getInt("ct_e"));
+        cliente.setMdfe(rs.getInt("mdf_e"));
+        cliente.setInformacoes(rs.getString("informacoes"));
+        cliente.setMenut(rs.getInt("menut"));
+        cliente.setMenuefd(rs.getInt("menuEfd"));
+        cliente.setMenucx(rs.getInt("menuCX"));
+        cliente.setMercurio(rs.getInt("mercurio"));
+        cliente.setMenuped(rs.getInt("menuped"));
+        cliente.setEdsys(rs.getInt("edsys"));
+        cliente.setStatus(rs.getString("status"));
+        cliente.setCep(rs.getString("cep"));
+        cliente.setCidade(rs.getString("cidade"));
+        cliente.setBairro(rs.getString("bairro"));
+        cliente.setLogradouro(rs.getString("logradouro"));
+        cliente.setNumero(rs.getInt("numero"));
+        cliente.setEstado(rs.getString("estado"));
+        //adiciono todos os dados lidos ao meu objeto cliente
+        
+        }
+    }catch(SQLException e){
+        JOptionPane.showMessageDialog(null,"Erro ao fazer leitura no banco de dados");
+    }
+    return cliente;
+    
+   }
+   
+    public Cliente readFromNameId(String query){
+  
+     Cliente cliente = new Cliente();
+     
+    try {
+        ResultSet rs = MySQLDAO.getResultSet(query);
+        while (rs.next()){
+   
+        cliente.setId(rs.getInt("id"));
+        cliente.setCnpj(rs.getString("cnpj"));
+        cliente.setNomeEmpresarial(rs.getString("nomeEmpresarial"));
+        cliente.setNomeFantasia(rs.getString("nomeFantasia"));
+        cliente.setTel_1(rs.getString("telefone_1"));
+        cliente.setTel_2(rs.getString("telefone_2"));
+        cliente.setResponsavel(rs.getString("responsavel"));
+        cliente.setNfe(rs.getInt("nf_e"));
+        cliente.setNfce(rs.getInt("nfc_e"));
+        cliente.setCte(rs.getInt("ct_e"));
+        cliente.setMdfe(rs.getInt("mdf_e"));
+        cliente.setInformacoes(rs.getString("informacoes"));
+        cliente.setMenut(rs.getInt("menut"));
+        cliente.setMenuefd(rs.getInt("menuEfd"));
+        cliente.setMenucx(rs.getInt("menuCX"));
+        cliente.setMercurio(rs.getInt("mercurio"));
+        cliente.setMenuped(rs.getInt("menuped"));
+        cliente.setEdsys(rs.getInt("edsys"));
+        cliente.setStatus(rs.getString("status"));
+        cliente.setCep(rs.getString("cep"));
+        cliente.setCidade(rs.getString("cidade"));
+        cliente.setBairro(rs.getString("bairro"));
+        cliente.setLogradouro(rs.getString("logradouro"));
+        cliente.setNumero(rs.getInt("numero"));
+        cliente.setEstado(rs.getString("estado"));
+        //adiciono todos os dados lidos ao meu objeto cliente
+        
+        }
+    }catch(SQLException e){
+        JOptionPane.showMessageDialog(null,"Erro ao fazer leitura no banco de dados");
+    }
+    return cliente;
+    
+   }
    public void update(Cliente cliente){
        
        String query = "update clientes"
@@ -158,6 +242,8 @@ public class ClienteDAO {
                cliente.getId()
                );
      }
+   
+   
    public void delete(Cliente cliente){
        String query = "DELETE FROM CLIENTE where id = ?";
        MySQLDAO.executeQuery(query,cliente.getId());

@@ -8,6 +8,8 @@ import com.icchelpdesk.atendimento.view.AtendimentosTransferidos;
 import com.icchelpdesk.atendimento.view.AtendimentoRegister;
 import com.icchelpdesk.atendimento.view.AtendimentosView;
 import com.icchelpdesk.atendimento.view.TransferenciaAtendimentos;
+import com.icchelpdesk.chamado.view.ChamadosAbertos;
+import com.icchelpdesk.chamado.view.RegistrarChamado;
 import com.icchelpdesk.cliente.view.ClienteCadastro;
 import com.icchelpdesk.pendencia.view.RegistrarPendencia;
 import com.icchelpdesk.possiveisClientes.view.possiveisClientesVIEW;
@@ -84,6 +86,9 @@ public class PrincipalTeste extends javax.swing.JFrame {
         jMenuItemCadastro = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -295,6 +300,26 @@ public class PrincipalTeste extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Chamado");
+
+        jMenuItem4.setText("Abrir Chamado");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Chamados em Aberto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,7 +378,7 @@ public class PrincipalTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemConsultarAtendimentoActionPerformed
 
     private void jMenuItemTransferenciaDeAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
-            TransferenciaAtendimentos.getInstance(0).setVisible(false);
+           TransferenciaAtendimentos.getInstance(0).setVisible(false);
            TransferenciaAtendimentos.getInstance(0).setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferenciaDeAtendimentoActionPerformed
 
@@ -391,6 +416,16 @@ public class PrincipalTeste extends javax.swing.JFrame {
         RegistrarPendencia.getInstance().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        RegistrarChamado.getInstance().setVisible(false);
+        RegistrarChamado.getInstance().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        ChamadosAbertos.getInstance().setVisible(false);
+        ChamadosAbertos.getInstance().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -408,12 +443,15 @@ public class PrincipalTeste extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCliente;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItemAtendimentosTransferidos;
     private javax.swing.JMenuItem jMenuItemCadastro;
     private javax.swing.JMenuItem jMenuItemConsultarAtendimento;
